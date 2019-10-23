@@ -276,3 +276,17 @@ function multiplicationTable(size) {
 }
 debugger;
 document.write( multiplicationTable() ) // то же самое, что     document.write(table);
+
+
+
+
+var names = ["Вася", "Петя", "БритниСпирс"];   // объявляем первый массив
+function sayHi (massiv) {   // объявляем функцию (название - sayHi) и передаем параметры (massiv)
+    var newMassiv = [];     // объявляем пустой массив в функции для перезаписи
+
+    for (var i = 0; i < names.length; i++) {   // делаем цикл первого массива
+        newMassiv[i] = "hi " + massiv[i];   // в новый массив записываем "hi" и добавляем первый массив
+    }
+    return newMassiv;   // возвращаем новый массив  
+}
+console.log(sayHi(["Вася", "Петя", "БритниСпирс"]));  // вызвал функцию с массивом
