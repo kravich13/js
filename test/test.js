@@ -255,11 +255,10 @@ function sayhi ( name ) {   // функция название; ( от нуля 
     alert (" PREVED " + name )  // сам код функции   
     return 0
 }
-
-
 sayhi("MV");   // вызов функции - это ее ИМЯ + КРУГЛЕ СКОБКИ !!!!!!!!!!!!!!!
 
-function multiplicationTable(size) {
+
+function multiplicationTable(size) {    //  сама функция (см. выше)
     var table = "<table>";
     var size = prompt("");
     console.log(typeof size); // показывает тип переменной
@@ -274,10 +273,102 @@ function multiplicationTable(size) {
     table += "</table>";
     return table;
 }
-debugger;
 document.write( multiplicationTable() ) // то же самое, что     document.write(table);
 
 
+var table = "<table>";
+var width = prompt ("");
+var height = prompt ("");
+for ( var i = 1; i < height; i++ ) {
+    table += " <tr> ";
+
+    for ( var j = 1; j < width; j++ ) {
+        table += `<td> ${ j * i } </td>`;
+    }
+    table += "</tr>";
+}
+table += "</table>";
+document.write(table);
+console.log(table);
+
+
+function multiplicationTable(width, height) {
+    console.log(width, height);
+    var table = "<table>";
+    for (var i = 1; i < height; i++) {
+        table += " <tr> ";
+
+        for (var j = 1; j < width; j++) {
+            table += `<td> ${ j * i } </td>`;
+        }
+        table += "</tr>";
+    }
+    table += "</table>";
+    return table;
+}
+document.write( multiplicationTable(11, 5) )
+document.write( multiplicationTable(7, 4) )
+document.write( multiplicationTable(5, 1) )
+document.write( multiplicationTable(6, 3) )
+// document.write(table);
+// console.log(table);
+
+// массивы
+
+var names = ["Вася", "Петя", "Маша", "Даша"];
+
+for (var i = 0; i < 4; i++) {
+    console.log (names[i]);
+}
+
+//  вывод четных чисел в цикле из массива numbers
+var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+
+for (var i = 0; i < 11; i++) {
+    if (i % 2 == 1) {
+        console.log(numbers[i]);
+    }
+}
+
+// проверка всего массива на наличие четных чисел. Для вывода нечетных - пишем == 1
+var numbers = [1, 20, 30, 4, 5, 6, 70, 80, 50, 10]
+
+for (var i = 0; i < 11; i++) {
+    if (numbers[i] % 2 == 0) {
+        console.log(numbers[i]);
+    }
+}
+
+//
+var numbers = [1, 20, 30, 4, 5, 6, 70, 80, 50, 10]
+
+for (var i = 0; i < 10; i++) {
+    if (numbers[i] % 2 == 0) {
+        numbers[i] /= 2;
+    }
+    else { 
+          (numbers[i] % 2 == 1);
+          numbers[i] *= 2;
+          numbers[i] += " - нечетные числа";
+    }
+        console.log(numbers[i]);
+}
+
+
+// вывод массива до и после изменений рядом делаются с помощью переменная1 + " " + переменная2
+var numbers = [1, 20, 30, 4, 5, 6, 70, 80, 50, 10]  // объявляем массив
+
+for (var i = 0; i < numbers.length; i++) {  // делаем цикл
+    var qq = numbers[i];    // объявляем переменную и закидываем в неё массив до изменений
+
+    if (numbers[i] % 2 == 0) {  // объявляем if и вычисляем есть ли в коде четные числа
+        numbers[i] /= 2;    // все четные числа делим на два
+    }
+    else { // ещё
+          numbers[i] *= 2;  // все оставшиеся (нечетные) числа умножаем на два
+    }
+    console.log(qq + " " + numbers[i]); // выводим в консоль переменную с массивом ДО изменений (qq), добавляем строку " пробел " и добавляем переменную с массивом ПОСЛЕ изменений
+}
 
 
 var names = ["Вася", "Петя", "БритниСпирс"];   // объявляем первый массив
