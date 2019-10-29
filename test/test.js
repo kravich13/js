@@ -1,5 +1,68 @@
-var userName = prompt("Вы админ?", "");
+// switch
 
+var number = +prompt('Введите число между 0 и 3')
+
+switch (number) {
+    case 0:
+        alert("Вы ввели 0")
+        break;
+
+    case 1:
+        alert("Вы ввели 1")
+        break;
+
+    case 2:
+    case 3:
+        alert("Вы ввели 2 или 3")
+        break;
+    default:
+        alert("Хрень")
+}
+
+//
+if (browser == Edge) {
+    alert("Yove got the Edge!")
+} else {
+    if (browser == Chrome || browser == Firefox || browser == Safari || browser == Opera) {
+        alert("Okay we support these browsers too")
+    }
+    else {
+        alert("We hope that this page looks ok!")
+    }
+}
+
+// Math.random()
+
+// генерирует случайное нецелое число от 10 до 99
+function getRandomArbitrary (min, max) {    // объвляем функцию с заданными параметрами min and max
+	return Math.random() * (max - min) + min    // возвращаем рандом умноженный на диапазон от max до min числа и добавляем min, чтобы было "от 10 до 100"
+}
+console.log(getRandomArbitrary (10, 100))   // вызываем функцию с заданными параметрами
+
+
+// генерирует случайное целое число от 10 до 99
+
+function getRandomInt (min, max) {  // объявляем функцию с параметрами min max 
+    min = Math.ceil (min)   // min округляет math вверх (ceil)
+    max = Math.floor (max)  // max округляет math вниз (max)
+        return Math.floor(Math.random() * (max - min)) + min // включится минимальное заданое число (+ min)
+    }
+    console.log(getRandomInt (10, 100)) // получаем целое число от 10 до 99 (55 например)
+
+// гененирует случайное число от 10 до 100
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
+}
+console.log(getRandomIntInclusive (-10, 10)) // выпадет от 10 до 150
+// 
+
+
+
+
+//
+var userName = prompt("Вы админ?", "");
 
 if (userName == "Admin") {
 
@@ -23,8 +86,55 @@ if (userName == "Admin") {
     }
 }
 
+//
+var names = prompt ("Введите ваше Имя")
+var family = prompt ("Введите вашу Фамилию")
+var patronymic = prompt ("Введите ваше Отчество")
+alert (family + " " + names + " " + patronymic)
 
+//
+var names = prompt ("Введите ваше Имя") || "Влад"
+var family = prompt ("Введите вашу Фамилию") || "Кравич"
+var patronymic = prompt ("Введите ваше Отчество") || "Александрович"
+alert (family + " " + names + " " + patronymic)
 
+// 
+var names = prompt("Введите ваше Имя")
+if (names == null) {
+    names = "Иван"
+}
+var family = prompt ("Введите вашу Фамилию")
+if (family == null) {
+    family = "Иванов"
+}
+var patronymic = prompt ("Введите ваше Отчество")
+if (patronymic == null) {
+    patronymic = "Иванович"
+}
+alert (family + " " + names + " " + patronymic)
+
+// 
+var userName = prompt("Введите верный логин")
+if (userName == "admin") {
+
+    var pass = prompt("Введите пароль")
+    if (pass == "admin") {
+        alert("Вы вошли в систему")
+        
+    } else {
+        if (pass == null) {
+            alert("Вы нажали Отмена")
+        } else {
+            alert("Неверный пароль")
+        }
+    }
+} else {
+    if (userName == null) {
+        alert("Вы нажали Отмена")
+    } else {
+        alert("Неверный логин")
+    }
+}
 
 
 // выход из цикла - break (когда ровно null)
@@ -381,3 +491,4 @@ function sayHi (massiv) {   // объявляем функцию (названи
     return newMassiv;   // возвращаем новый массив  
 }
 console.log(sayHi(["Вася", "Петя", "БритниСпирс"]));  // вызвал функцию с массивом
+
