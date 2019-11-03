@@ -1,9 +1,12 @@
+
+
+
 // switch
 
-var number = +prompt('Введите число между 0 и 3')
+var number = +prompt('Введите число между 0 и 3')   // объявляем промпт
 
-switch (number) {
-    case 0:
+switch (number) {   // делаем проверку на промпт
+    case 0: // кейс первый: если введено 0, то будет сообщение ниже и выход
         alert("Вы ввели 0")
         break;
 
@@ -15,7 +18,8 @@ switch (number) {
     case 3:
         alert("Вы ввели 2 или 3")
         break;
-    default:
+
+    default:    // если были введены числа больше 3 - выведется default (как else)
         alert("Хрень")
 }
 
@@ -49,6 +53,7 @@ function getRandomInt (min, max) {  // объявляем функцию с па
     }
     console.log(getRandomInt (10, 100)) // получаем целое число от 10 до 99 (55 например)
 
+    
 // гененирует случайное число от 10 до 100
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
@@ -243,7 +248,7 @@ do {
 }
 while (i <= 10)
 
-// for
+// 
 for (i = 2; i <= 10; i += 2) {
     alert (i);
 }
@@ -448,6 +453,52 @@ for (var i = 0; i < 11; i++) {
         console.log(numbers[i]);
     }
 }
+
+
+// задачки
+
+
+var arr = ["a", "b", "c", "d"]
+console.log(arr[0] + "+" + arr[1] + ", " + arr[2] + "+" + arr[3]) // a+b, c+d
+
+// Создайте массив arr с элементами 2, 5, 3, 9. Умножьте первый элемент массива на второй, а третий элемент на четвертый. Результаты сложите, присвойте переменной result. Выведите на экран значение этой переменной. 
+var result = 0
+var multiplicationFirst = 0
+var multiplicationSecond = 0
+var arr = [2, 5, 3, 9]
+multiplicationFirst = arr [0] * arr[1]
+multiplicationSecond = arr [2] * arr[3]
+result =  multiplicationFirst + multiplicationSecond
+console.log(result)
+
+
+var obj = {
+    a: 1,
+    b: 2,
+    c: 3
+};
+console.log(obj.c)
+
+// Создайте массив заработных плат obj. Выведите на экран зарплату Пети и Коли. 
+var obj = {
+    Коля: '1000',
+    Вася: '500',
+    Петя: '200'
+}
+console.log(obj.Коля + " " + obj.Петя)
+
+//  Создайте объект с днями недели. Ключами в нем должны служить номера дней от начала недели (понедельник - первый и т.д.). Выведите на экран текущий день недели. 
+var obj = {
+    First: "Monday",
+    Second: "Tuesday",
+    Third: "Wednesday",
+    Fourth: "Thursday", 
+    Fifth: "Friday", 
+    Sixth: "Saturday",
+    Seventh: "Sunday",
+}
+console.log( obj.Seventh)
+
 
 //
 var numbers = [1, 20, 30, 4, 5, 6, 70, 80, 50, 10]
