@@ -329,9 +329,82 @@ console.log(c)
 // Дан массив arr. Найдите среднее арифметическое его элементов. Проверьте задачу на массиве с элементами 12, 15, 20, 25, 59, 79. 
 var mass = [12, 15, 20, 25, 59, 79]
 var summ = 0
-for (var i = 0; i <mass.length; i++) {
+for (var i = 0; i < mass.length; i++) {
     summ += mass[i] // 210 сумма чисел
 }
 summ /= mass.length // делим на сумму чисел (в данном моменте 6)
 console.log(summ) // 35
 
+// Даны два массива: [1, 2, 3] и [4, 5, 6]. Объедините их вместе. 
+var a = [1,2,3]
+var b = [3,4,5]
+var c = a.concat(b); // переменная точка concat (переменная) делает объединение массивов
+console.log(c) // 1 2 3 4 5 6, при b concat a было бы 4 5 6 1 2 3
+
+// Дан массив [1, 2, 3]. Сделайте из него массив [3, 2, 1]. 
+var a = [1,2,3]
+a.reverse() // переворот массива
+console.log(a)
+
+// Двухмерный массив
+var mass = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+console.table(mass)
+
+
+// двухмерный массив 
+function table(width = 10) {
+    var table = []
+    debugger
+    for (var i = 0; i < width; i++) {
+        table[i] = []
+        for (var j = 0; j < width; j++) {
+            table[i][j] = (i + 1)  * (j +1)
+        }
+    }
+    return table
+}
+console.table(table())
+
+
+// фирма имеет 5 магазинов. Информация о доходе каждого магазина за каждый месяц хранится в двух мерном массиве
+var firm = []
+var sum = []
+for (var i = 0; i < 5; i++) {
+    firm[i] = []
+    sum[i] = 0  // сюда пишем фиксированные значения до внутреннего цикла
+    for (var j = 0; j < 12; j++) {
+        firm[i][j] = Math.random() * (25 - 5) + 5
+        firm[i][j] = Math.floor(firm[i][j])
+        sum[i] +=  firm[i][j] 
+    }
+}
+console.log(sum)
+
+
+
+
+// какой-то бред
+var mass = []
+var sum = []
+var number = 0
+for (var i = 0; i < 12; i++) {
+    mass[i] = Math.random() * (25 - 5) + 5
+    mass[i] = Math.floor(mass[i])
+    number += mass[i]
+}
+sum.unshift(number)
+console.log(sum)
+
+
+var mass = []
+var sum = [0]
+for (var i = 0; i < 12; i++) {
+    mass[i] = Math.random() * (25 - 5) + 5
+    mass[i] = Math.floor(mass[i])
+    sum[0] += mass[i]
+}
+console.log(sum)
