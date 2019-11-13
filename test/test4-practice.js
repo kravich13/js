@@ -371,40 +371,32 @@ console.table(table())
 
 
 // фирма имеет 5 магазинов. Информация о доходе каждого магазина за каждый месяц хранится в двух мерном массиве
-var firm = []
+var shop = []
 var sum = []
+var avg = []
 for (var i = 0; i < 5; i++) {
-    firm[i] = []
-    sum[i] = 0  // сюда пишем фиксированные значения до внутреннего цикла
+    shop[i] = []
+    sum[i] = 0 // суммировать надо к нулю +=
     for (var j = 0; j < 12; j++) {
-        firm[i][j] = Math.random() * (25 - 5) + 5
-        firm[i][j] = Math.floor(firm[i][j])
-        sum[i] +=  firm[i][j] 
+        shop[i][j] = Math.floor(Math.random() * (100 - 1) + 1)
+        sum[i] += shop[i][j] // суммировать надо к нулю +=
     }
+    avg[i] = Math.round(sum[i] / 12)
 }
+console.log(shop)
 console.log(sum)
+console.log(avg)
 
-
-
-
-// какой-то бред
-var mass = []
-var sum = []
-var number = 0
-for (var i = 0; i < 12; i++) {
-    mass[i] = Math.random() * (25 - 5) + 5
-    mass[i] = Math.floor(mass[i])
-    number += mass[i]
+// среднее за месяц
+var avgMunth = []
+for (var i = 0; i < 12; i++) { // 12 потому что нужно записать 12 элементов в массив
+avgMunth[i] = 0
+    for (var j = 0; j < 5; j++) { // 5 потомуу что складываем 5 массивов по вертикали ([0][0]+[1][0])
+        avgMunth[i] += shop[j][i]
+    }
+    avgMunth[i] = Math.round(avgMunth[i] / 5)
 }
-sum.unshift(number)
-console.log(sum)
+console.log(avgMunth)
 
 
-var mass = []
-var sum = [0]
-for (var i = 0; i < 12; i++) {
-    mass[i] = Math.random() * (25 - 5) + 5
-    mass[i] = Math.floor(mass[i])
-    sum[0] += mass[i]
-}
-console.log(sum)
+
