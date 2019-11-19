@@ -142,3 +142,4 @@ var gameShop = {
         }
     }
 }
+gameShop.weapons.S.AM.money

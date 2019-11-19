@@ -18,7 +18,7 @@ if (min >= 16 && min <= 30) {
 if (min >= 31 && min <= 45) {
     console.log("третья четверть часа")
 }
-if (min >= 46 && min <= 60) {
+if (min >= 46 && min <= 59) {
     console.log("чертвертая четверть часа")
 }
 
