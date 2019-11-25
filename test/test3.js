@@ -89,13 +89,106 @@ console.log(123456 % 10) // остаток 6
 // 8) Сформировать строку c помощью вложенных циклов. Для перевода строки используйте \n. 
 
 var number = ""
-var number1 
 for (var i = 0; i < 10; i++) {
-    number = number + i
     for (var j = 0; j < 10; j++) {
-    number1 = number 
+        number += j
     }
+    number += "\n"
 }
 console.log(number)
-console.log(number1)
 
+
+// 9) Сформируйте строку с шахматной доской из вложенных циклов. Для перевода строки используйте \n. Код должен поддерживать легкое изменение размеров доски. 
+
+var tochka = ""
+for (var i = 0; i < 10; i++) {
+    for(var j = 2; j < 8; j++) {
+        if (i % 2 == 0) {
+            tochka += "."
+        }
+        else {
+            tochka += "#."
+        }
+    }
+    tochka += "\n"
+}
+console.log(tochka)
+
+let str = ''
+for(let i = 0; i < 11; i++){
+    for(let j = 0; j < 21; j++){
+        if(i % 2 == 0){
+            if(j % 2 == 0){
+                str += '.'
+            } 
+            else {
+                str += '#'
+            }
+        } 
+        else {
+            if(j % 2 == 0){
+                str += '#'
+            }
+            else {
+                str += '.'
+            }
+        }
+    }
+    str += '\n'
+}
+console.log(str)
+
+
+// 10) Сформируйте массив из N элементов, содержащий в себе квадраты индексов, т. е: [0,1,4,9,16...] 
+var arr = []
+for (var i = 0; i < 10; i++) {
+    arr[i] = i ** 2
+}
+console.log(arr)
+
+// 11) C помощью вложенного цикла сформируйте массив массивов "таблица умножения".
+var arr = []
+var tab 
+function table(X) {
+    for (var i = 0; i < X; i++) {
+        arr[i] = []
+        for (var j = 0; j < X; j++) {
+            arr[i][j] = (i + 1) * (j + 1)
+        }
+    }
+    return arr
+}
+tab = table(5)
+
+// 12) Сделайте вложенный цикл, который формирует HTML-таблицу из любого двумерного массива. Т. е. если в нём использовать результат работы предыдущего задания, то получится таблица умножения HTML, как на занятии;
+
+var str = "<table>"
+// debugger
+for (var i = 0; i < 5; i++) {
+    str += "<tr>" + tab[i]
+    for (var j = 0; j < 5; j++) {
+        str += "<td>" + tab[i][j] + "</td>"
+    }
+    str += tab[i] + "</tr>"
+}
+str += "</table>"
+console.log(str)
+document.write(str)
+
+var table = "<table>"; // в переменную пишем начало HTML
+var size = prompt (""); // затем делаем строчный промпт
+console.log(typeof size);   // показывает тип переменной
+for ( var i = 1; i < size; i++ ) { // делаем цикл от одного до введенного числом пользователя (size - промпт)
+    table += " <tr> "; // прибавляем к строковой переменной открывающийся тег
+    for ( var j = 1; j < size; j++ ) { // делаем вложенный цикл 
+        table += `<td> ${ j * i } </td>`; // в переменную добавляем <тег `число` тег>  
+    }
+    table += "</tr>"; // закрываем тег после окончания внутреннего цикла 
+}
+table += "</table>"; // закрываем тег после окончания всех циклов
+document.write(table); // делаем HTML документ
+
+
+
+
+"<table> <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> </tr> </table>"

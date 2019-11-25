@@ -304,9 +304,7 @@ for ( var i = 10, str=""; i > 0; i--, str += "#") {
 
 var tab = "<table><tr>"
 for ( var i = 0; i < 10; i++ ) {
-    console.log ( "внешний цикл:" + i );
     for ( k = 0; k < 10; k++) {
-        console.log ( "внутрений цикл:" + k );
         tab += "</table></tr>"
         }
     }

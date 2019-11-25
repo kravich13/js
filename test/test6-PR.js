@@ -86,27 +86,82 @@ if (user == "Цельсия") {
         }
     }
 }
+// функция на расчет градусов
 function converter(temp, outOfDegree, inDegrees) {
-    var result 
-    if (outOfDegree == "C" || outOfDegree == "F" || outOfDegree == "K") {
-        if (outOfDegree == "C") {
-            if (inDegrees == "F") {
-                result = (temp * 9 / 5) + 32 + " градусов Фаренгейта по Цельсию"
-            } else {
+    var result
+    if (outOfDegree == "C") {
+        if (inDegrees == "F") {
+            result = (temp * 9 / 5) + 32 + " градусов Фаренгейта по Цельсию"
+        } 
+        else {
+            if (inDegrees == "K") {
+                result = temp - 273, 15 + " градусов Кельвина по Цельсию"
+            }
+            else {
+                console.log("Неверное название градусов")
+            }
+        }
+    } 
+    else {
+        if (outOfDegree == "F") {
+            if (inDegrees == "C") {
+                result = (temp - 32) * 5 / 9 
+                result = Math.ceil(result) + " градусов Цельсия по Фаренгейту"
+            } 
+            else {
                 if (inDegrees == "K") {
-                    result = temp - 273, 15 + " градусов Кельвина по Цельсию"
-                } else {
+                    result = (temp - 32) * 5 / 9 + 273.15
+                    result = result.toFixed(2) + " градусов Кельвинов по Фаренгейту"
+                } 
+                else {
                     console.log("Неверное название градусов")
                 }
             }
         }
-    }
-    else {
-        console.log("ошибка")
+        else {
+            if (outOfDegree == "K") {
+                if (inDegrees == "C") {
+                result = temp - 273.15
+                result = result.toFixed(2) + " градусов Цельсия по Кельвину"
+                }
+                else {
+                    if (inDegrees == "F") {
+                        result = (temp - 273.15) * 9 / 5 + 32
+                        result = result.toFixed(2) + " градусов Фаренгейта по Кельвину"
+                    }
+                    else {
+                        console.log("Неверное название градусов")
+                    }
+                }
+            }
+        }
     }
     return result
 }
-converter(10, "C", "F")
+converter(10, "K", "F")
+
+// Калькулятор обмена валют. Первый prompt спрашивает валюту: "usd" или "eur". С помощью switch установите обменный курс для валюты, выбранной пользователем, после чего спросите величину и переведите её из гривны в выбранную на первом prompt валюту. Выведите результат в alert()
+
+var valuta = prompt("Во что перевести: USD (24.5 UAH) или EUR (27.5 UAH) ?") //
+var quantity // переменная с количеством валюты, которую введет пользователь
+var perevod // переменная, в которую записывается сам перевод и его вывод
+quantity = +prompt("введите количество UAH для перевода") 
+
+switch (valuta) { 
+    case "USD":  // если пользователь ввёл "USD", то
+    perevod = quantity / 24.5 
+    break;
+
+    case "EUR":
+    perevod = quantity / 27.5 
+    break;
+    
+    default: 
+    alert("Введено неверное значение") 
+    break;
+}
+perevod = perevod.toFixed(2) 
+alert(perevod + ` ${valuta} из ${quantity} UAH `)
 
 
 

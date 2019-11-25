@@ -358,7 +358,6 @@ console.table(mass)
 // двухмерный массив 
 function table(width = 10) {
     var table = []
-    debugger
     for (var i = 0; i < width; i++) {
         table[i] = []
         for (var j = 0; j < width; j++) {
@@ -371,23 +370,28 @@ console.table(table())
 
 
 // фирма имеет 5 магазинов. Информация о доходе каждого магазина за каждый месяц хранится в двух мерном массиве
-var shop = []
+var shop = [] 
 var sum = []
 var avg = []
+// три пустых массива
+
 for (var i = 0; i < 5; i++) {
-    shop[i] = []
-    sum[i] = 0 // суммировать надо к нулю +=
+    shop[i] = [] // создаем массив в двумерном массиве 5 раз 
+    sum[i] = 0 // присваиваем 0 для избежания nall (ибо строчный массив будет)
+
     for (var j = 0; j < 12; j++) {
-        shop[i][j] = Math.floor(Math.random() * (100 - 1) + 1)
-        sum[i] += shop[i][j] // суммировать надо к нулю +=
+        // в элемент массива [0][0] генерируем число от 1 до 100 и округляем в меньшую сторону
+        shop[i][j] = Math.floor(Math.random() * (100 - 1) + 1) 
+        sum[i] += shop[i][j] // суммируем получившееся число к следующему
     }
-    avg[i] = Math.round(sum[i] / 12)
+
+    avg[i] = Math.round(sum[i] / 12) // присваиваем сумму пделенную на 12 в двумерном массиве
 }
 console.log(shop)
 console.log(sum)
 console.log(avg)
 
-// среднее за месяц
+// дополнение: среднее за месяц по вертикали
 var avgMunth = []
 for (var i = 0; i < 12; i++) { // 12 потому что нужно записать 12 элементов в массив
 avgMunth[i] = 0
