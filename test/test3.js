@@ -101,42 +101,28 @@ console.log(number)
 // 9) Сформируйте строку с шахматной доской из вложенных циклов. Для перевода строки используйте \n. Код должен поддерживать легкое изменение размеров доски. 
 
 var tochka = ""
-for (var i = 0; i < 10; i++) {
-    for(var j = 2; j < 8; j++) {
-        if (i % 2 == 0) {
-            tochka += "."
+for (var i = 0; i < 10; i++) { // кол-во строк вниз
+    for(var j = 0; j < 8; j++) { // кол-во строк вправо
+        if (i % 2 == 0) { // если остаток 0 от i, то...
+            if (j % 2 == 0) {
+                tochka += "."
+            }
+            else {
+                tochka += "#"
+            }
         }
         else {
-            tochka += "#."
+            if (j % 2 == 0) {
+                tochka += "#"
+            }
+            else {
+                tochka += "."
+            }
         }
     }
-    tochka += "\n"
+    tochka += "\n" // перевод строки
 }
 console.log(tochka)
-
-let str = ''
-for(let i = 0; i < 11; i++){
-    for(let j = 0; j < 21; j++){
-        if(i % 2 == 0){
-            if(j % 2 == 0){
-                str += '.'
-            } 
-            else {
-                str += '#'
-            }
-        } 
-        else {
-            if(j % 2 == 0){
-                str += '#'
-            }
-            else {
-                str += '.'
-            }
-        }
-    }
-    str += '\n'
-}
-console.log(str)
 
 
 // 10) Сформируйте массив из N элементов, содержащий в себе квадраты индексов, т. е: [0,1,4,9,16...] 
@@ -162,33 +148,37 @@ tab = table(5)
 
 // 12) Сделайте вложенный цикл, который формирует HTML-таблицу из любого двумерного массива. Т. е. если в нём использовать результат работы предыдущего задания, то получится таблица умножения HTML, как на занятии;
 
-var str = "<table>"
-// debugger
-for (var i = 0; i < 5; i++) {
-    str += "<tr>" + tab[i]
-    for (var j = 0; j < 5; j++) {
-        str += "<td>" + tab[i][j] + "</td>"
+function tableTwo (table) {
+var str = "<table> "
+for (var i = 0; i < table.length; i++) { // количество строк в массиве table
+    str += " <tr> " // прибавляем 5 tr на каждую строку
+    for (var j = 0; j < table[i].length; j++) { // конкретная строка 
+        str += " <td> " + tab[i][j] + " </td> "
     }
-    str += tab[i] + "</tr>"
-}
-str += "</table>"
-console.log(str)
-document.write(str)
-
-var table = "<table>"; // в переменную пишем начало HTML
-var size = prompt (""); // затем делаем строчный промпт
-console.log(typeof size);   // показывает тип переменной
-for ( var i = 1; i < size; i++ ) { // делаем цикл от одного до введенного числом пользователя (size - промпт)
-    table += " <tr> "; // прибавляем к строковой переменной открывающийся тег
-    for ( var j = 1; j < size; j++ ) { // делаем вложенный цикл 
-        table += `<td> ${ j * i } </td>`; // в переменную добавляем <тег `число` тег>  
+    str += " </tr> " // закрываем tr перед table 
     }
-    table += "</tr>"; // закрываем тег после окончания внутреннего цикла 
+    str += " </table>"
+    console.log(str)
+    return str
 }
-table += "</table>"; // закрываем тег после окончания всех циклов
-document.write(table); // делаем HTML документ
+document.write(tableTwo(tab))
 
 
 
+// 13) Задание на синий пояс: Треугольник
+function pyramid(number) {
+    var str = ""
+    for (var i = 0; i < number; i++) {
+        debugger
+        for (var j = 0; j < number; j++) {
+            str += "."
+            if (j == number / 2) {
+                str += "#"
+            }
 
-"<table> <tr> <td>1</td> <td>2</td> <td>3</td> <td>4</td> </tr> </table>"
+        }
+        str += "\n"
+    }
+    return str
+}
+console.log(pyramid(10))
