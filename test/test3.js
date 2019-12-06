@@ -139,7 +139,7 @@ function table(X) {
     for (var i = 0; i < X; i++) {
         arr[i] = []
         for (var j = 0; j < X; j++) {
-            arr[i][j] = (i + 1) * (j + 1)
+            arr[i][j] = (i + 1) * (j + 1) // делаю счетчики +1, чтобы не было 0*1 и т.д и таблица отображалась корректно
         }
     }
     return arr
@@ -166,19 +166,164 @@ document.write(tableTwo(tab))
 
 
 // 13) Задание на синий пояс: Треугольник
+
 function pyramid(number) {
     var str = ""
+    var num = ((number - 1) / 2) * 2 
+    var arr = []
+    arr[0] = num    // присваиваем середину (в будущем левый индекс)
+    arr[1] = num    // присваиваем середину (в будуем правый индекс)
+
     for (var i = 0; i < number; i++) {
-        debugger
-        for (var j = 0; j < number; j++) {
-            str += "."
-            if (j == number / 2) {
+        for (var j = 0; j < number * 2 - 1; j++) {
+            if (j >= arr[0] && j <= arr[1]) {
                 str += "#"
             }
-
+            else {
+                str += "."
+            }
         }
+        arr[0]--
+        arr[1]++
         str += "\n"
     }
     return str
 }
-console.log(pyramid(10))
+console.log(pyramid(11))
+
+
+
+
+
+
+
+
+//  Выведите с помощью цикла столбец чисел от 1 до 100.
+
+var str = 0
+for (var i = 0; i < 10; i++) {
+    str++
+    console.log(str)
+}
+
+
+//  Выведите с помощью цикла столбец чисел от 100 до 1
+
+var str = 11
+for (var i = 0; i < 10; i++) {
+    str--
+    console.log(str)
+}
+
+// Выведите с помощью цикла столбец четных чисел от 1 до 100
+
+var str = 0
+for (var i = 0; i < 10; i++) {
+    str++
+    if (str % 2 == 0) {
+        console.log(str)
+    }
+}
+
+// Заполните массив 10-ю иксами с помощью цикла
+
+var arr = []
+for (var i = 0; i < 10; i++) {
+    arr[i] = "x"
+}
+console.log(arr)
+
+// Заполните массив числами от 1 до 10 с помощью цикла.
+
+var arr = []
+for (var i = 0; i < 10; i++) {
+    arr[i] = 1 + i
+}
+console.log(arr)
+
+// Заполните массив 10-ю случайными числами (дробями) от 0 до 1 с помощью цикла. Дроби округляйте до двух знаков в дробной части.
+
+var arr = []
+for (var i = 0; i < 10; i++) {
+    arr[i] = Math.random() * 1 
+    arr[i] = arr[i].toFixed(2)
+}
+console.log(arr)
+
+// 	Заполните массив 10-ю случайными числами от 1 до 10 с помощью цикла
+
+var arr = []
+for (var i = 0; i < 10; i++) {
+    arr[i] = Math.random() * (10 - 1) + 1
+    arr[i] = arr[i].toFixed(0)
+}
+console.log(arr)
+
+// Дан массив с числами. С помощью цикла выведите только те элементы массива, которые больше нуля и меньше 10-ти. 
+
+var arr = [23232323,1,2,7,4,9,76,-2]
+for (var i = 0; i < 10; i++) {
+    if (arr[i] > 0 && arr[i] < 10) {
+        console.log(arr[i])
+    }
+}
+
+// Дан массив с числами. С помощью цикла проверьте, что в нем есть элемент со значением 5. Как только будет найден первый такой элемент - выведите 'Есть' и оборвите цикл. Если такого элемента нет - ничего не выводите
+
+var arr = [23232323,1,2,7,9,76,-2]
+for (var i = 0; i < 10; i++) {
+    if (arr[i] == 5) {
+        console.log("есть число 5")
+        break
+    }
+}
+
+// 	Дан массив с числами. С помощью цикла найдите сумму элементов этого массива.
+
+var arr = [233,1,2,7,9,76,-2]
+var str = 0
+for (var i = 0; i < arr.length; i++ ) {
+    str += arr[i]
+}
+console.log(str)
+
+// Дан массив с числами. С помощью цикла найдите сумму квадратов элементов этого массива
+
+var arr = [233,1,2,7,9,76,-2]
+var str = 0
+for (var i = 0; i < arr.length; i++) {
+    str += arr[i] ** 2
+}
+console.log(str)
+
+// Дан массив с числами. Найдите среднее арифметическое его элементов (сумма элементов, делить на количество). 
+
+var arr = [233,1,2,7,9,76,-2]
+var str = 0
+for (var i = 0; i < arr.length; i++) {
+    str += arr[i]
+}
+str / arr.length
+console.log(str)
+
+// C помощью вложенного цикла сформируйте массив массивов "таблица умножения"
+
+var arr = []
+function table (X) {
+    for (var i = 0; i < X; i++) {
+        arr[i] = []
+        for (var j = 0; j < X; j++) {
+            arr[i][j] = (i + 1) * (j + 1)
+        }
+    }
+    return arr
+}
+console.table(table(5))
+
+function pow(n, x) {
+    if (x === 1) return n
+    return n * pow(n, x - 1)
+}
+
+pow(2, 10)
+1024
