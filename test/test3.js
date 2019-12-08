@@ -327,3 +327,4 @@ function pow(n, x) {
 
 pow(2, 10)
 1024
+
