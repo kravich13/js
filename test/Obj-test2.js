@@ -24,16 +24,16 @@ document.write(table(ivanov))
 
 // 2) Сделать три ассоциативных массива a, b, c, в каждом из которых должны быть поля name и surname.
 var a = {
-    name: "Vlad",
-    // surname: "Kravich"
+    name: "Just",
+    surname: "Fun"
 }
 var b = {
     name: "Vlad",
     surname: "Kravich"
 }
 var c = {
-    // name: "Vlad",
-    surname: "Kravich"
+    name: "Marshall",
+    surname: "Mathers"
 }
 
 // Добавьте некоторые другие поля (например age, fathername, sex (пол)) так, что бы набор полей отличался у разных объектов
@@ -84,10 +84,165 @@ for (var i = 0; i < persons.length; i++) {
         }
     }
     else {
+        if ("surname" in persons[i]) {
+            console.log(persons[i].surname)
+        }
+        else {
+            console.log("Нет поля фамилия")
+        }
         console.log("Нет поля имя")
     }
 }
 
+// Сделайте цикл, который выводит весь массив persons, но только Имя и Фамилию каждой персоны. Используйте Object.keys и вложенный for для вывода полей персоны
+for (var i = 0; i < persons.length; i++) {
+    // for (var key in persons[i]) {
+        // Object.keys(persons)
+    }
+}
+
+// Сделайте цикл, который выводит весь массив persons, при этом проверяет наличие других полей (кроме name и surname), и выводит дополнительные сообщения с этими полями. Первые два выводимых поля - name и surname
+for (var i = 0; i < persons.length; i++) {
+    for (var key in persons[i]) {
+        console.log(`Персона ${i + 1}:  ${key}: ${persons[i][key]}`)
+    }
+}
+
+// Сделайте цикл, которых добавляет поле fullName в каждый объект, содержащий ФИО. Учтите, что поле fathername не является обязательным.
+for (var i = 0; i < persons.length; i++) {
+    if ("name" in persons[i] && "surname" in persons[i] && "fatherName" in persons[i]) { // проверка на всё сразу (имя, фамилия, отчество)
+        persons[i].fullname = `${persons[i].name} ${persons[i].surname} ${persons[i].fatherName}` // фамилия + имя + отчество
+    }
+}
+
+
+// Создайте JSON-строку из persons
+var json = JSON.stringify(persons)
+console.log(typeof json)
+json 
+
+// Создайте ассоциативный массив с одной персоной из JSON-строки. Добавьте её в persons
+// var Vlad = JSON.parse(`{"name": "Vlad", "age": 22, "sex": false}`);
+persons[persons.length] = JSON.parse(`{"name": "Vlad", "age": 22, "sex": false}`)
+
+
+// HTML 
+// Сделайте цикл, который выводит весь массив persons, в форме HTML-таблицы. Имя и Фамилия - колонки.
+function tableObj(arr) {
+    var str = "<table>"
+    for (var i = 0; i < arr.length; i++) {
+        if ("name" in arr[i] && "surname" in arr[i]) {
+            str += `<tr> <td> ${arr[i].name}</td> <td>${arr[i].surname} </td> </tr>`
+        }
+    }
+    str += "</table"
+    return str
+}
+document.write(tableObj(persons))
+
+// HTML optional fields
+// Сделайте цикл, который выводит весь массив persons, в форме HTML-таблицы. Имя и Фамилия, а так же другие поля при наличии.
+function tableFull(arr) {
+    var str = "<table>"
+    for (var i = 0; i < arr.length; i++) {
+        for (var key in arr[i]) {
+            str += `<tr> <td> Персона ${i + 1} </td> <td> ${key} </td> <td> ${arr[i][key]} </td> </tr>`
+        }
+    }
+    str += "</table>"
+    return str
+}
+document.write(tableFull(persons))
+
+// HTML tr color
+// Добавьте к предыдущему примеру раскраску через строчку используя другой стиль тэга tr.
+function tableFull(arr) {
+    var str = "<table>"
+    var j = 0
+    // debugger
+    for (var i = 0; i < arr.length; i++) {
+        for (var key in arr[i]) {
+            j++ // добавление счетчика на каждой итерации
+            if (j % 2 == 1) {
+            str += `<tr style="background: grey"> <td> Персона ${i + 1} </td> <td> ${key} </td> <td> ${arr[i][key]} </td> </tr>`
+            }
+            else {
+                str += `<tr> <td> Персона ${i + 1} </td> <td> ${key} </td> <td> ${arr[i][key]} </td> </tr>`
+            }
+        }
+    }
+    str += "</table>"
+    return str
+}
+document.write(tableFull(persons))
+
+// HTML th optional
+// Переработайте вывод persons в HTML с поиском всех возможных колонок во всех записях, выводом названий колонок в заголовок HTML-таблицы. Для решения этой задачи вначале узнайте множество полей (ключей) во всех записях, выведите HTML-заголовок используя тэги <th>, а потом выводите все записи.
+function unicalniyKey(arr) {
+    var j = 0
+    var allKey = []
+    var flag = false
+    for (var i = 0; i < arr.length; i++) {
+        for (var key in arr[i]) {
+            allKey[j] = key
+            j++
+        }
+    }
+    var arrClear = [allKey[0]]
+    for (var i = 1; i < allKey.length; i++) {
+        for (var j = 0; j < arrClear.length; j++) {
+            if (allKey[i] == arrClear[j]) {
+                flag = true
+                break
+            }
+            else {
+                flag = false
+            }
+        }
+        if (flag == false) {
+            arrClear[arrClear.length] = allKey[i]
+        }
+        else {
+            if (flag == true) {
+                continue
+            }
+        }
+    }
+    console.log(arrClear)
+    return arrClear
+}
+var keys = unicalniyKey(persons)
+
+function tableFull(arr, unicKey) {
+    var str = "<table>"
+    str += `<tr style="background: #1613">`
+    for (var i = 0; i < unicKey.length; i++) {
+        str += `<th> ${unicKey[i]} </th>`
+    }
+    str += "<tr>"
+
+    for (var i = 0; i < arr.length; i++) {
+        if (i % 2 == 1) {
+            str += `<tr style="background: #248797">`
+        }
+        else {
+            str += "<tr>"
+        }
+        for (var j = 0; j < unicKey.length; j++) {
+                if (unicKey[j] in arr[i]) {
+                    str += `<td> ${arr[i][unicKey[j]]} </td>`
+                }
+                else {
+                    str += "<td> </td>"
+                }
+        }
+        str += "</tr>"
+    }
+    
+    str += "</table>"
+    return str
+}
+document.write(tableFull(persons, keys))
 
 
 
@@ -221,3 +376,92 @@ phone.owner.surname = person.surname // аналогично как и выше
 
 
 
+
+// Задание на синий пояс.
+
+// Сделать HTML-конструктор из деревянной структуры, которая была на прошлом занятии:
+
+var someTree = {
+    tagName: "table", //html tag
+    subTags: [ //вложенные тэги
+        {
+                    tagName: "tr",
+                    subTags: [
+                        {
+                            tagName: "td",
+                            text: "some text",
+                        },
+                        {
+                            tagName: "td",
+                            text: "some text 2",
+                        }
+                    ]
+        }
+    ],
+    attrs: 
+    {
+        border: 1,
+    },
+}
+
+// Для начала сделайте конструктор для верхнего уровня (в примере - table). Потом с помощью копипасты сделайте то же самое с вложенным уровнем nestedTags (tr). Аналогично для уровня td.
+// Конструктор должен поддерживать вложенность до 3его уровня (как в примере). В результате работы конструктора из примера выше должен получиться следующий HTML(в строке str):
+
+{/* <table border=1>
+    <tr>
+        <td>some text</td>
+        <td>some text 2</td>
+    </tr>
+</table> */}
+
+// Переносы строк и отступы в результате не принципиальны, главное - структура HTML Проверьте ваш код на других структурах.
+
+function tableHTML(derevo) {
+    var str = ""
+
+    if ("tagName" in derevo) {
+        str += `<${derevo.tagName}>`
+    }
+
+    // поиск первой вложенности
+    if ("subTags" in derevo) {
+        for (var i = 0; i < derevo.subTags.length; i++) {
+            if ("tagName" in derevo.subTags[i]) {
+                str += ` <${derevo.subTags[i].tagName}> `
+            }
+            
+            // поиск второй вложенности
+            if ("subTags" in derevo.subTags[i]) {
+                for (var j = 0; j < derevo.subTags[i].subTags.length; j++) {
+                    if ("tagName" in derevo.subTags[i].subTags[j]) {
+                        str += ` <${derevo.subTags[i].subTags[j].tagName}> `
+                        if ("text" in derevo.subTags[i].subTags[j]) {
+                            str += `${derevo.subTags[i].subTags[j].text}`
+                            str += ` </${derevo.subTags[i].subTags[j].tagName}> `
+                        }                        
+                    }
+
+                    // поиск третьей вложенности
+                    if ("subTags" in derevo.subTags[i].subTags[j]) {
+                        for (var k = 0; k < derevo.subTags[i].subTags[j].subTags.length; k++) {
+                            if ("tagName" in derevo.subTags[i].subTags[j].subTags[k]) {
+                                str += ` <${derevo.subTags[i].subTags[j].subTags[k]} `
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    if ("text" in derevo) {
+
+    }
+
+    if ("attrs" in derevo) {
+
+    }
+
+    return str
+}
+console.log(tableHTML(someTree))
