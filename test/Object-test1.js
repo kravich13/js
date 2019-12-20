@@ -143,3 +143,17 @@ var gameShop = {
     }
 }
 gameShop.weapons.S.AM.money
+
+
+
+
+
+function pi (x, y) {
+    if (y == 1) {
+        return x
+    }
+    else {
+        return x * pi(x,y-1)
+    }
+}
+pi(2,3)

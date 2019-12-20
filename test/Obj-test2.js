@@ -401,6 +401,7 @@ var someTree = {
     attrs: 
     {
         border: 1,
+        style: "color: red"
     },
 }
 
@@ -417,28 +418,51 @@ var someTree = {
 // Переносы строк и отступы в результате не принципиальны, главное - структура HTML Проверьте ваш код на других структурах.
 
 function tableHTML(derevo) {
-    var str = ""
-
-    if ("tagName" in derevo) {
-        str += `<${derevo.tagName}>`
+    if ("tagName" in derevo == false) {
+        return null
     }
+    var str = `<${derevo.tagName}`
+
+    if ("attrs" in derevo) {
+        for (var key in derevo.attrs) {
+            str += ` ${key}="${derevo.attrs[key]}"`
+        }
+    }
+    str += ">"
+
 
     // поиск первой вложенности
     if ("subTags" in derevo) {
         for (var i = 0; i < derevo.subTags.length; i++) {
-            if ("tagName" in derevo.subTags[i]) {
-                str += ` <${derevo.subTags[i].tagName}> `
+            if ("tagName" in derevo.subTags[i] == false) {
+                return null
             }
-            
+            str += `<${derevo.subTags[i].tagName}`
+        
+            if ("attrs" in derevo.subTags[i]) {
+                for (var key in derevo.subTags[i].attrs) {
+                    str += ` ${key}="${derevo.subTags[i].attrs[key]}"`
+                }
+            }
+            str += ">"
+            if ("text" in derevo.subTags[i]) {
+                str += `${derevo.subTags[i]}`
+            }
+
             // поиск второй вложенности
             if ("subTags" in derevo.subTags[i]) {
                 for (var j = 0; j < derevo.subTags[i].subTags.length; j++) {
                     if ("tagName" in derevo.subTags[i].subTags[j]) {
-                        str += ` <${derevo.subTags[i].subTags[j].tagName}> `
+                        str += ` <${derevo.subTags[i].subTags[j].tagName} `
+                        if ("attrs" in derevo.subTags[i].subTags[j]) {
+                            for (var key in derevo.subTags[i].subTags[j].attrs) {
+                                str += ` ${key}="${derevo.subTags[i].subTags[j].attrs[key]}"`
+                            }
+                        }
+                        str += ">"
                         if ("text" in derevo.subTags[i].subTags[j]) {
                             str += `${derevo.subTags[i].subTags[j].text}`
-                            str += ` </${derevo.subTags[i].subTags[j].tagName}> `
-                        }                        
+                        }
                     }
 
                     // поиск третьей вложенности
@@ -447,21 +471,69 @@ function tableHTML(derevo) {
                             if ("tagName" in derevo.subTags[i].subTags[j].subTags[k]) {
                                 str += ` <${derevo.subTags[i].subTags[j].subTags[k]} `
                             }
+                            if ("attrs" in derevo.subTags[i].subTags[j]) {
+                                for (var key in derevo.subTags[i].subTags[j].subTags[k].attrs) {
+                                    str += ` ${key}="${derevo.subTags[i].subTags[j].subTags[k].attrs[key]}"`
+                                }
+                            }
+                            str += ">"
+                            if ("text" in derevo.subTags[i].subTags[j].subTags[k]) {
+                                str += `${derevo.subTags[i].subTags[j].subTags[k].text}`
+                            }
                         }
                     }
                 }
             }
+            str += `</${derevo.subTags[i].tagName}>`
         }
     }
+    str += `<${derevo.tagName}>`
 
     if ("text" in derevo) {
-
-    }
-
-    if ("attrs" in derevo) {
-
+        str += `${derevo}`
     }
 
     return str
 }
 console.log(tableHTML(someTree))
+document.write(tableHTML(someTree))
+
+
+
+
+
+
+
+
+
+
+
+
+
+function tableHTML(derevo) {
+    if ("tagName" in derevo == false) {
+        return null
+    }
+    var str = `<${derevo.tagName}`
+
+    if ("attrs" in derevo) {
+        for (var key in derevo.attrs) {
+            str += ` ${key}="${derevo.attrs[key]}"`
+        }
+    }
+    str += ">"
+    
+    if ("subTag" )
+
+    // поиск первой вложенности
+    
+    str += `<${derevo.tagName}>`
+
+    if ("text" in derevo) {
+        str += `${derevo}`
+    }
+
+    return str
+}
+console.log(tableHTML(someTree))
+document.write(tableHTML(someTree))
