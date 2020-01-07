@@ -234,13 +234,56 @@ let persons = [{
     },
 ]
 
-sort(persons, "age"); //сортирует по возрасту по возрастанию
-sort(persons, "name", false); //сортирует по имени по убыванию
+// sort(persons, "age"); //сортирует по возрасту по возрастанию
+// sort(persons, "name", false); //сортирует по имени по убыванию
 
 // Функция позволяет отсортировать любой набор данных по имени поля (второй параметр). Третьим параметром идет необязательный Boolean, который в случае true делает сортировку по возрастанию, в случае false - по убыванию. По умолчанию (без третьего параметра) происходит сортировка по возрастанию.
-function sort (mass) {
-    
-    return mass
+
+function parametri(arr, what, ubivanie) {
+    function sortirovka(a, b) {
+        if (ubivanie == false) {
+            if (a[what] < b[what]) {
+                return 1
+            } else {
+                return -1
+            }
+        }
+        else {
+            if (a[what] > b[what]) {
+                return 1
+            } else {
+                return -1
+            }
+        }
+    }
+    return arr.sort(sortirovka)
 }
-sort(persons )
+parametri(persons, "age", true)
+
+
+// Используя Array.map приведите все строки в массиве к числу. Элементы других типов оставьте как есть:
+let arr = ["1", {}, null, "lol", undefined, "500", 700]
+let newArr = arr.map(function(elem) {
+    if (typeof elem == "string" && isNaN(elem) == false) {
+            return Number(elem)
+    }
+    else {
+        return elem
+    }
+})
+console.log(newArr)
+
+
+// Получите произведение всех чисел в массиве, используя Array.reduce. Не обрабатывайте типы данных, не являющиеся числом.
+let arr = ["0", 5, 3, "string", null] // результат 15
+let number = arr.reduce(function(accumulator, current) {
+    if (typeof current == "number") {
+        return accumulator * current
+    }
+    else {
+        return accumulator
+    }
+}, 1)
+console.log(number)
+
 

@@ -56,6 +56,23 @@ function theAmount (input, lenght, index) { // функцию с тремя па
 }
 theAmount (1,10,2)  // сумма 100
 
+// вариант два
+function progress (first, end, shag) {
+    let one = first
+    for (let i = one; i < end; i++) {
+        console.log(i)
+        i += shag - 1
+        if (i > end) {
+            break
+        }
+    }
+    
+    return 
+}
+progress(1,10,2)
+
+
+
 
 // 6) Сформировать строку " # # # # # " с помощью цикла for
 
@@ -327,4 +344,7 @@ function pow(n, x) {
 
 pow(2, 10)
 1024
+
+
+
 
