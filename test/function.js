@@ -287,3 +287,69 @@ let number = arr.reduce(function(accumulator, current) {
 console.log(number)
 
 
+// Напишите свою реализацию Array.filter для объектов:
+
+let phone = {
+    brand: "meizu",
+    model: "m2",
+    ram: 2,
+    color: "black",
+}
+
+let newArr = phone.filter(function(key) {
+    if (key == "color" || key == "ram") {
+        return 
+    }
+})
+console.log(newArr)
+
+// let phone = {
+//     brand: "meizu",
+//     model: "m2",
+//     ram: 2,
+//     color: "black",
+// }
+// let newObj = {}
+// function filter (obj) {
+//     for (key in obj) {
+//         if (key == "color" || key == "ram") {
+//             newObj[key] = obj[key]
+//         }
+//     }
+//     return newObj
+// }
+// console.log(filter(phone))
+
+
+// Напишите свою реализацию Array.map для объектов:
+let codemap = ({
+    name: "Иван",
+    age: 17
+}, function (key, value) {
+    var result = {};
+    result[key + "_"] = value + "$";
+    return result;
+}) //должен вернуть {name_: "Иван$", age_: "17$"}
+
+let codemap = {
+    name: "Иван",
+    age: 17
+}
+let newObj = codemap.map(function(key){
+    let result = {}
+    result[key + "_"] = value + "$"
+    return result
+})  //должен вернуть {name_: "Иван$", age_: "17$"}
+
+
+let arr = [2,5,10,2]
+function a (arrr) {
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = arr[i] * 2
+    }
+    return arr
+}
+a(arr)
+
+
+
