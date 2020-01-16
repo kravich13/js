@@ -288,14 +288,12 @@ console.log(number)
 
 
 // Напишите свою реализацию Array.filter для объектов:
-
 let phone = {
     brand: "meizu",
     model: "m2",
     ram: 2,
     color: "black",
 }
-
 let newArr = phone.filter(function(key) {
     if (key == "color" || key == "ram") {
         return 
@@ -303,53 +301,43 @@ let newArr = phone.filter(function(key) {
 })
 console.log(newArr)
 
-// let phone = {
-//     brand: "meizu",
-//     model: "m2",
-//     ram: 2,
-//     color: "black",
-// }
-// let newObj = {}
-// function filter (obj) {
-//     for (key in obj) {
-//         if (key == "color" || key == "ram") {
-//             newObj[key] = obj[key]
-//         }
-//     }
-//     return newObj
-// }
-// console.log(filter(phone))
+// 
+let phone = {
+    brand: "meizu",
+    model: "m2",
+    ram: 2,
+    color: "black",
+}
+function phones (key) {
+    let newObj = {}
+    if (key == "color" || key == "ram") {
+        return newObj
+    }
+}
+function filter (obj, funct) {
+    for (key in obj) {
+        funct(key)
+    }
+    return funct(key)
+}
+console.log(filter(phone, phones))
 
 
 // Напишите свою реализацию Array.map для объектов:
-let codemap = ({
-    name: "Иван",
-    age: 17
-}, function (key, value) {
-    var result = {};
-    result[key + "_"] = value + "$";
-    return result;
-}) //должен вернуть {name_: "Иван$", age_: "17$"}
 
-let codemap = {
-    name: "Иван",
-    age: 17
+function mapObj (obj, funct) {
+    let newObj = {}
+    let finalObj = {}
+    for (key in obj) {  
+        newObj = funct(key, obj[key])
+        for (key in newObj) {
+            finalObj[key] = newObj[key]
+        }
+    }
+    return finalObj 
 }
-let newObj = codemap.map(function(key){
+console.log(mapObj({name: "Иван", age: 17}, function(key, value){
     let result = {}
     result[key + "_"] = value + "$"
     return result
-})  //должен вернуть {name_: "Иван$", age_: "17$"}
-
-
-let arr = [2,5,10,2]
-function a (arrr) {
-    for (let i = 0; i < arr.length; i++) {
-        arr[i] = arr[i] * 2
-    }
-    return arr
-}
-a(arr)
-
-
-
+})) 
