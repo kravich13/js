@@ -1,12 +1,16 @@
-// Сделать таблицу умножения, используя DOM createElement и innerHTML. Создайте таблицу, вложенные строки и ячейки в циклах. Должно получится что-то вроде этого:
+// Добавьте JavaScript к кнопке button, чтобы при нажатии элемент <div id="text"> исчезал.
 
-function table (X) {
-    let table = document.createElement("table")
-    for (let i = 0; i < X; i++) {
-        for (let j = 0; j < X; j++) {
+let input = document.createElement("input")
+input.type = "submit"
+input.name = "knopka"
+input.value = "Нажми и текст изчезнет"
+input.onclick = "remove"
+document.body.prepend(input)
+let p = document.createElement("p")
+p.textContent = "Текст"
+document.body.prepend(p)
 
-        }
-    }
-    return
+
+function remove (del = p) {
+    del.remove()
 }
-document.write(table(5))

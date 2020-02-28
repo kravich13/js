@@ -405,6 +405,33 @@ var someTree = {
     },
 }
 
+function tableHTML(derevo) {
+    if ("tagName" in derevo == false) {
+        return null
+    }
+    var str = `<${derevo.tagName}`
+
+    if ("attrs" in derevo) {
+        for (var key in derevo.attrs) {
+            str += ` ${key}="${derevo.attrs[key]}"`
+        }
+    }
+    str += ">"
+    
+    if ("subTag" )
+
+    // поиск первой вложенности
+    
+    str += `<${derevo.tagName}>`
+
+    if ("text" in derevo) {
+        str += `${derevo}`
+    }
+
+    return str
+}
+// console.log(tableHTML(someTree))
+// document.write(tableHTML(someTree))
 // Для начала сделайте конструктор для верхнего уровня (в примере - table). Потом с помощью копипасты сделайте то же самое с вложенным уровнем nestedTags (tr). Аналогично для уровня td.
 // Конструктор должен поддерживать вложенность до 3его уровня (как в примере). В результате работы конструктора из примера выше должен получиться следующий HTML(в строке str):
 
@@ -498,42 +525,3 @@ function tableHTML(derevo) {
 console.log(tableHTML(someTree))
 document.write(tableHTML(someTree))
 
-
-
-
-
-
-
-
-
-
-
-
-
-function tableHTML(derevo) {
-    if ("tagName" in derevo == false) {
-        return null
-    }
-    var str = `<${derevo.tagName}`
-
-    if ("attrs" in derevo) {
-        for (var key in derevo.attrs) {
-            str += ` ${key}="${derevo.attrs[key]}"`
-        }
-    }
-    str += ">"
-    
-    if ("subTag" )
-
-    // поиск первой вложенности
-    
-    str += `<${derevo.tagName}>`
-
-    if ("text" in derevo) {
-        str += `${derevo}`
-    }
-
-    return str
-}
-console.log(tableHTML(someTree))
-document.write(tableHTML(someTree))

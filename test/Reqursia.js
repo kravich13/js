@@ -202,8 +202,9 @@ function table (obj) {
             str += ` ${key}="${obj.attrs[key]}"`
         }
     }
+    
     str += ">"
-
+ 
     if ("text" in obj) {
         str += `${obj.text}`
     }
@@ -221,7 +222,7 @@ function table (obj) {
     return str
 
 }
-document.write(table(html))
+document.write(table(someTree))
 
 
 

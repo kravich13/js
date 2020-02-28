@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>World of Tanks</title>
+    <style>
+        header, h3 {
+            color: rgb(255, 106, 0);
+
+        }
+        header,p {
+            color: black;
+        }
+        #gold, #silver {
+            font-family: Arial, Helvetica, sans-serif;
+            border-radius: 5px;
+            padding: 5px;
+            margin: 10px;
+            width: 70px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        #gold {
+            background: rgb(116, 110, 110);
+            color: rgb(255, 217, 0);
+        }
+        #silver {
+            background: gray;
+            color: whitesmoke;
+        }
+        .pole-1, .pole-2 {
+            background: rgb(209, 209, 209);
+            width: 333px;
+            margin: 10px 0;
+        }
+        .pole-1 p {
+            display: inline-block;
+        }
+        .pole-2 p {
+            display: inline-block;
+        }
+        #gold-green, #silver-green {
+            color: rgb(66, 150, 66);
+            padding-left: 5px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <section>
+
+    <input id="vlad" type="submit" onclick="bigCase()" name="submit" value="Открыть коробку">
+
+    <!-- поле с золотом -->
+    <div class="pole-1">
+        <p id="gold"></p>
+        <p id="gold-green"></p>
+    </div>
+
+    <!-- поле с серебром -->
+    <div class="pole-2">
+        <p id="silver"></p>
+        <p id="silver-green"></p>
+    </div>
+    
+    <div id="scorpImg"></div>
+    
+    </section>
+    <script src="WorldOfTanks-v1.js"></script>
+<script>
+document.getElementById("gold").innerHTML = playerCoins.gold
+document.getElementById("silver").innerHTML = playerCoins.silver
+
+vlad.addEventListener("click", function(event) {
+    document.getElementById("gold").innerHTML = playerCoins.gold
+    document.getElementById("silver").innerHTML = playerCoins.silver
+})
+</script>
+</body>
+
+</html>
