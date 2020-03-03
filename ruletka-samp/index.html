@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добро пожаловать на кидалово =)</title>
+    <style>
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ul, li, ol, fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed,
+        figure, figcaption, footer, header, hgroup,
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+        margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: rgb(173, 187, 136);
+        }
+        
+        header p {
+            display: flex;
+            justify-content: center;
+            font-size: 21px;
+            margin: 25px 0;
+            color: rgb(192, 11, 11);
+        }
+
+        #table {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+        }
+        section table {
+            /* margin-top: 7%; */
+            margin-left: 19.5%;
+            border-collapse: collapse;  
+            background: rgb(21, 141, 21);
+        }
+        table td {
+            border: 1px solid rgb(255, 255, 255);
+            text-align: center;
+            font-size: 27px;
+            padding: 2px 4px;
+            width: 75px;
+            vertical-align: center;
+        }
+        table tr td .red {
+            color: rgb(255, 255, 255);
+            background: rgb(196, 4, 4);
+            border-radius: 25px;
+        }
+        table tr td .black {
+            color: rgb(255, 255, 255);
+            background: black;
+            border-radius: 25px;
+        }
+        table tr .BLACK {
+            color: rgb(255, 255, 255);
+            background: black;
+        }
+        table tr .RED {
+            color: rgb(255, 255, 255);
+            background: rgb(196, 4, 4);
+        }
+        table tr td .zero {
+            color: rgb(255, 255, 255);
+            background: rgb(11, 185, 69);
+            border-radius: 25px;
+        }
+        table tr .ZERO {
+            padding: 2px 88px;
+        }
+        /* table .offBorder {   
+            border-top: 1px solid white;
+            border-left: 1px solid white;
+            border-right: 1px solid white;    
+        } */
+        table tr .stavk {
+            color: rgb(221, 223, 213);
+            /* width: 100%; */
+            /* background: red; */
+        }
+        #money {
+                font-size: 23px;
+                background: rgb(65, 65, 65);
+                color: rgb(1, 150, 1);
+                border: 3px solid rgb(170, 167, 0);
+                border-radius: 25px;
+                width: 13%;
+                padding: 13px;
+                margin-left: 50px;
+                text-align: center;
+        }
+
+        section #knopka {
+            width: 35%;
+            margin-top: 55px;
+            display: flex;
+            justify-content: center;
+            border: 2px solid black;
+            padding: 5px 0;
+            border-radius: 10px;
+        }
+        #knopka #start, #knopka #end, #knopka #round {
+            width: 30%;
+            height: 45px;
+            font-size: 20px;
+            margin: 0 9px;
+        }   
+        #container-K {
+            /* background: greenyellow; */
+            display: flex;
+            justify-content: center;
+            
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <p>Испытай свою удачу и да прибудет с тобой Илон Каз!</p>
+    </header>
+
+    <section>
+
+        <div id = "table">
+            <table id="ruletka">
+                <tr>
+                    <td class="offBorder"><p></p></td>
+                    <td class="offBorder"><p></p></td>
+                    <td class="ZERO" colspan="5"><p class="zero">0</p></td>
+                </tr>
+                <tr>
+                    <td class="stavk"  rowspan="2">1 to 18</td>
+                    <td class="stavk"  rowspan="4">1 st 12</td>
+                    <td><p class="red">1</p></td>
+                    <td><p class="black">2</p></td>
+                    <td><p class="red">3</p></td>
+                </tr>
+                <tr>
+                    <td><p class="black">4</p></td>
+                    <td><p class="red">5</p></td>
+                    <td><p class="black">6</p></td>
+                </tr>
+                <tr>
+                    <td class="stavk"  rowspan="2">EVEN</td>
+                    <td><p class="red">7</p></td>
+                    <td><p class="black">8</p></td>
+                    <td><p class="red">9</p></td>
+                </tr>
+                <tr>
+                    <td><p class="black">10</p></td>
+                    <td><p class="black">11</p></td>
+                    <td><p class="red">12</p></td>
+                </tr>
+                <tr>
+                    <td class="RED" rowspan="2">RED</td>
+                    <td class="stavk" rowspan="4">2 nd 12</td>
+                    <td><p class="black">13</p></td>
+                    <td><p class="red">14</p></td>
+                    <td><p class="black">15</p></td>
+                </tr>
+                <tr>
+                    <td><p class="red">16</p></td>
+                    <td><p class="black">17</p></td>
+                    <td><p class="red">18</p></td>
+                </tr>
+                <tr>
+                    <td class="BLACK" rowspan="2">BLACK</td>
+                    <td><p class="red">19</p></td>
+                    <td><p class="black">20</p></td>
+                    <td><p class="red">21</p></td>
+                </tr>
+                <tr>
+                    <td><p class="black">22</p></td>
+                    <td><p class="red">23</p></td>
+                    <td><p class="black">24</p></td>
+                </tr>
+                <tr>
+                    <td class="stavk" rowspan="2">ODD</td>
+                    <td class="stavk" rowspan="4">3 td 12</td>
+                    <td><p class="red">25</p></td>
+                    <td><p class="black">26</p></td>
+                    <td><p class="red">27</p></td>
+                </tr>
+                <tr>
+                    <td><p class="black">28</p></td>
+                    <td><p class="black">29</p></td>
+                    <td><p class="red">30</p></td>
+                </tr>
+                <tr>
+                    <td class="stavk" rowspan="2">19 to 36</td>
+                    <td><p class="black">31</p></td>
+                    <td><p class="red">32</p></td>
+                    <td><p class="black">33</p></td>
+                </tr>
+                <tr>
+                    <td><p class="red">34</p></td>
+                    <td><p class="black">35</p></td>
+                    <td><p class="red">36</p></td>
+                </tr>
+                <tr>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td class="stavk"><p>3 to 1</p></td>
+                    <td class="stavk"><p>3 to 1</p></td>
+                    <td class="stavk"><p>3 to 1</p></td>
+                </tr>
+            </table>
+
+            <div id="money">
+                <p>Твои деньги:</p>
+                <p id="dollars">0</p> 
+            </div>
+        </div>
+
+    </section>
+
+    <section id="container-K">
+        <div id="knopka">
+            <input id = "start" type="submit" name="submit" value="Начать">
+            <input id = "round" type="submit" name="submit" value="Крутить">
+            <input id = "end" type="submit" name="submit" value="Завершить">
+        </div>
+    </section>
+
+    <script src="kazino.js"></script>
+    <script>
+        document.getElementById("dollars").innerHTML = `${coins.dollar}$`
+    </script>
+</body>
+</html>

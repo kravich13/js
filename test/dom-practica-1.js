@@ -300,20 +300,71 @@ one.insertAdjacentHTML(`afterend`, "<li> 2 </li> <li> 3 </li>" )
 div.innerHTML
 
 
+
 // 11) Сортировка таблицы
 
-let person = {
-  one: [{
-    name: "Vlad",
-    sername: "Kravich",
-    age: 22
-  }]
-}
+let table = document.createElement("table")
+document.body.prepend(table)
+let tr = document.createElement("tr")
+let th = document.createElement("th")
+let td = document.createElement("td")
 
-function tableName (arr) {
+for (let i = 0; i < 4; i++) {
+  tr = document.createElement("tr")
 
-  return
+  for (let j = 0; j < 3; j++) {
+    if (i == 0) {
+      th = document.createElement("th")
+      th.textContent = "1"
+      th.style.fontSize = "19px"
+      th.style.textAlign = "center"
+      th.style.padding = "5px"
+      tr.append(th)
+    }
+    else {
+      td = document.createElement("td")
+      td.textContent = "2"
+      td.style.fontSize = "19px"
+      td.style.textAlign = "center"
+      td.style.padding = "5px"
+      tr.append(td)
+    }
+  }
+  table.append(tr)
 }
-tableName (person)
+table.rows[0].cells[0].textContent = "Имя"
+table.rows[0].cells[1].textContent = "Фамилия"
+table.rows[0].cells[2].textContent = "Возраст"
+table.rows[1].cells[0].textContent = "John"
+table.rows[1].cells[1].textContent = "Smith"
+table.rows[1].cells[2].textContent = "10"
+table.rows[2].cells[0].textContent = "Pete"
+table.rows[2].cells[1].textContent = "Brown"
+table.rows[2].cells[2].textContent = "15"
+table.rows[3].cells[0].textContent = "Ann"
+table.rows[3].cells[1].textContent = "Lee"
+table.rows[3].cells[2].textContent = "5"
+
+
+function tableName(elem) {
+  let arr = elem.querySelectorAll("tr")
+  for (let i = 0; i < arr.length; i++) {
+    // if (i == 0) {
+    //   arr[0].remove()
+    // }
+    console.log(arr[i].innerText)
+  }
+  // arr.sort()
+
+
+  elem.addEventListener("click", function (event) { 
+    if (event.target.nodeName == `TH`)
+    let qqq = event.target.parentElement.cellIndex
+    console.log(qqq)
+  })
+
+  return arr
+}
+tableName(table)
 
 
