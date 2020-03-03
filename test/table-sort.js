@@ -44,6 +44,7 @@ table.rows[3].cells[2].textContent = "5"
 function tableName(elem) {
   let arr = elem.querySelectorAll("tr")
   let newArr = []
+
   for (let i = 0; i < arr.length; i++) {
     newArr[i] = arr[i]
   }
@@ -52,21 +53,30 @@ function tableName(elem) {
   elem.addEventListener("click", function (event) {
     if (event.target.nodeName == 'TH') {
       let stolbTH = event.target.cellIndex
-      console.log(stolbTH)
+      // console.log(stolbTH)
 
       function compareNumeric(a, b) {
-        if (a.children[stolbTH].innerText > b.children[stolbTH].innerText) {
-          return 1
+        if (isNaN(a.children[stolbTH].innerText) && isNaN(b.children[stolbTH].innerText)) {
+
+          if (a.children[stolbTH].innerText > b.children[stolbTH].innerText) {
+            return 1
+          }
+          else {
+            return -1
+          }
+
         }
-        if (a.children[stolbTH].innerText == b.children[stolbTH].innerText) {
-          return 0
-        }
-        if (a.children[stolbTH].innerText < b.children[stolbTH].innerText) {
-          return -1
+        else {
+          return a.children[stolbTH].innerText - b.children[stolbTH].innerText
+          // строка "1"-"1" = 0
         }
       }
       newArr.sort(compareNumeric)
-      table.rows[1].parentNode.insertBefore(newArr[0],newArr[1]);
+
+      for (let i = 0; i < newArr.length; i++) {
+        table.append(newArr[i])
+      }
+      // table.rows[1].parentNode.insertBefore(newArr[0],newArr[1]);
       
 
       // console.log(newArr[0].children[stolbTH].innerText)

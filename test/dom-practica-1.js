@@ -215,7 +215,7 @@ let data = {
 };
 
 function createTree (obj) {
-  let newObj = obj
+  
   let div = document.createElement("div")
   div.append(ul)
   let ul = document.createElement("ul") // 1

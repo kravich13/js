@@ -1,91 +1,91 @@
-// let data = {
-//     "Рыбы": { // ul = li
+let data = {
+    "Рыбы": { // ul = li
 
-//         "форель": {}, // ul = li
-//         "лосось": {} // 2
-//     },
+        "форель": {}, // ul = li
+        "лосось": {} // 2
+    },
 
-//     "Деревья": { // 1
+    "Деревья": { // 1
 
-//         "Огромные": { // 2
+        "Огромные": { // 2
 
-//             "секвойя": {}, // ul = li
-//             "дуб": {} // 3 
-//         },
+            "секвойя": {}, // ul = li
+            "дуб": {} // 3 
+        },
 
-//         "Цветковые": { // 2
+        "Цветковые": { // 2
 
-//             "яблоня": {}, // 3
-//             "магнолия": {} // 3
-//         }
-//     }
-// };
+            "яблоня": {}, // 3
+            "магнолия": {} // 3
+        }
+    }
+};
 
-// {/* <ul> ul = li
-//     <li>Рыбы 
-//         li = ul
-//         <ul>
-//             <li>форель</li>
-//             <li>лосось</li>
-//         </ul>
-//     </li>
-// </ul>  */}
+{/* <ul> ul = li
+    <li>Рыбы 
+        li = ul
+        <ul>
+            <li>форель</li>
+            <li>лосось</li>
+        </ul>
+    </li>
+</ul>  */}
 
-// let div = document.createElement("div")
+let div = document.createElement("div")
 
-// document.body.prepend(div)
+document.body.prepend(div)
 
-// function createTree(container, obj) {
-//     let ul = document.createElement("ul")
-//     let li = document.createElement("li")
+function createTree(container, obj) {
+    let ul = document.createElement("ul")
+    let li = document.createElement("li")
 
-//     for (let key in obj) {
-//         li = document.createElement("li")
-//         li.textContent = key
-//         if (Object.keys(key).length > 0) {
-//             createTree(container, obj[key])
-//         }
-//         else {
-//             ul = document.createElement("ul")
-//         }
+    for (let key in obj) {
+        li = document.createElement("li")
+        li.textContent = key
+        if (Object.keys(key).length > 0) {
+            createTree(container, obj[key])
+        }
+        else {
+            ul = document.createElement("ul")
+        }
 
-//         ul.append(li)
-//     }
-//     container.append(ul)
+        ul.append(li)
+    }
+    container.append(ul)
 
-//     return container.innerHTML
-// }
-// createTree(div, data)
+    return container.innerHTML
+}
+createTree(div, data)
 
-// function createTree(obj) {
-//     let newObj = obj
-//     let div = document.createElement("div")
-//     div.textContent = "Список:"
-//     div.style.fontSize = "18px"
-//     let ul = document.createElement("ul") // 1
-//     div.append(ul)
-//     let li = document.createElement("li")
+function createTree(obj) {
+    let newObj = obj
+    let div = document.createElement("div")
+    div.textContent = "Список:"
+    div.style.fontSize = "18px"
+    let ul = document.createElement("ul") // 1
+    div.append(ul)
+    let li = document.createElement("li")
 
-//     div.style.margin = "10px"
-//     ul.style.marginLeft = "10px"
+    div.style.margin = "10px"
+    ul.style.marginLeft = "10px"
 
-//     for (let key in newObj) {
-//         li = document.createElement("li")
-//         li.textContent = key
-//         ul.append(li)
+    for (let key in newObj) {
+        li = document.createElement("li")
+        li.textContent = key
+        ul.append(li)
 
-//         for (let key in newObj.key) {
-//             console.log("тут")
-//             ul = document.createElement("ul")
-//             li = document.createElement("li")
-//             li.textContent = key
-//             ul.append(li)
-//         }
-//     }
-//     document.body.prepend(div)
-//     return div.innerHTML
-// }
-// createTree(data)
+        for (let key in newObj.key) {
+            console.log("тут")
+            ul = document.createElement("ul")
+            li = document.createElement("li")
+            li.textContent = key
+            ul.append(li)
+        }
+    }
+    document.body.prepend(div)
+    return div.innerHTML
+}
+createTree(data)
 
 // let div = document.createElement("div")
 // document.body.prepend(div)
