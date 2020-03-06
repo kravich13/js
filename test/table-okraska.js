@@ -23,7 +23,7 @@ function table (x) {
             td.style.border = "1px solid rgb(163, 163, 163)"
             td.style.fontFamily = "Helvetica Neue"
             td.style.fontSize = "25px"
-            td.style.padding = "9px"
+            td.style.padding = "7px"
             if (i % 2 == 0) {
                 td.style.backgroundColor = "rgb(255, 255, 255)"
                 tr.append(td)

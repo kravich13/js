@@ -30,31 +30,75 @@
         
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: rgb(173, 187, 136);
-        }
-        
-        header p {
             display: flex;
-            justify-content: center;
-            font-size: 21px;
+            flex-direction: column;
+            align-items: center;
+            /* text-align: center; */
+            background: rgb(94, 94, 94);
+            width: 100%;
+        }
+        section {
+            width: 80%;
+            background: rgb(131, 67, 67);
+        }
+        header {
+            display: flex;
+            flex-direction: column;
+            background: rgb(131, 67, 67);
+            width: 100%;
+        }
+        header #textMax p {
+            font-size: 23px;
             margin: 25px 0;
-            color: rgb(192, 11, 11);
+            color: rgb(212, 212, 212);
+            font-weight: 600;
+            width: 100%;
+            text-align: center;
+            
+        }
+        header div #Rul {
+            font-size: 23px;
+            width: 100%;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+            color: rgb(212, 212, 212);
         }
 
-        #table {
+        section #table {
             display: flex;
-            justify-content: center;
-            flex-direction: row;
-            align-items: center;
+            align-items: flex-start;
         }
-        section table {
+        section #table #prav-text {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 21px;
+        }
+        section #table #pravila {
+            font-size: 19px;
+            background: rgb(65, 65, 65);
+            color: rgb(1, 150, 1);
+            border: 3px solid rgb(170, 167, 0);
+            border-radius: 25px;
+            width: 25%;
+            padding: 13px;
+            margin: 1%;
+            /* margin-top: 1%; */
+            /* margin-left: 50px; */
+            /* text-align: center; */
+        }
+        section #table #ruletka {
+            /* margin: 0 2%; */
+            /* margin: auto; */
+            margin-left: 7.5%;
+            margin-right: 10%;
             /* margin-top: 7%; */
-            margin-left: 19.5%;
+            /* margin-left: 19.5%; */
             border-collapse: collapse;  
             background: rgb(21, 141, 21);
         }
         table td {
-            border: 1px solid rgb(255, 255, 255);
+            border: 2px solid rgb(211, 211, 211);
             text-align: center;
             font-size: 27px;
             padding: 2px 4px;
@@ -71,11 +115,11 @@
             background: black;
             border-radius: 25px;
         }
-        table tr .BLACK {
+        table tr #BLACK {
             color: rgb(255, 255, 255);
             background: black;
         }
-        table tr .RED {
+        table tr #RED {
             color: rgb(255, 255, 255);
             background: rgb(196, 4, 4);
         }
@@ -87,31 +131,54 @@
         table tr .ZERO {
             padding: 2px 88px;
         }
-        /* table .offBorder {   
-            border-top: 1px solid white;
-            border-left: 1px solid white;
-            border-right: 1px solid white;    
-        } */
+        table .off {   
+            color: gold;
+        }
         table tr .stavk {
             color: rgb(221, 223, 213);
             /* width: 100%; */
             /* background: red; */
         }
-        #money {
-                font-size: 23px;
-                background: rgb(65, 65, 65);
-                color: rgb(1, 150, 1);
-                border: 3px solid rgb(170, 167, 0);
-                border-radius: 25px;
-                width: 13%;
-                padding: 13px;
-                margin-left: 50px;
-                text-align: center;
+        section #table #money {
+            font-size: 25px;
+            width: 25%;
+            margin: 1%;
+            text-align: center;
         }
+        section #table #money #Mon {
+            background: rgb(65, 65, 65);
+            color: rgb(1, 150, 1);
+            border: 3px solid rgb(170, 167, 0);
+            border-radius: 25px;
+            margin-bottom: 38%;
+            padding: 13px;
+        }
+        section #table #money #Mon p, section #table #money #gam p {
+            margin-bottom: 5px;
+        }
+        section #table #money #gam {
+            background: rgb(65, 65, 65);
+            color: rgb(1, 150, 1);
+            border: 3px solid rgb(170, 167, 0);
+            border-radius: 25px;
+            padding: 13px;
+        }
+        section #table #money #gam #Chis {
+            color: rgb(221, 223, 213);
+        }
+        section #table #money #gam #loss {
+            color: rgb(221, 223, 213);
+        }
+        section #table #money #gam #offMon {
+            /* font-weight: 600; */
+            color: rgb(223, 54, 54);
+        }
+
+
 
         section #knopka {
             width: 35%;
-            margin-top: 55px;
+            margin-top: 25px;
             display: flex;
             justify-content: center;
             border: 2px solid black;
@@ -125,10 +192,56 @@
             margin: 0 9px;
         }   
         #container-K {
-            /* background: greenyellow; */
             display: flex;
-            justify-content: center;
-            
+            flex-direction: column;
+            align-items: center;
+            height: 300px;
+        }
+        #container-K #numb {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* background: red; */
+            width: 35%;
+        }
+        #container-K #numb input {
+            text-align: center;
+            margin-top: 10px;
+            padding: 5px;
+            width: 150px;
+            height: 30px;
+            border: 2px solid black;
+            background: brown;
+            color: rgb(224, 224, 224);
+            font-size: 21px;
+            border-radius: 25px;
+        }
+        #container-K #numb #faik {
+            text-align: center;
+            margin-top: 10px;
+            padding: 5px;
+            width: 150px;
+            height: 30px;
+            border: 2px solid black;
+            background: brown;
+            color: rgb(224, 224, 224);
+            font-size: 21px;
+            border-radius: 25px;
+        }
+        #container-K #numb #textStavka {
+            text-align: center;
+            font-size: 21px;
+            margin-top: 10px;
+            color: rgb(224, 224, 224);
+        }
+        #container-K #numb #Alert {
+            margin-top: 20px;
+            font-size: 19px;
+            font-weight: 600;
+            /* background: rgb(202, 202, 202); */
+            padding: 8px;
+            text-align: center;
+            color: rgb(212, 212, 212);
         }
         
     </style>
@@ -137,103 +250,138 @@
 <body>
 
     <header>
-        <p>Испытай свою удачу и да прибудет с тобой Илон Каз!</p>
+        <div id="textMax">
+            <p>Максимальная ставка 100000$</p>
+        </div>
+        
+        <div>
+            <p id="Rul">Выпавшее <br> число: <span id="ZER">0</span></p>
+        </div>
+
     </header>
 
     <section>
 
         <div id = "table">
+
+            <div id="pravila">
+                <p id="prav-text">Правила игры и инструкция.
+                <p>"Начать" - зайти в игру.</p>
+                <p>В поле "Ставка" ввести нужное количество денег (от 10000 до 100000).</p>
+                <p>Чтобы зафиксировать ставку - нажмите ЛКМ на нужном поле.</p>
+                <p>"Крутить" - крутить рулетку, если ставка выбрана.</p>
+                <p>"Завершить" - выйти из игры (нельзя выйти, если крутится рулетка).</p>
+            </div>
+
             <table id="ruletka">
                 <tr>
-                    <td class="offBorder" colspan="2"><p>Ставки</p></td>
-                    <td class="ZERO" colspan="5"><p class="zero">0</p></td>
+                    <td class="off" colspan="2">Ставки</td>
+                    <td class="chisla ZERO" colspan="5"><p class="zero">0</p></td>
                 </tr>
                 <tr>
                     <td class="stavk"  rowspan="2">1 to 18</td>
                     <td class="stavk"  rowspan="4">1 st 12</td>
-                    <td><p class="red">1</p></td>
-                    <td><p class="black">2</p></td>
-                    <td><p class="red">3</p></td>
+                    <td class="chisla"><p class="red">1</p></td>
+                    <td class="chisla"><p class="black">2</p></td>
+                    <td class="chisla"><p class="red">3</p></td>
                 </tr>
                 <tr>
-                    <td><p class="black">4</p></td>
-                    <td><p class="red">5</p></td>
-                    <td><p class="black">6</p></td>
+                    <td class="chisla"><p class="black">4</p></td>
+                    <td class="chisla"><p class="red">5</p></td>
+                    <td class="chisla"><p class="black">6</p></td>
                 </tr>
                 <tr>
                     <td class="stavk"  rowspan="2">EVEN</td>
-                    <td><p class="red">7</p></td>
-                    <td><p class="black">8</p></td>
-                    <td><p class="red">9</p></td>
+                    <td class="chisla"><p class="red">7</p></td>
+                    <td class="chisla"><p class="black">8</p></td>
+                    <td class="chisla"><p class="red">9</p></td>
                 </tr>
                 <tr>
-                    <td><p class="black">10</p></td>
-                    <td><p class="black">11</p></td>
-                    <td><p class="red">12</p></td>
+                    <td class="chisla"><p class="black">10</p></td>
+                    <td class="chisla"><p class="black">11</p></td>
+                    <td class="chisla"><p class="red">12</p></td>
                 </tr>
                 <tr>
-                    <td class="RED" rowspan="2">RED</td>
+                    <td id="RED" rowspan="2">RED</td>
                     <td class="stavk" rowspan="4">2 nd 12</td>
-                    <td><p class="black">13</p></td>
-                    <td><p class="red">14</p></td>
-                    <td><p class="black">15</p></td>
+                    <td class="chisla"><p class="black">13</p></td>
+                    <td class="chisla"><p class="red">14</p></td>
+                    <td class="chisla"><p class="black">15</p></td>
                 </tr>
                 <tr>
-                    <td><p class="red">16</p></td>
-                    <td><p class="black">17</p></td>
-                    <td><p class="red">18</p></td>
+                    <td class="chisla"><p class="red">16</p></td>
+                    <td class="chisla"><p class="black">17</p></td>
+                    <td class="chisla"><p class="red">18</p></td>
                 </tr>
                 <tr>
-                    <td class="BLACK" rowspan="2">BLACK</td>
-                    <td><p class="red">19</p></td>
-                    <td><p class="black">20</p></td>
-                    <td><p class="red">21</p></td>
+                    <td id="BLACK" rowspan="2">BLACK</td>
+                    <td class="chisla"><p class="red">19</p></td>
+                    <td class="chisla"><p class="black">20</p></td>
+                    <td class="chisla"><p class="red">21</p></td>
                 </tr>
                 <tr>
-                    <td><p class="black">22</p></td>
-                    <td><p class="red">23</p></td>
-                    <td><p class="black">24</p></td>
+                    <td class="chisla"><p class="black">22</p></td>
+                    <td class="chisla"><p class="red">23</p></td>
+                    <td class="chisla"><p class="black">24</p></td>
                 </tr>
                 <tr>
                     <td class="stavk" rowspan="2">ODD</td>
                     <td class="stavk" rowspan="4">3 td 12</td>
-                    <td><p class="red">25</p></td>
-                    <td><p class="black">26</p></td>
-                    <td><p class="red">27</p></td>
+                    <td class="chisla"><p class="red">25</p></td>
+                    <td class="chisla"><p class="black">26</p></td>
+                    <td class="chisla"><p class="red">27</p></td>
                 </tr>
                 <tr>
-                    <td><p class="black">28</p></td>
-                    <td><p class="black">29</p></td>
-                    <td><p class="red">30</p></td>
+                    <td class="chisla"><p class="black">28</p></td>
+                    <td class="chisla"><p class="black">29</p></td>
+                    <td class="chisla"><p class="red">30</p></td>
                 </tr>
                 <tr>
                     <td class="stavk" rowspan="2">19 to 36</td>
-                    <td><p class="black">31</p></td>
-                    <td><p class="red">32</p></td>
-                    <td><p class="black">33</p></td>
+                    <td class="chisla"><p class="black">31</p></td>
+                    <td class="chisla"><p class="red">32</p></td>
+                    <td class="chisla"><p class="black">33</p></td>
                 </tr>
                 <tr>
-                    <td><p class="red">34</p></td>
-                    <td><p class="black">35</p></td>
-                    <td><p class="red">36</p></td>
+                    <td class="chisla"><p class="red">34</p></td>
+                    <td class="chisla"><p class="black">35</p></td>
+                    <td class="chisla"><p class="red">36</p></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><p>Ставки</p></td>
-                    <td class="stavk"><p>3 to 1</p></td>
-                    <td class="stavk"><p>3 to 1</p></td>
-                    <td class="stavk"><p>3 to 1</p></td>
+                    <td class="off" colspan="2">Ставки</td>
+                    <td id="3One" class="stavk">3 to 1</td>
+                    <td id="3Two" class="stavk">3 to 1</td>
+                    <td id="3Three" class="stavk">3 to 1</td>
                 </tr>
             </table>
 
             <div id="money">
-                <p>Твои деньги:</p>
-                <p id="dollars">0</p> 
+                <div id="Mon">
+                    <p>Деньги:</p>
+                    <p id="dollars">0</p>
+                </div>
+                
+                <div id="gam">
+                    <p id="Chis">Выпало число: 13</p>
+                    <p id="victory">Выигрыш: 10000$</p>
+                    <p id="loss">Вы ничего не выиграли!</p>
+                    <p id="offMon">Вы проиграли все деньги!</p>
+                </div>
             </div>
+            
         </div>
 
     </section>
 
     <section id="container-K">
+
+        <div id="numb">
+            <p id="textStavka">Ваша ставка:</p>
+            <p id="faik">Ставка</p>
+            <input type="text" name="stavkaKaz" id="numbers">
+            <p id="Alert">text</p>
+        </div>
+
         <div id="knopka">
             <input id = "start" type="submit" name="submit" value="Начать">
             <input id = "round" type="submit" name="submit" value="Крутить">
