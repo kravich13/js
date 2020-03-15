@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Input number</title>
+
+	<style>
+		.inputerror {
+			background-color: crimson;
+		}
+
+	</style>
+</head>
+<body>
+	<input type="number" id="numberInput" min=10000 max=100000 value=10000>
+
+    <script>
+		/**
+		 * The idea is to test each new value with the test function provided and then decide: either to apply the value, set the previous one or leave the field empty (in none has passed the test)
+		 * @param {HTMLInputElement} textbox
+		 * @param {function} inputFilter - the testing function returning boolean
+		 */
+		function setInputFilter(textbox, inputFilter) {
+			["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function (event) {
+
+				// Общий принцип таков: значение из инпута после изменения любым способом прогоняется через переданную функцию-тестировщик, которая возвращает булеан. Если тру, значит проверка прошла, значит оставить значение в инпуте и сохранить его на будущее как последнее корректное значение. Если фолс - попытаться прочитать последнее корректное значение и записать его в инпут вместо некорректного, введенного юзером. Если старого тоже нет - тогда гг, оставить пустое поле. 
+
+				textbox.addEventListener(event, function () {
+					if (inputFilter(this.value)) {
+						
+						// Вот твои проверка на нахождение в границах ставок. Если выходит за них - применяется класс inputerror. Если все ок - убирается. Дальше тебе надо будет навесить обработчик на кнопку подтверждения, который проверит, что юзер таки ввел корректные данные, а если нет - кинуть его обратно. 
+						
+						if(this.value >= 10000 && this.value <= 100000){
+							this.oldValue = this.value
+							this.classList.remove('inputerror')
+						} else {
+							this.classList.add('inputerror')
+						}
+
+					} else if (this.hasOwnProperty("oldValue")) {
+						this.value = this.oldValue
+
+					} else {
+						this.value = ""
+					}
+				})
+			})
+		}
+
+		// Вызываем функцию тестировки для элемента, которая навешает обработчики на все способы изменения данных на этот элемент и завяжет их с анонимной функцией теста ниже
+
+		setInputFilter(document.getElementById("numberInput"), function (value) {
+			return /^-?\d{1,6}$/.test(value)
+		})
+    </script>
+</body>
+</html>

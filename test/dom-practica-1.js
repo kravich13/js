@@ -235,47 +235,212 @@ createTree(data)
 
 
 // 8) Напишите функцию createCalendar(elem, year, month). Таблица-календарь.
-
-let div = document.createElement("div")
-document.body.prepend(div)
+let table = document.createElement("table")
+table.style.margin = "20px"
+table.style.borderCollapse = "collapse"
+document.body.prepend(table)
 
 function createCalendar(elem, year, month) {
-  let table = document.createElement("table")
-  let tr = document.createElement("tr")
-  let td = document.createElement("td")
+    let tr = document.createElement("tr")
+    let th = document.createElement("th")
+    let td = document.createElement("td")
 
-  // table.rows[0].cells[0].textContent = "Пн"
-  // table.rows[0].cells[0].textContent = "Вт"
-  // table.rows[0].cells[0].textContent = "Ср"
-  // table.rows[0].cells[0].textContent = "Чт"
-  // table.rows[0].cells[0].textContent = "Пт"
-  // table.rows[0].cells[0].textContent = "Сб"
-  // table.rows[0].cells[0].textContent = "Вс"
-  for (let i = 0; i < 5; i++) {
-    tr = document.createElement("tr")
+    let month12 = 1 // для 12-о месяца
+    let daySunday = 7 // воскресенье
+    let trNumber = 0 // для кол-ва строк в цикле
 
-    for (let j = 0; j < 6; i++) {
-      td = document.createElement("td")
+    let data = new Date(year, month - 1)
+    let dayWeek = data.getDay()
+    let days = data.getDate()
 
-      if (i <= 1) {
-        if (j <= 6) {
-          td.textContent = "1"
+    let dataFiveNumb = new Date(year, month - 1)
+    dataFiveNumb.setDate(dataFiveNumb.getDate() + 28)
+
+    let dataFiveSeven = new Date(year, month - 1)
+    dataFiveSeven.setDate(dataFiveSeven.getDate() + 32)
+
+    if (dayWeek == 0) {
+        trNumber = 7
+    } 
+    else {
+        if (dayWeek == 1) {
+            if (dataFiveNumb.getMonth() == 2) {
+                trNumber = 5
+            } 
+            else {
+                trNumber = 6
+            }
+        } 
+        else {
+            if (dayWeek == 6) {
+                if (dataFiveSeven.getMonth() == 0) {
+                    trNumber = 7
+                } 
+                else {
+                    trNumber = 6
+                }
+            } 
+            else {
+                trNumber = 6
+            }
         }
-      }
-      else {
-        td.textContent = "2"
-        tr.append(td)
-      }
     }
-    table.append(tr)
-  }
 
-  return elem.append(table)
+    function startData() {
+        for (let i = 0; i < trNumber; i++) {
+            tr = document.createElement("tr")
+
+            for (let j = 0; j < 7; j++) {
+
+                if (i < 1) {
+                    th = document.createElement("th")
+                    th.textContent = "s"
+                    th.style.border = "1px solid black"
+                    th.style.padding = "5px"
+                    th.style.fontSize = "21px"
+                    th.style.textAlign = "center"
+                    tr.append(th)
+                } 
+                else {
+                    td = document.createElement("td")
+                    td.style.border = "1px solid black"
+                    td.style.padding = "5px"
+                    td.style.fontSize = "21px"
+                    td.style.textAlign = "center"
+                    td.textContent = ""
+
+                    if (i == 1) {
+                        if (dayWeek == 0) {
+                            if (j > daySunday - 2) {
+                                td.textContent = data.getDate()
+                                data.setDate(data.getDate() + 1)
+                            }
+                        } 
+                        else {
+                            if (j > dayWeek - 2) {
+                                td.textContent = data.getDate()
+                                data.setDate(data.getDate() + 1)
+                            }
+                        }
+                    } 
+                    else {
+                        if (month == 12) {
+                            month12 = 0
+                            if (data.getMonth() == month12) {
+                                td.textContent = ""
+                            } 
+                            else {
+                                td.textContent = data.getDate()
+                                data.setDate(data.getDate() + 1)
+                            }
+                        } 
+                        else {
+                            if (data.getMonth() == month) {
+                                td.textContent = ""
+                            } 
+                            else {
+                                td.textContent = data.getDate()
+                                data.setDate(data.getDate() + 1)
+                            }
+                        }
+                    }
+                    tr.append(td)
+                }
+            }
+            elem.append(tr)
+        }
+    }
+
+    startData()
+
+    elem.rows[0].cells[0].textContent = "Пн"
+    elem.rows[0].cells[1].textContent = "Вт"
+    elem.rows[0].cells[2].textContent = "Ср"
+    elem.rows[0].cells[3].textContent = "Чт"
+    elem.rows[0].cells[4].textContent = "Пт"
+    elem.rows[0].cells[5].textContent = "Сб"
+    elem.rows[0].cells[6].textContent = "Вс"
+
 }
-createCalendar(div, 2031, 9)
+createCalendar(table, 1997, 9)
+
 
 
 // 9) Цветные часы с использованием setInterval
+let divs = document.createElement("div")
+let hours = document.createElement("span")
+let minutes = document.createElement("span")
+let seconds = document.createElement("span")
+let start = document.createElement("button")
+let end = document.createElement("button") 
+
+divs.style.margin = "10px"
+hours.style.fontSize = "31px"
+hours.style.color = "red"
+minutes.style.fontSize = "31px"
+minutes.style.color = "blue"
+seconds.style.fontSize = "31px"
+seconds.style.color = "green"
+start.textContent = "Старт"
+start.style.fontSize = "25px"
+start.style.marginLeft = "20px"
+end.textContent = "Стоп"
+end.style.fontSize = "25px"
+
+
+divs.append(hours)
+divs.append(minutes)
+divs.append(seconds)
+divs.append(start)
+divs.append(end)
+
+document.body.prepend(divs)
+
+function timeN() {
+
+    let todays = new Date()
+
+    let hoursNumbers = todays.getHours()
+    let minutesNumbers = todays.getMinutes()
+    let secondsNumbers = todays.getSeconds()
+
+    if (hoursNumbers < 10) {
+      hours.textContent = `0${hoursNumbers}:`
+    }
+    else {
+      hours.textContent = `${hoursNumbers}:`
+    }
+
+    if (minutesNumbers < 10) {
+      minutes.textContent = `0${minutesNumbers}:`
+    }
+    else {
+      minutes.textContent = `${minutesNumbers}:`
+    }
+
+    if (secondsNumbers < 10) {
+      seconds.textContent = `0${secondsNumbers}`
+    }
+    else {
+      seconds.textContent = `${secondsNumbers}`
+    }
+
+}
+timeN()
+
+let timeStop
+
+start.addEventListener("click", function(event) {
+  timeStop = setInterval(() => {
+    timeN()
+  }, 1000);
+  timeN()
+})
+
+end.addEventListener("click", function(event) {
+  clearInterval(timeStop)
+})
+
 
 
 // 10) Вставьте HTML в список
@@ -383,3 +548,25 @@ function tableName(elem) {
 tableName(table)
 
 
+// Напишите функцию showNotification(options), которая создаёт уведомление: <div class="notification"> с заданным содержимым. Уведомление должно автоматически исчезнуть через 1,5 секунды.
+
+function showNotification () {
+  let div = document.createElement("div") 
+  div.style.left = "10px"
+  div.style.right = "10px"
+  div.textContent = "Hello"
+  div.className = "welcome"
+  document.body.prepend(div)
+  div.hidden = true
+
+  setInterval(() => {
+    if (div.hidden == true) {
+      div.hidden = false
+    }
+    else {
+      div.hidden = true
+    }
+  }, 1500);
+
+}
+showNotification ()

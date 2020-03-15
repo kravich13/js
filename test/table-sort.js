@@ -27,6 +27,7 @@ for (let i = 0; i < 5; i++) {
   }
   table.append(tr)
 }
+
 table.rows[0].cells[0].textContent = "Имя"
 table.rows[0].cells[1].textContent = "Фамилия"
 table.rows[0].cells[2].textContent = "Возраст"
@@ -51,7 +52,6 @@ function tableName(elem) {
   table.rows[0].cells[0].flag = false
   table.rows[0].cells[1].flag = false
   table.rows[0].cells[2].flag = false
-  console.log(table.rows[0].cells[0].flag)
 
   for (let i = 0; i < arr.length; i++) {
     newArr[i] = arr[i]
@@ -62,9 +62,6 @@ function tableName(elem) {
     if (event.target.nodeName == 'TH') {
       
       let stolbTH = event.target.cellIndex
-      console.log(stolbTH)
-
-      console.log(event.target.flag)
   
       function compareNumeric(a, b) {
 

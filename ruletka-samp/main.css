@@ -1,0 +1,308 @@
+html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ul, li, ol, fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed,
+        figure, figcaption, footer, header, hgroup,
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+        margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* text-align: center; */
+            background: rgb(94, 94, 94);
+            width: 100%;
+        }
+        section {
+            width: 1250px;
+            /* height: 1500px; */
+            background: rgb(131, 67, 67);
+        }
+        header {
+            display: flex;
+            flex-direction: column;
+            background: rgb(75, 75, 75);
+            width: 100%;
+            border-bottom: 2px solid black;
+        }
+        header #textMax p {
+            font-size: 23px;
+            margin: 25px 0;
+            color: rgb(212, 212, 212);
+            font-weight: 600;
+            width: 100%;
+            text-align: center;
+            
+        }
+        header div #Rul {
+            font-size: 23px;
+            width: 100%;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+            color: rgb(212, 212, 212);
+        }
+
+        section #table {
+            display: flex;
+            align-items: flex-start;
+        }
+        section #table #prav-text {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 21px;
+        }
+        section #table #pravila {
+            font-size: 19px;
+            background: rgb(65, 65, 65);
+            color: rgb(1, 150, 1);
+            border: 3px solid rgb(170, 167, 0);
+            border-radius: 25px;
+            width: 25%;
+            padding: 13px;
+            margin: 1%;
+            /* margin-top: 1%; */
+            /* margin-left: 50px; */
+            /* text-align: center; */
+        }
+        section #table #ruletka {
+            /* margin: 0 2%; */
+            /* margin: auto; */
+            margin-top: 10px;
+            margin-left: 7.5%;
+            margin-right: 10%;
+            /* margin-top: 7%; */
+            /* margin-left: 19.5%; */
+            border-collapse: collapse;  
+            background: rgb(21, 141, 21);
+        }
+        table td {
+            border: 2px solid rgb(211, 211, 211);
+            text-align: center;
+            font-size: 27px;
+            padding: 2px 4px;
+            width: 110px;
+            vertical-align: center;
+        }
+        table tr td .red {
+            color: rgb(255, 255, 255);
+            background: rgb(196, 4, 4);
+            border-radius: 25px;
+        }
+        table tr td .black {
+            color: rgb(255, 255, 255);
+            background: black;
+            border-radius: 25px;
+        }
+        table tr #BLACK {
+            color: rgb(255, 255, 255);
+            background: black;
+        }
+        table tr #RED {
+            color: rgb(255, 255, 255);
+            background: rgb(196, 4, 4);
+        }
+        table tr td .zero {
+            color: rgb(255, 255, 255);
+            background: rgb(11, 185, 69);
+            border-radius: 25px;
+        }
+        table tr .ZERO {
+            padding: 2px 88px;
+        }
+        table .off {   
+            color: rgb(0, 0, 0);
+        }
+        table tr .stavk {
+            color: rgb(221, 223, 213);
+        }
+        section #table #money {
+            font-size: 25px;
+            width: 25%;
+            margin: 1%;
+            text-align: center;
+        }
+        section #table #money #Mon {
+            background: rgb(65, 65, 65);
+            color: rgb(1, 150, 1);
+            border: 3px solid rgb(170, 167, 0);
+            border-radius: 25px;
+            margin-bottom: 38%;
+            padding: 13px;
+        }
+        section #table #money #Mon p, section #table #money #gam p {
+            margin-bottom: 5px;
+        }
+        section #table #money #gam {
+            background: rgb(65, 65, 65);
+            color: rgb(1, 150, 1);
+            border: 3px solid rgb(170, 167, 0);
+            border-radius: 25px;
+            padding: 13px;
+        }
+        section #table #money #gam #Chis {
+            color: rgb(221, 223, 213);
+        }
+        section #table #money #gam #loss {
+            color: rgb(221, 223, 213);
+        }
+        section #table #money #gam #offMon {
+            /* font-weight: 600; */
+            color: rgb(223, 54, 54);
+        }
+
+
+
+        section #knopka {
+            width: 35%;
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            border: 2px solid black;
+            padding: 5px 0;
+            border-radius: 10px;
+        }
+        #knopka #start, #knopka #end, #knopka #round {
+            width: 35%;
+            height: 45px;
+            font-size: 22px;
+            margin: 0 9px;
+        }   
+        #container-K {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 300px;
+        }
+        #container-K #numb {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* background: red; */
+            width: 35%;
+        }
+        #container-K #numb input {
+            text-align: center;
+            margin-top: 10px;
+            padding: 5px;
+            width: 150px;
+            height: 30px;
+            border: 2px solid black;
+            background: brown;
+            color: rgb(224, 224, 224);
+            font-size: 21px;
+            border-radius: 25px;
+        }
+        #container-K #numb #faik {
+            text-align: center;
+            margin-top: 10px;
+            padding: 5px;
+            width: 150px;
+            height: 30px;
+            border: 2px solid black;
+            background: brown;
+            color: rgb(224, 224, 224);
+            font-size: 21px;
+            border-radius: 25px;
+        }
+        #container-K #numb #textStavka {
+            text-align: center;
+            font-size: 21px;
+            margin-top: 10px;
+            color: rgb(224, 224, 224);
+        }
+        #container-K #numb #Alert {
+            margin-top: 20px;
+            font-size: 19px;
+            font-weight: 600;
+            /* background: rgb(202, 202, 202); */
+            padding: 8px;
+            text-align: center;
+            color: rgb(212, 212, 212);
+        }
+
+        @media only screen and (max-width: 1265px) {
+            
+            section {
+                width: 100%;
+            }
+        }
+
+        @media only screen and (max-width: 1210px) {
+            header #textMax p {
+                font-size: 20px;
+                margin: 15px 0;
+                
+            }
+            header div #Rul {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+            table td { 
+                font-size: 23px;
+                width: 100px;
+            }
+            section #knopka {
+                width: 35%;
+                margin-top: 20px;
+                padding: 5px 0;
+            }
+            #knopka #start, #knopka #end, #knopka #round {
+                width: 35%;
+                height: 40px;
+                font-size: 19px;
+            }
+            section #table #money {
+                font-size: 21px;
+                width: 25%;
+                margin: 1%;
+            }
+            section #table #money #Mon {
+                padding: 8px;
+            }
+            section #table #money #Mon p, section #table #money #gam p {
+                margin-bottom: 3px;
+            }
+            section #table #money #gam {
+                padding: 8px;
+            }
+            #container-K #numb input {
+                padding: 3px;
+                width: 115px;
+                font-size: 19px;
+            }
+            #container-K #numb #faik {
+                padding: 3px;
+                width: 115px;
+                font-size: 19px;
+            }
+            #container-K #numb #textStavka {
+                font-size: 19px;
+                margin-top: 10px;
+            }
+            #container-K #numb #Alert {
+                margin-top: 10px;
+                font-size: 18px;
+                font-weight: 600;
+                padding: 5px;
+            }
+            #container-K {
+                height: 380px;
+                /* background: red; */
+            }
+        }

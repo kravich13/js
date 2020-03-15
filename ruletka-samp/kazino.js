@@ -1,5 +1,5 @@
 let coins = {
-    dollar: 100000
+    dollar: 1000000
 }
 
 
@@ -235,11 +235,31 @@ function start () {
                     for (let i = 0; i < redTD.length; i++) {
 
                         if (random == redTD[i].textContent) {
+
+                            // let rulsNumb = [2,25,17,34,6,27,13,36,11,30,8,32,10,5,24,16,33,1,20,14,31,9,22,18,29,7,28,12,35,3,26,0,32,15,19,4,21]
+                            // function printNumbers() {
+                            //     let timerId, i = 0
+
+                            //     setTimeout(() => clearInterval(timerId), 10000)
+
+                                
+                            //     timerId = setInterval(() => {
+                            //         console.log(rulsNumb[i++])
+
+                            //         if (i === rulsNumb.length) {
+                            //             i = 0
+                            //         }
+                                    
+
+                            //     }, 100)
+                            // }
+                            // printNumbers()
+
                             coins.dollar -= inputNumber.textContent
                             document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                            console.log("Вы выиграли! Выпало число: " + random )
                             flagGlobal = true
                             flagStartGames = false
+                            console.log("тут")
                             break
                         }
                     }
@@ -270,8 +290,6 @@ function start () {
                             gold.td.style.backgroundColor = "" 
                             flagStartGames = false
                         }
-
-                        // console.log(`Вы ничего не выиграли, выпало число: ${random}`)
                     }
                     else {
                         vipavsheeChislo.hidden = false
@@ -297,20 +315,52 @@ function start () {
                         if (random == blackTD[i].textContent) {
                             coins.dollar -= inputNumber.textContent
                             document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                            console.log("Вы выиграли! Выпало число: " + random )
                             flagGlobal = true
+                            flagStartGames = false
                             break
                         }
                     }
                     if (flagGlobal == false) {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+
+                        Gam.hidden = false
+                        Chi.hidden = false
+                        Vic.hidden = true
+                        Chi.innerText = `Выпало число: ${random}`
                         coins.dollar -= inputNumber.textContent
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                        console.log(`Вы ничего не выиграли, выпало число: ${random}`)
+
+                        if (coins.dollar === 0) {
+                            OfM.hidden = false
+                            Vic.hidden = true
+                            Los.hidden = true
+                            OfM.innerText = "Вы проиграли все деньги!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                            console.log("Вы проиграли все деньги")
+                        }
+                        else {
+                            Los.hidden = false
+                            Los.innerText = "Вы ничего не выиграли!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                        }
                     }
                     else {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+                        
+                        Gam.hidden = false 
+                        Los.hidden = true
+                        Chi.hidden = false
+                        Vic.hidden = false
+                        Chi.innerText = `Выпало число: ${random}`
+                        Vic.innerText = `Выигрыш: ${inputNumber.textContent * 2}$`
                         coins.dollar += inputNumber.textContent * 2
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
                         flagGlobal = false
+                        gold.td.style.backgroundColor = "" 
                     }
                 }
 
@@ -323,22 +373,53 @@ function start () {
                             if (random == chisla[i].innerText) {
                                 coins.dollar -= inputNumber.textContent
                                 document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                                console.log(`Вы выиграли! Выпало число: ${random}`)
                                 flagGlobal = true
+                                flagStartGames = false
                                 break
                             }
                         }
-
                     }
                     if (flagGlobal == false) {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+
+                        Gam.hidden = false
+                        Chi.hidden = false
+                        Vic.hidden = true
+                        Chi.innerText = `Выпало число: ${random}`
                         coins.dollar -= inputNumber.textContent
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                        console.log(`Вы ничего не выиграли, выпало число: ${random}`)
-                    } 
+
+                        if (coins.dollar === 0) {
+                            OfM.hidden = false
+                            Vic.hidden = true
+                            Los.hidden = true
+                            OfM.innerText = "Вы проиграли все деньги!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                            console.log("Вы проиграли все деньги")
+                        }
+                        else {
+                            Los.hidden = false
+                            Los.innerText = "Вы ничего не выиграли!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                        }
+                    }
                     else {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+                        
+                        Gam.hidden = false 
+                        Los.hidden = true
+                        Chi.hidden = false
+                        Vic.hidden = false
+                        Chi.innerText = `Выпало число: ${random}`
+                        Vic.innerText = `Выигрыш: ${inputNumber.textContent * 3}$`
                         coins.dollar += inputNumber.textContent * 3
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
                         flagGlobal = false
+                        gold.td.style.backgroundColor = "" 
                     }
                 }
 
@@ -350,22 +431,54 @@ function start () {
                             if (random == chisla[i].innerText) {
                                 coins.dollar -= inputNumber.textContent
                                 document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                                console.log(`Вы выиграли! Выпало число: ${random}`)
                                 flagGlobal = true
+                                flagStartGames = false
                                 break
                             }
                         }
 
                     }
                     if (flagGlobal == false) {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+
+                        Gam.hidden = false
+                        Chi.hidden = false
+                        Vic.hidden = true
+                        Chi.innerText = `Выпало число: ${random}`
                         coins.dollar -= inputNumber.textContent
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                        console.log(`Вы ничего не выиграли, выпало число: ${random}`)
-                    } 
+
+                        if (coins.dollar === 0) {
+                            OfM.hidden = false
+                            Vic.hidden = true
+                            Los.hidden = true
+                            OfM.innerText = "Вы проиграли все деньги!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                            console.log("Вы проиграли все деньги")
+                        }
+                        else {
+                            Los.hidden = false
+                            Los.innerText = "Вы ничего не выиграли!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                        }
+                    }
                     else {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+                        
+                        Gam.hidden = false 
+                        Los.hidden = true
+                        Chi.hidden = false
+                        Vic.hidden = false
+                        Chi.innerText = `Выпало число: ${random}`
+                        Vic.innerText = `Выигрыш: ${inputNumber.textContent * 3}$`
                         coins.dollar += inputNumber.textContent * 3
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
                         flagGlobal = false
+                        gold.td.style.backgroundColor = "" 
                     }
                 }
 
@@ -377,22 +490,54 @@ function start () {
                             if (random == chisla[i].innerText) {
                                 coins.dollar -= inputNumber.textContent
                                 document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                                console.log(`Вы выиграли! Выпало число: ${random}`)
                                 flagGlobal = true
+                                flagStartGames = false
                                 break
                             }
                         }
 
                     }
                     if (flagGlobal == false) {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+
+                        Gam.hidden = false
+                        Chi.hidden = false
+                        Vic.hidden = true
+                        Chi.innerText = `Выпало число: ${random}`
                         coins.dollar -= inputNumber.textContent
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                        console.log(`Вы ничего не выиграли, выпало число: ${random}`)
-                    } 
+
+                        if (coins.dollar === 0) {
+                            OfM.hidden = false
+                            Vic.hidden = true
+                            Los.hidden = true
+                            OfM.innerText = "Вы проиграли все деньги!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                            console.log("Вы проиграли все деньги")
+                        }
+                        else {
+                            Los.hidden = false
+                            Los.innerText = "Вы ничего не выиграли!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                        }
+                    }
                     else {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+                        
+                        Gam.hidden = false 
+                        Los.hidden = true
+                        Chi.hidden = false
+                        Vic.hidden = false
+                        Chi.innerText = `Выпало число: ${random}`
+                        Vic.innerText = `Выигрыш: ${inputNumber.textContent * 3}$`
                         coins.dollar += inputNumber.textContent * 3
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
                         flagGlobal = false
+                        gold.td.style.backgroundColor = "" 
                     }
                 }
 
@@ -404,22 +549,54 @@ function start () {
                             if (random == chisla[i].innerText) {
                                 coins.dollar -= inputNumber.textContent
                                 document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                                console.log(`Вы выиграли! Выпало число: ${random}`)
                                 flagGlobal = true
+                                flagStartGames = false
                                 break
                             }
                         }
 
                     }
                     if (flagGlobal == false) {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+
+                        Gam.hidden = false
+                        Chi.hidden = false
+                        Vic.hidden = true
+                        Chi.innerText = `Выпало число: ${random}`
                         coins.dollar -= inputNumber.textContent
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                        console.log(`Вы ничего не выиграли, выпало число: ${random}`)
-                    } 
+
+                        if (coins.dollar === 0) {
+                            OfM.hidden = false
+                            Vic.hidden = true
+                            Los.hidden = true
+                            OfM.innerText = "Вы проиграли все деньги!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                            console.log("Вы проиграли все деньги")
+                        }
+                        else {
+                            Los.hidden = false
+                            Los.innerText = "Вы ничего не выиграли!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                        }
+                    }
                     else {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+                        
+                        Gam.hidden = false 
+                        Los.hidden = true
+                        Chi.hidden = false
+                        Vic.hidden = false
+                        Chi.innerText = `Выпало число: ${random}`
+                        Vic.innerText = `Выигрыш: ${inputNumber.textContent * 2}$`
                         coins.dollar += inputNumber.textContent * 2
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
                         flagGlobal = false
+                        gold.td.style.backgroundColor = "" 
                     }
                 }
 
@@ -431,22 +608,54 @@ function start () {
                             if (random == chisla[i].innerText) {
                                 coins.dollar -= inputNumber.textContent
                                 document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                                console.log(`Вы выиграли! Выпало число: ${random}`)
                                 flagGlobal = true
+                                flagStartGames = false
                                 break
                             }
                         }
 
                     }
                     if (flagGlobal == false) {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+
+                        Gam.hidden = false
+                        Chi.hidden = false
+                        Vic.hidden = true
+                        Chi.innerText = `Выпало число: ${random}`
                         coins.dollar -= inputNumber.textContent
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                        console.log(`Вы ничего не выиграли, выпало число: ${random}`)
-                    } 
+
+                        if (coins.dollar === 0) {
+                            OfM.hidden = false
+                            Vic.hidden = true
+                            Los.hidden = true
+                            OfM.innerText = "Вы проиграли все деньги!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                            console.log("Вы проиграли все деньги")
+                        }
+                        else {
+                            Los.hidden = false
+                            Los.innerText = "Вы ничего не выиграли!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                        }
+                    }
                     else {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+                        
+                        Gam.hidden = false 
+                        Los.hidden = true
+                        Chi.hidden = false
+                        Vic.hidden = false
+                        Chi.innerText = `Выпало число: ${random}`
+                        Vic.innerText = `Выигрыш: ${inputNumber.textContent * 2}$`
                         coins.dollar += inputNumber.textContent * 2
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
                         flagGlobal = false
+                        gold.td.style.backgroundColor = "" 
                     }
                 }
 
@@ -458,22 +667,54 @@ function start () {
                             if (random == chisla[i].innerText) {
                                 coins.dollar -= inputNumber.textContent
                                 document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                                console.log(`Вы выиграли! Выпало число: ${random}`)
                                 flagGlobal = true
+                                flagStartGames = false
                                 break
                             }
                         }
 
                     }
                     if (flagGlobal == false) {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+
+                        Gam.hidden = false
+                        Chi.hidden = false
+                        Vic.hidden = true
+                        Chi.innerText = `Выпало число: ${random}`
                         coins.dollar -= inputNumber.textContent
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                        console.log(`Вы ничего не выиграли, выпало число: ${random}`)
-                    } 
+
+                        if (coins.dollar === 0) {
+                            OfM.hidden = false
+                            Vic.hidden = true
+                            Los.hidden = true
+                            OfM.innerText = "Вы проиграли все деньги!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                            console.log("Вы проиграли все деньги")
+                        }
+                        else {
+                            Los.hidden = false
+                            Los.innerText = "Вы ничего не выиграли!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                        }
+                    }
                     else {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+                        
+                        Gam.hidden = false 
+                        Los.hidden = true
+                        Chi.hidden = false
+                        Vic.hidden = false
+                        Chi.innerText = `Выпало число: ${random}`
+                        Vic.innerText = `Выигрыш: ${inputNumber.textContent * 2}$`
                         coins.dollar += inputNumber.textContent * 2
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
                         flagGlobal = false
+                        gold.td.style.backgroundColor = "" 
                     }
                 }
 
@@ -485,21 +726,53 @@ function start () {
                             if (random == chisla[i].innerText) {
                                 coins.dollar -= inputNumber.textContent
                                 document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                                console.log(`Вы выиграли! Выпало число: ${random}`)
                                 flagGlobal = true
+                                flagStartGames = false
                                 break
                             }
                         }
                     }
                     if (flagGlobal == false) {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+
+                        Gam.hidden = false
+                        Chi.hidden = false
+                        Vic.hidden = true
+                        Chi.innerText = `Выпало число: ${random}`
                         coins.dollar -= inputNumber.textContent
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                        console.log(`Вы ничего не выиграли, выпало число: ${random}`)
-                    } 
+
+                        if (coins.dollar === 0) {
+                            OfM.hidden = false
+                            Vic.hidden = true
+                            Los.hidden = true
+                            OfM.innerText = "Вы проиграли все деньги!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                            console.log("Вы проиграли все деньги")
+                        }
+                        else {
+                            Los.hidden = false
+                            Los.innerText = "Вы ничего не выиграли!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                        }
+                    }
                     else {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+                        
+                        Gam.hidden = false 
+                        Los.hidden = true
+                        Chi.hidden = false
+                        Vic.hidden = false
+                        Chi.innerText = `Выпало число: ${random}`
+                        Vic.innerText = `Выигрыш: ${inputNumber.textContent * 2}$`
                         coins.dollar += inputNumber.textContent * 2
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
                         flagGlobal = false
+                        gold.td.style.backgroundColor = "" 
                     }
                 }
 
@@ -509,21 +782,53 @@ function start () {
                     for (let i = 0; i < numbers.length; i++) {
                         if (random == numbers[i]) {
                             coins.dollar -= inputNumber.textContent
-                                document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                                console.log(`Вы выиграли! Выпало число: ${random}`)
-                                flagGlobal = true
-                                break
+                            document.getElementById("dollars").innerHTML = `${coins.dollar}$`
+                            flagGlobal = true
+                            flagStartGames = false
+                            break
                         }
                     }
                     if (flagGlobal == false) {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+
+                        Gam.hidden = false
+                        Chi.hidden = false
+                        Vic.hidden = true
+                        Chi.innerText = `Выпало число: ${random}`
                         coins.dollar -= inputNumber.textContent
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                        console.log(`Вы ничего не выиграли, выпало число: ${random}`)
-                    } 
+
+                        if (coins.dollar === 0) {
+                            OfM.hidden = false
+                            Vic.hidden = true
+                            Los.hidden = true
+                            OfM.innerText = "Вы проиграли все деньги!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                            console.log("Вы проиграли все деньги")
+                        }
+                        else {
+                            Los.hidden = false
+                            Los.innerText = "Вы ничего не выиграли!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                        }
+                    }
                     else {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+                        
+                        Gam.hidden = false 
+                        Los.hidden = true
+                        Chi.hidden = false
+                        Vic.hidden = false
+                        Chi.innerText = `Выпало число: ${random}`
+                        Vic.innerText = `Выигрыш: ${inputNumber.textContent * 3}$`
                         coins.dollar += inputNumber.textContent * 3
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
                         flagGlobal = false
+                        gold.td.style.backgroundColor = "" 
                     }
                 }
 
@@ -533,21 +838,53 @@ function start () {
                     for (let i = 0; i < numbers.length; i++) {
                         if (random == numbers[i]) {
                             coins.dollar -= inputNumber.textContent
-                                document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                                console.log(`Вы выиграли! Выпало число: ${random}`)
-                                flagGlobal = true
-                                break
+                            document.getElementById("dollars").innerHTML = `${coins.dollar}$`
+                            flagGlobal = true
+                            flagStartGames = false
+                            break
                         }
                     }
                     if (flagGlobal == false) {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+
+                        Gam.hidden = false
+                        Chi.hidden = false
+                        Vic.hidden = true
+                        Chi.innerText = `Выпало число: ${random}`
                         coins.dollar -= inputNumber.textContent
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                        console.log(`Вы ничего не выиграли, выпало число: ${random}`)
-                    } 
+
+                        if (coins.dollar === 0) {
+                            OfM.hidden = false
+                            Vic.hidden = true
+                            Los.hidden = true
+                            OfM.innerText = "Вы проиграли все деньги!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                            console.log("Вы проиграли все деньги")
+                        }
+                        else {
+                            Los.hidden = false
+                            Los.innerText = "Вы ничего не выиграли!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                        }
+                    }
                     else {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+                        
+                        Gam.hidden = false 
+                        Los.hidden = true
+                        Chi.hidden = false
+                        Vic.hidden = false
+                        Chi.innerText = `Выпало число: ${random}`
+                        Vic.innerText = `Выигрыш: ${inputNumber.textContent * 3}$`
                         coins.dollar += inputNumber.textContent * 3
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
                         flagGlobal = false
+                        gold.td.style.backgroundColor = "" 
                     }
                 }
 
@@ -558,20 +895,52 @@ function start () {
                         if (random == numbers[i]) {
                             coins.dollar -= inputNumber.textContent
                             document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                            console.log(`Вы выиграли! Выпало число: ${random}`)
                             flagGlobal = true
+                            flagStartGames = false
                             break
                         }
                     }
                     if (flagGlobal == false) {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+
+                        Gam.hidden = false
+                        Chi.hidden = false
+                        Vic.hidden = true
+                        Chi.innerText = `Выпало число: ${random}`
                         coins.dollar -= inputNumber.textContent
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                        console.log(`Вы ничего не выиграли, выпало число: ${random}`)
-                    } 
+
+                        if (coins.dollar === 0) {
+                            OfM.hidden = false
+                            Vic.hidden = true
+                            Los.hidden = true
+                            OfM.innerText = "Вы проиграли все деньги!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                            console.log("Вы проиграли все деньги")
+                        }
+                        else {
+                            Los.hidden = false
+                            Los.innerText = "Вы ничего не выиграли!"
+                            gold.td.style.backgroundColor = "" 
+                            flagStartGames = false
+                        }
+                    }
                     else {
+                        vipavsheeChislo.hidden = false
+                        vipavsheeChislo.innerText = random
+                        
+                        Gam.hidden = false 
+                        Los.hidden = true
+                        Chi.hidden = false
+                        Vic.hidden = false
+                        Chi.innerText = `Выпало число: ${random}`
+                        Vic.innerText = `Выигрыш: ${inputNumber.textContent * 3}$`
                         coins.dollar += inputNumber.textContent * 3
                         document.getElementById("dollars").innerHTML = `${coins.dollar}$`
                         flagGlobal = false
+                        gold.td.style.backgroundColor = "" 
                     }
                 }
                 
@@ -581,18 +950,49 @@ function start () {
                         if (random == gold.td.innerText) {
                             coins.dollar -= inputNumber.textContent
                             document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                            console.log(`Вы выиграли! Выпало число: ${random}`)
                             flagGlobal = true
+                            flagStartGames = false
                         }
                         if (flagGlobal == false) {
+                            vipavsheeChislo.hidden = false
+                            vipavsheeChislo.innerText = random
+    
+                            Gam.hidden = false
+                            Chi.hidden = false
+                            Vic.hidden = true
+                            Chi.innerText = `Выпало число: ${random}`
                             coins.dollar -= inputNumber.textContent
                             document.getElementById("dollars").innerHTML = `${coins.dollar}$`
-                            console.log(`Вы ничего не выиграли, выпало число: ${random}`)
-                        } 
+    
+                            if (coins.dollar === 0) {
+                                OfM.hidden = false
+                                Vic.hidden = true
+                                Los.hidden = true
+                                OfM.innerText = "Вы проиграли все деньги!"
+                                // gold.td.style.backgroundColor = "" 
+                                flagStartGames = false
+                            }
+                            else {
+                                Los.hidden = false
+                                Los.innerText = "Вы ничего не выиграли!"
+                                // gold.td.style.backgroundColor = "" 
+                                flagStartGames = false
+                            }
+                        }
                         else {
+                            vipavsheeChislo.hidden = false
+                            vipavsheeChislo.innerText = random
+                            
+                            Gam.hidden = false 
+                            Los.hidden = true
+                            Chi.hidden = false
+                            Vic.hidden = false
+                            Chi.innerText = `Выпало число: ${random}`
+                            Vic.innerText = `Выигрыш: ${inputNumber.textContent * 36}$`
                             coins.dollar += inputNumber.textContent * 36
                             document.getElementById("dollars").innerHTML = `${coins.dollar}$`
                             flagGlobal = false
+                            // gold.td.style.backgroundColor = "" 
                         }
                     }        
                 }
