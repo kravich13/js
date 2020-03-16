@@ -5,6 +5,8 @@
   <meta charset="utf-8">
   <style>
     #field {
+      cursor: pointer;
+      position: relative;
       width: 200px;
       height: 150px;
       border: 10px solid black;
@@ -13,10 +15,10 @@
       margin-left: 50px;
     }
     #ball {
-      /* transition: all 1s; */
+      transition: all 1s;
         position: absolute;
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
     }
   </style>
 </head>
@@ -28,80 +30,33 @@
 
 
   <div id="field">
-    <img src="https://ru.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    <img src="https://ru.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
   </div>
-
   <script>
-
     let div = document.getElementById("field")
     let ball = document.getElementById("ball")
     let posX
     let posY
+
     let centerX = ball.offsetWidth / 2
     let centerY = ball.offsetHeight / 2
-    let borderMinus = (div.offsetWidth - div.clientWidth) / 2
 
-    let brow = div.getBoundingClientRect()
-    let browLeft = brow.left
-    let browTop = brow.top
-
-
-    // правый бордер
-    let borderRight = ((div.offsetWidth - borderMinus) - ball.offsetWidth) + browLeft
-    let sumRight = ((browLeft + div.offsetWidth) - centerX) - borderMinus
-
-    // левый бордер
-    let borderLeft = browLeft + borderMinus
-    let sumLeft = browLeft + borderMinus + centerX
-
-    // верхний бордер
-    let borderTop = browTop + borderMinus
-    let sumTop = browTop + borderMinus + centerY
-
-    // нижний бордер
-    let borderBottom = ((div.offsetHeight - borderMinus) + browTop) - ball.offsetHeight
-    let sumBottom = browTop + (div.offsetHeight - borderMinus) - centerY
-
-    // прокрутка
-    let globalProt = document.documentElement.scrollHeight - document.documentElement.scrollTop
-    // console.log(document.documentElement.scrollTop)
-    // console.log(globalProt)
+    let globalCoords = div.getBoundingClientRect()
+    let globalLeft = globalCoords.left
+    let globalTop = globalCoords.top
 
 
     div.addEventListener("click", function(event) {
         posX = event.clientX
         posY = event.clientY
-        // console.log(posY) 
+        let scrollTop = document.documentElement.scrollTop
 
-        // бока
-        if (posX >= sumRight) {
-            ball.style.left = `${borderRight}px`
-        }
-        else {
-            if (posX <= sumLeft) {
-                ball.style.left = `${borderLeft}px`
-            }
-            else {
-                ball.style.left = `${posX - centerX}px`
-            }
-        }
-
-        // верха
-        if (posY <= sumTop) {
-            ball.style.top = `${borderTop}px`
-        }
-        else {
-          if (posY >= sumBottom) {
-            ball.style.top = `${borderBottom + document.documentElement.scrollTop}px`
-          }
-          else {
-            ball.style.top = `${(posY - centerY) + document.documentElement.scrollTop}px`
-            console.log(document.documentElement.scrollTop)
-          }
-        }
+        ball.style.left = `${posX - globalLeft - centerX - div.clientLeft}px`
+        ball.style.top = `${posY - globalTop}px`
+        console.log(globalTop) 
+        // console.log(scrollTop)
     })
-
   </script>
 
 </body>
