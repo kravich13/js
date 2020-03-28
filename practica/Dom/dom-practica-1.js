@@ -548,7 +548,7 @@ function tableName(elem) {
 tableName(table)
 
 
-// Напишите функцию showNotification(options), которая создаёт уведомление: <div class="notification"> с заданным содержимым. Уведомление должно автоматически исчезнуть через 1,5 секунды.
+// 12) Напишите функцию showNotification(options), которая создаёт уведомление: <div class="notification"> с заданным содержимым. Уведомление должно автоматически исчезнуть через 1,5 секунды.
 
 function showNotification () {
   let div = document.createElement("div") 

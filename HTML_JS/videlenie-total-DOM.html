@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    .selected {
+      background: rgb(255, 50, 50);
+    }
+      li {
+          cursor: pointer;
+      }
+  </style>
+</head>
+
+<body>
+
+  Кликни на элемент списка, чтобы выделить его.
+  <br>
+
+  <ul id="ul">
+    <li>Кристофер Робин</li>
+    <li>Винни Пух</li>
+    <li>Тигра</li>
+    <li>Кенга</li>
+    <li>Кравич</li>
+    <li>К</li>
+    <li>Кролик. Просто Кролик.</li>
+    <li>Тигра</li>
+    <li>Кенга</li>
+    <li>Тигра</li>
+    <li>Кенга</li>
+  </ul>
+
+  <script>
+      const ul = document.getElementById("ul")
+      let allLi = Array.from(ul.querySelectorAll("li"))
+      let indexCtrlAndLkm = 0
+
+      ul.addEventListener("click", function (event) {
+          if (!event.target.closest("li")) {
+              return
+          }
+
+          let eventTarget = event.target.closest("li")
+
+          ul.onmousedown = function () {
+              return false
+          }
+          
+          if (event.ctrlKey) {
+            eventTarget.classList.toggle("selected")
+            indexCtrlAndLkm = allLi.indexOf(eventTarget)
+          }
+          else {
+            if (event.shiftKey) {
+              eventTarget.classList.add("selected")
+              let indexShift = allLi.indexOf(eventTarget)
+              for (let i = Math.min(indexShift, indexCtrlAndLkm); i < Math.max(indexCtrlAndLkm, indexShift); i++) {
+                allLi[i].classList.add("selected")
+              }
+            }
+            else {
+              for (let i = 0; i < allLi.length; i++) {
+                if (eventTarget === allLi[i]) {
+                    allLi[i].classList.add("selected")
+                    indexCtrlAndLkm = i
+                } 
+                else {
+                  allLi[i].classList.remove("selected")
+                }
+              }
+            }
+          }
+      })
+  </script>
+
+</body>
+</html>

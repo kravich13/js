@@ -29,7 +29,6 @@ document.createElement("tr")
 console.log(table.children) // HTMLCollection(2) [div,tr]
 ```
 
-
 Удалить дочерний элемент из родителя можно методом `remove`. Пример: 
 
 ```javascript 
@@ -87,6 +86,31 @@ document.body.prepend(text)
 * `elem.setAttribute(name, value)` – установить значение.
 * `elem.removeAttribute(name)` – удалить атрибут.
 * `elem.attributes` – это коллекция всех атрибутов.
+
+***
+
+Метод `Element.closest()` возвращает ближайший родительский элемент (или сам элемент), который соответствует заданному CSS-селектору или null, если таковых элементов вообще нет.
+
+Другими словами, этот метод нужно использовать вместо метода `element.nodeName == "DIV"`, потому что тег `p` может лежать в теге `li`, который лежит в другом теге т.д. 
+
+```HTML
+<div id="block" title="Я - блок">
+    <a href="#">Я ссылка в никуда</a>
+    <a href="http://site.ru">Я ссылка на сайт</a>
+    <div>
+       <div id="too"></div>
+    </div>
+</div>
+```
+
+```javascript
+let div = document.querySelector("#too") //Это элемент от которого мы начнем поиск
+
+div.closest("#block") //Результат - самый первый блок древа выше
+div.closest("div") //Сам блок #too и будет результатом, так как он подходит под селектор "div"
+div.closest("a") //null - В предках #too нет ни одного тега "a"!
+div.closest("div[title]") //#block - так как ближе нет блоков с атрибутом title.
+```
 
 ***
 
@@ -230,5 +254,9 @@ tr.append(td)    // добавил td во второй tr
 * pseudo - указывается, если нужен стиль псевдоэлемента, например ::before. Пустая строка или отсутствие аргумента означают сам элемент.
 
 
+*** 
 
+`event.defaultPrevented` - используется для того, чтобы отменить типичное действие у тега.
+
+Свойство `event.defaultPrevented` установлено в `true`, если действие по умолчанию было предотвращено, и `false`, если нет.
 

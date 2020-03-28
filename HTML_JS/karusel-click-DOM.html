@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <style>
+      body {
+          height: 2000px;
+      }
+      .arrow {
+  padding: 0;
+  background: #ddd;
+  border-radius: 15px;
+  border: 1px solid gray;
+  font-size: 24px;
+  line-height: 24px;
+  color: #444;
+  position: absolute;
+}
+#arrowLeft {
+    left: 10px;
+    top: 40%;
+    
+}
+#arrowRight {
+    right: 10px;
+    top: 40%;
+}
+.arrow:focus {
+  outline: none;
+}
+
+.arrow:hover {
+  background: #ccc;
+  cursor: pointer;
+}
+
+ul {
+  height: 130px;
+  width: 9999px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0;
+  margin-left: 0;
+  transition: margin-left 500ms;
+}
+
+ul img {
+  width: 130px;
+  height: 130px;
+  display: block; 
+}
+
+ul li {
+  display: inline-block; /* убираем пустое место между элементами списка */
+}
+div {
+    display: inline-block;
+    overflow: hidden;
+    width: 380px;
+    background:rgb(228, 228, 228);
+    border-radius: 25px;
+    position: relative;
+    /* padding: 15px 54px; */
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- создайте свою разметку со стилями -->
+
+<div>
+    <button id="arrowLeft" class="arrow">⇦</button>
+    <button id="arrowRight" class="arrow">⇨</button>
+  <ul id="ul-img">
+    <li><img src="https://ru.js.cx/carousel/1.png"></li>
+    <li><img src="https://ru.js.cx/carousel/2.png"></li>
+    <li><img src="https://ru.js.cx/carousel/3.png"></li>
+    <li><img src="https://ru.js.cx/carousel/4.png"></li>
+    <li><img src="https://ru.js.cx/carousel/5.png"></li>
+    <li><img src="https://ru.js.cx/carousel/6.png"></li>
+    <li><img src="https://ru.js.cx/carousel/7.png"></li>
+    <li><img src="https://ru.js.cx/carousel/8.png"></li>
+    <li><img src="https://ru.js.cx/carousel/9.png"></li>
+    <li><img src="https://ru.js.cx/carousel/10.png"></li>
+  </ul>
+</div>
+
+
+  <script>
+
+    function blockImg () {
+
+        let ul = document.getElementById("ul-img")
+        let leftStrelka = document.getElementById("arrowLeft")
+        let RightStrelka = document.getElementById("arrowRight")
+
+        let margiNLeft = 0
+
+        leftStrelka.addEventListener("click", function(event) {
+            let ulglobal = ul.getBoundingClientRect()     
+            if (ulglobal.left >= 8) {
+                ul.style.marginLeft = "0px"
+            }
+            else {
+                ul.style.marginLeft = `${ulglobal.left + 382}px`
+            }
+        })
+
+        RightStrelka.addEventListener("click", function(event) {
+            let ulglobal = ul.getBoundingClientRect()            
+            if (ulglobal.left <= -1150) {
+                ul.style.marginLeft = "-1170px"
+            }
+            else {
+                ul.style.marginLeft = `${ulglobal.left - 398}px`
+            }
+        })
+
+    }
+    blockImg()
+
+  </script>
+
+</body>
+</html>
