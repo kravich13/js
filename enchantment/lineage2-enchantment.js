@@ -11,6 +11,9 @@ var bag = {
         SA: "acumen",
         LS: true,
         fullName: "Arcana Mace"
+    },
+    "crystals": {
+        S: 0
     }
 }
 
