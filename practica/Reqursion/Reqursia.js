@@ -1,20 +1,5 @@
 // Напишите функцию sumTo(n), которая вычисляет сумму чисел 1 + 2 + ... + n.
 
-// Например:
-
-// sumTo(1) = 1
-// sumTo(2) = 2 + 1 = 3
-// sumTo(3) = 3 + 2 + 1 = 6
-// sumTo(4) = 4 + 3 + 2 + 1 = 10
-// ...
-// sumTo(100) = 100 + 99 + ... + 2 + 1 = 5050
-
-// Сделайте три варианта решения:
-
-// С использованием цикла.
-// Через рекурсию, т.к. sumTo(n) = n + sumTo(n-1) for n > 1.
-
-
 function sumTo(n) {
     let sum = 0
     
@@ -27,89 +12,45 @@ function sumTo(n) {
 console.log(sumTo(10))
 
 
+
 function sumTo(n) {
-    if (n == 1) {
-        return n
-    }
-    else {
-        let sum = 0
-        sum = n + sumTo(n-1) // делаем знак "+" для суммы чисел
-        return sum
-    }
+    if (n === 1) return n
+    
+    let sum = 0
+    return sum = n + sumTo(n - 1)
 }
-console.log(sumTo(10))
-
-
-
+sumTo(13) // 91
 
 
 
 
 // Вычислить факториал
 
-// Факториал натурального числа – это число, умноженное на "себя минус один", затем на "себя минус два", и так далее до 1. Факториал n обозначается как n!
-// Определение факториала можно записать как:
+function factorial (n) {
+    if (n === 1) return n 
 
-// n! = n * (n - 1) * (n - 2) * ...*1
-// Примеры значений для разных n:
-
-// 1! = 1
-// 2! = 2 * 1 = 2
-// 3! = 3 * 2 * 1 = 6
-// 4! = 4 * 3 * 2 * 1 = 24
-// 5! = 5 * 4 * 3 * 2 * 1 = 120
-// Задача – написать функцию factorial(n), которая возвращает n!, используя рекурсию.
-
-
-function factorial(n) {
-    if (n == 1) {
-        return n
-    }
-    else {
-        let factor = 0
-        factor = n * factorial(n-1) 
-        return factor
-    }
+    let sum = 0
+    return sum = n * factorial(n - 1)
 }
-console.log(factorial(5))
+factorial(13) // 6227020800
 
 
 
 
 // Последовательность чисел Фибоначчи определяется формулой Fn = Fn-1 + Fn-2. То есть, следующее число получается как сумма двух предыдущих.
 
-// Первые два числа равны 1, затем 2(1+1), затем 3(1+2), 5(2+3) и так далее: 1, 1, 2, 3, 5, 8, 13, 21....
-// Числа Фибоначчи тесно связаны с золотым сечением и множеством природных явлений вокруг нас.
-// Напишите функцию fib(n) которая возвращает n-е число Фибоначчи.
-
-// Пример работы:
-
-// function fib(n) { /* ваш код */ }
-
-// alert(fib(3)); // 2
-// alert(fib(7)); // 13
-// alert(fib(77)); // 5527939700884757
-
-
 function fib (n) {
-    if (n <= 1) {
-        return n
-    }
-    else {
-        let fibo = 0
-        fibo = fib(n-1) + fib(n-2) // первая функция -1 плюс вторая функция -1
-        return fibo
-    }
-}
-console.log(fib(7)) // 13
+    if (n <= 1) return n
 
+	let sum = 0
+	return sum = fib (n - 1) + fib ( n - 2)
+}
+fib(7) // 13
 
 
 
 
 // Вывод односвязного списка
-// Допустим, у нас есть односвязный список (как описано в главе Рекурсия и стек):
-
 let list = {
     value: 1,
     next: {
@@ -125,37 +66,29 @@ let list = {
 }
 // Напишите функцию printList(list), которая выводит элементы списка по одному.
 
-// Сделайте два варианта решения: используя цикл и через рекурсию.
+function printList (obj) {
+	console.log(obj.value) // вывод value сразу
+	if (obj.next === null) return  // если есть null в next - return
 
-
-function printList(list) {
-    let str = ""
-
-    if ("value" in list) {
-        str += list.value
-    }
-    if ("next" in list) {
-        
-    }
-    
-
-    return str
+	return printList (obj.next) // рекурсия: если первое условие не сработало, тогда вызов объекта next
 }
-console.log(printList(list))
+printList(list) // 1, 2, 3, 4
 
 
-function printList(list) {
-    console.log(list.value) 
-    // console.log(list.name)
-    if (list.next == null) {
-        return
+
+
+// Вывод односвязного списка в обратном порядке
+
+function printList (obj) {
+	if (obj.next) { //  если есть obj.next
+        printList(obj.next) // вызываем рекурсию 
     }
-    else {
-        printList(list.next)
-    }
 
+    console.log(obj.value) // выводим value
 }
-printList(list)
+printList(list) // 4, 3, 2, 1
+
+
 
 
 // Сделать HTML-конструктор из деревянной структуры, которая была на прошлом занятии:
@@ -181,6 +114,20 @@ let someTree = {
         style: "color: red"
     },
 }
+
+// function table (obj) {
+//     let str = `<${obj.tagName}`
+
+//     if ("attrs" in obj) {
+//         for (let key in obj) {
+//             str += ` ${key} = "${obj.attrs[key]}"`
+//         }
+//     }
+//     str += ">"
+
+//     return str
+// }
+// table(someTree)
 
 // Для начала сделайте конструктор для верхнего уровня (в примере - table). Потом с помощью копипасты сделайте то же самое с вложенным уровнем nestedTags (tr). Аналогично для уровня td.
 // Конструктор должен поддерживать вложенность до 3его уровня (как в примере). В результате работы конструктора из примера выше должен получиться следующий HTML(в строке str):

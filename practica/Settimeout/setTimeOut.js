@@ -106,23 +106,32 @@ printNumbersTwo (10000, 50)
 // 1) Напишите функцию printNumbers(from, to), которая выводит число каждую секунду, начиная от from и заканчивая to.
 
 // Используя setInterval.
+
+function printNumbers (from, to) {
+    let current = from
+
+    let timeId = setInterval(function () {
+        console.log(current)
+        current++
+
+        if (current > to) clearInterval(timeId)
+    }, 1000)
+}
+printNumbers(7, 13)
+
+
 // Используя рекурсивный setTimeout.
 
 function printNumbers (from, to) {
-    let current = from 
-    let timeId = setInterval(function() {
-        console.log(current)
+    let current = from
 
-        if (current == to) { 
-            clearInterval(timeId) // остановка
-        }
+    setTimeout (function run () {
+        console.log(current) 
+        current++
 
-        current++ // вывели число 1 и после этого нарастили его до 2 и т.д.
+        if (current <= to) setTimeout(run, 1000)
 
-    }, 1000); // время, через которое будет появляться каждое число начиная от первого
+    }, 1000)
 }
-printNumbers(1, 13)
-
-
-
+printNumbers(7, 13)
 
