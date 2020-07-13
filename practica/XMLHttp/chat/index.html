@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+
+    <style>
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ul, li, ol, fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed,
+        figure, figcaption, footer, header, hgroup,
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+        margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: url("winter.jpg");
+        }
+        span {
+            /* font-weight: 600; */
+            /* color: rgb(168, 168, 168); */
+        }
+        #chat {
+            padding: 20px;
+            height: 500px;
+            width: 1130px;
+            color: rgb(255, 255, 255);
+            font-size: 19px;
+            /* background:linear-gradient(#008cffc2, #442222d7); */
+            background: rgba(122, 41, 41, 0.63);
+            overflow-x: hidden;
+            word-wrap: break-word;
+            border: 3px solid rgb(165, 0, 0);
+            border-radius: 5px;
+        }
+        #chat div {
+            display: inline-block;
+            /* background: rgba(255, 0, 0, 0.548); */
+            background: rgba(0, 0, 0, 0.45);
+            color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 5px;
+        }    
+        #nickname, #message, #enter {
+            padding: 10px 20px;
+            color: rgb(206, 206, 206);
+            background: rgb(43, 43, 43);
+            border: 2px solid rgb(165, 0, 0);
+            margin-top: 25px;
+            font-size: 19px;
+            border-radius: 20px;
+        }
+        #nickname {
+            text-align: center;
+            width: 250px;
+        }
+        #message {
+            width: 500px;
+        }
+        #enter {
+            font-size: 19px;
+            width: 250px;
+        }
+        #headP {
+            margin: 25px;
+            text-shadow: 1px 1px 13px white;
+            color: rgb(197, 34, 34);
+            font-weight: 600;
+            font-size: 23px;
+        }
+    </style>
+</head>
+<body>
+
+    <p id="headP">Чат с Кравичем</p>
+
+    <div id="chat">
+
+    </div>
+
+    <input type="text" id="nickname">
+    <input type="text" id="message">
+
+    <button id="enter">Отправить</button>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    table {
+       border-collapse: collapse;
+     }
+     th, td {
+       border: 1px solid black;
+       padding: 4px;
+     }
+     th {
+       cursor: pointer;
+     }
+     th:hover {
+       background: yellow;
+     }
+  </style>
+</head>
+
+<body>
+
+  <table id="grid">
+    <thead>
+      <tr>
+        <th data-type="number"><span>Возраст</span></th>
+        <th data-type="string">Имя</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>5</td>
+        <td>Вася</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Петя</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Женя</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Маша</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Илья</td>
+      </tr>
+      <tr>
+        <td>22</td>
+        <td>Влад</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+
+    let table = document.getElementById("grid")
+    
+    table.addEventListener("click", function(event) {
+      if (!event.target.closest("th[data-type]")) {
+        return
+      }
+      let index = event.target.closest("th[data-type]").cellIndex
+      let arrStolb = table.querySelectorAll("tr")
+      let newArrStolb = []
+
+      for (let i = 0; i < arrStolb.length; i++) {
+        newArrStolb[i] = arrStolb[i]
+      }
+
+      newArrStolb.splice(0, 1)
+
+      newArrStolb.sort(sortTable)
+      function sortTable (a, b) {
+        if (isNaN(a.children[index].textContent) && isNaN(a.children[index].textContent)) {
+          if (a.children[index].textContent < b.children[index].textContent ) {
+          return -1
+        }
+        if (a.children[index].textContent  > b.children[index].textContent ) {
+          return 1
+          }
+        }
+        else {
+          console.log("число")
+          return a.children[index].textContent - b.children[index].textContent
+        }
+      }
+    
+      for (let i = 0; i < newArrStolb.length; i++) {
+        table.append(newArrStolb[i])
+      }
+    })
+
+  </script>
+
+</body>
+</html>

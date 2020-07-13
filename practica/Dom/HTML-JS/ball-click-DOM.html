@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    #field {
+      cursor: pointer;
+      position: relative;
+      width: 200px;
+      height: 150px;
+      border: 10px solid black;
+      background-color: #00FF00;
+      overflow: hidden;
+      margin-left: 50px;
+      margin-top: 50px;
+    }
+    #ball {
+      transition: all 1s;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+    }
+  </style>
+</head>
+
+<body style="height:2000px">
+
+  Нажмите на поле для перемещения мяча.
+  <br> Мяч не должен выходить за границы поля.
+
+
+  <div id="field">
+    <img src="https://ru.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  </div>
+  <script>
+
+    let div = document.getElementById("field")
+    let ball = document.getElementById("ball")
+
+    div.addEventListener("click", function (event) {
+
+      let centerX = ball.offsetWidth / 2
+      let centerY = ball.offsetHeight / 2
+      let posX = event.clientX
+      let posY = event.clientY
+      let globalCoords = div.getBoundingClientRect()
+      let globalTop = globalCoords.top
+      let globalLeft = globalCoords.left
+
+      // ширина
+      let borderRight = globalLeft + div.clientLeft + div.clientWidth - centerX
+      let borderLeft = globalLeft + div.clientLeft + centerX
+
+      if (posX <= borderLeft) {
+        ball.style.left = `${div.clientLeft - div.clientLeft}px`
+      } 
+      else {
+        if (posX >= borderRight) {
+          ball.style.left = `${div.clientWidth - ball.offsetWidth }px`
+        } 
+        else {
+          ball.style.left = `${posX - globalLeft - centerX - div.clientLeft}px`
+        }
+      }
+
+      // высота
+      let borderTop = globalTop + div.clientTop + centerY
+      let borderBottom = globalTop + div.clientTop + div.clientHeight - centerY
+
+      if (posY <= borderTop) {
+        ball.style.top = `${div.clientTop - div.clientTop}px`
+      } 
+      else {
+        if (posY >= borderBottom) {
+          ball.style.top = `${div.clientHeight - ball.offsetHeight}px`
+        } 
+        else {
+          ball.style.top = `${posY - globalTop - div.clientTop - centerY}px`
+        }
+      }
+    })
+
+  </script>
+
+</body>
+</html>
