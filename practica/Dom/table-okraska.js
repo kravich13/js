@@ -6,7 +6,7 @@
 
 
 
-function table (x) {
+function table(x) {
     // объявляем переменные с тегами
     let table = document.createElement("table")
     let tr = document.createElement("tr")
@@ -27,8 +27,7 @@ function table (x) {
             if (i % 2 == 0) {
                 td.style.backgroundColor = "rgb(255, 255, 255)"
                 tr.append(td)
-            }
-            else {
+            } else {
                 td.style.backgroundColor = "rgb(233, 233, 233)"
                 tr.append(td)
             }
@@ -37,7 +36,7 @@ function table (x) {
 
     table.addEventListener("mouseover", function (event) {
         if (event.target.nodeName == 'TD') {
-            event.target.style.color = "rgb(255, 255, 255)" 
+            event.target.style.color = "rgb(255, 255, 255)"
 
 
             // ПОДСВЕТКА СТРОКИ //
@@ -46,12 +45,10 @@ function table (x) {
             for (let i = 0; i < x; i++) {
                 if (table.rows[strTD].cells[i].style.backgroundColor == "rgb(206, 46, 46)") {
                     table.rows[strTD].cells[i].style.backgroundColor = "rgb(206, 46, 46)"
-                }
-                else {
+                } else {
                     if (table.rows[strTD].cells[i].style.backgroundColor == "rgb(255, 255, 255)") {
                         table.rows[strTD].cells[i].style.backgroundColor = "rgb(133, 197, 37)"
-                    }
-                    else {
+                    } else {
                         if (table.rows[strTD].cells[i].style.backgroundColor = "rgb(233, 233, 233)") {
                             table.rows[strTD].cells[i].style.backgroundColor = "rgb(133, 197, 37)"
                         }
@@ -62,15 +59,14 @@ function table (x) {
 
             // ПОДСВЕТКА СТОЛБА // 
 
-            let stolbTD = event.target.cellIndex 
+            let stolbTD = event.target.cellIndex
             for (i = 0; i < x; i++) {
                 if (table.rows[i].cells[stolbTD].style.backgroundColor == "rgb(206, 46, 46)") {
                     table.rows[i].cells[stolbTD].style.backgroundColor = "rgb(206, 46, 46)"
-                }
-                else {
+                } else {
                     if (table.rows[i].cells[stolbTD].style.backgroundColor == "rgb(255, 255, 255)") {
                         table.rows[i].cells[stolbTD].style.backgroundColor = "rgb(133, 197, 37)"
-                    }
+                    } 
                     else {
                         if (table.rows[i].cells[stolbTD].style.backgroundColor == "rgb(233, 233, 233)") {
                             table.rows[i].cells[stolbTD].style.backgroundColor = "rgb(133, 197, 37)"
@@ -86,20 +82,17 @@ function table (x) {
                 let whiteTD = event.target
                 globalInCell.cellWhite = whiteTD
                 event.target.style.backgroundColor = "rgb(94, 94, 94)"
-            }
-            else {    
+            } else {
                 if (event.target.style.backgroundColor == "rgb(206, 46, 46)") {
                     let redTD = event.target
                     globalInCell.cellRed = redTD
                     event.target.style.backgroundColor = "rgb(94, 94, 94)"
-                }
-                else {
+                } else {
                     if (event.target.style.backgroundColor == "rgb(233, 233, 233)") {
                         let greyTD = event.target
                         globalInCell.cellGrey = greyTD
                         event.target.style.backgroundColor = "rgb(94, 94, 94)"
-                    }
-                    else {
+                    } else {
                         if (event.target.style.backgroundColor == "rgb(133, 197, 37)") {
                             event.target.style.backgroundColor = "rgb(94, 94, 94)"
                         }
@@ -119,40 +112,34 @@ function table (x) {
             let strTD = event.target.parentElement.rowIndex
             for (let i = 0; i < x; i++) {
                 if (strTD % 2 == 0) {
-                   if (table.rows[strTD].cells[i].style.backgroundColor == "rgb(206, 46, 46)") {
-                       table.rows[strTD].cells[i].style.backgroundColor = "rgb(206, 46, 46)"
-                   } 
-                   else {
-                    table.rows[strTD].cells[i].style.backgroundColor = "rgb(255, 255, 255)"
-                   }
-                }
-                else {
                     if (table.rows[strTD].cells[i].style.backgroundColor == "rgb(206, 46, 46)") {
                         table.rows[strTD].cells[i].style.backgroundColor = "rgb(206, 46, 46)"
-                    } 
-                    else {
-                     table.rows[strTD].cells[i].style.backgroundColor = "rgb(233, 233, 233)"
+                    } else {
+                        table.rows[strTD].cells[i].style.backgroundColor = "rgb(255, 255, 255)"
+                    }
+                } else {
+                    if (table.rows[strTD].cells[i].style.backgroundColor == "rgb(206, 46, 46)") {
+                        table.rows[strTD].cells[i].style.backgroundColor = "rgb(206, 46, 46)"
+                    } else {
+                        table.rows[strTD].cells[i].style.backgroundColor = "rgb(233, 233, 233)"
                     }
                 }
             }
 
             // ДЛЯ ОДНОГО СТОЛБА //
 
-            let stolbTD = event.target.cellIndex 
+            let stolbTD = event.target.cellIndex
             for (i = 0; i < x; i++) {
                 if (i % 2 == 0) {
                     if (table.rows[i].cells[stolbTD].style.backgroundColor == "rgb(206, 46, 46)") {
                         table.rows[i].cells[stolbTD].style.backgroundColor = "rgb(206, 46, 46)"
-                    } 
-                    else {
+                    } else {
                         table.rows[i].cells[stolbTD].style.backgroundColor = "rgb(255, 255, 255)"
                     }
-                }
-                else {
+                } else {
                     if (table.rows[i].cells[stolbTD].style.backgroundColor == "rgb(206, 46, 46)") {
                         table.rows[i].cells[stolbTD].style.backgroundColor = "rgb(206, 46, 46)"
-                    } 
-                    else {
+                    } else {
                         table.rows[i].cells[stolbTD].style.backgroundColor = "rgb(233, 233, 233)"
                     }
                 }
@@ -164,12 +151,10 @@ function table (x) {
             for (let key in globalInCell) {
                 if (key == "cellWhite") {
                     globalInCell[key].style.backgroundColor = "rgb(255, 255, 255)"
-                }
-                else {
+                } else {
                     if (key == "cellGrey") {
                         globalInCell[key].style.backgroundColor = "rgb(233, 233, 233)"
-                    }
-                    else {
+                    } else {
                         if (key == "cellRed") {
                             globalInCell[key].style.backgroundColor = "rgb(206, 46, 46)"
                         }
@@ -193,37 +178,31 @@ function table (x) {
             let numberInTD = event.target.textContent // хранится первоначальное число в ячейке
             event.target.textContent = "" // удаляем текущее значение ячейки
             input.value = numberInTD // текст по умолчанию в инпуте
-            event.target.prepend(input) 
-            input.focus()   // фокус 
+            event.target.prepend(input)
+            input.focus() // фокус 
             input.select() // выделенный текст
 
-            input.addEventListener("keydown", function(event) {
+            input.addEventListener("keydown", function (event) {
                 if (event.code == 'Escape') {
                     tD.textContent = numberInTD // в ячейку td записываем первоначальное число, которое было сохранено в переменную (textcontent)
                 }
                 if (event.code == "Enter") {
                     if (event.target.value != numberInTD) {
                         tD.textContent = event.target.value
-                        tD.style.backgroundColor = "rgb(206, 46, 46)" 
-                    }
-                    else {
+                        tD.style.backgroundColor = "rgb(206, 46, 46)"
+                    } else {
                         tD.textContent = event.target.value
                     }
                 }
             })
-            input.addEventListener("blur", function(event) {
+            input.addEventListener("blur", function (event) {
                 if (event.target.value == numberInTD) {
                     tD.textContent = numberInTD
                 }
             })
         }
-    })  
+    })
 
     return document.body.prepend(table)
 }
 table(10)
-
-
-
-
-
