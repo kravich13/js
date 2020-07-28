@@ -1,0 +1,19 @@
+@mixin styleShit ($width) {
+    // создал функцию 
+    color: rgb(207, 207, 207);
+    background: rgb(58, 58, 58);
+    border: 2px solid rgb(180, 0, 0);
+    padding: 8px;
+    display: block;
+    text-align: center;
+    width: $width;
+
+    // так же функции позволяют создавать группы деклараций для разных браузеров
+    -webkit-border-radius: 13px;
+       -moz-border-radius: 13px;
+        -ms-border-radius: 13px;
+         -o-border-radius: 13px;
+            border-radius: 13px;
+} 
+
+$font_size: 23px;

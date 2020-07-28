@@ -1,0 +1,20 @@
+$border: 1px solid rgb(255, 0, 0); // записал в переменную что нужно
+$color_whiteGrey: rgb(221,221,221);
+
+
+body {
+    background: rgb(85, 85, 85);
+}
+div {
+    h1 {
+        border: $border; // юзаю переменную
+        background: $color_whiteGrey; // юзаю переменную
+        width: 223px;
+    }
+    p {
+        display: inline-block;
+        color: $color_whiteGrey;
+        background: rgb(109, 109, 109); // юзаю переменную
+        border: $border; // юзаю переменную
+    }
+}

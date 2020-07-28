@@ -1,0 +1,31 @@
+h2 {
+  color: #cfcfcf;
+  background: #3a3a3a;
+  border: 2px solid #b40000;
+  padding: 8px;
+  display: block;
+  text-align: center;
+  width: 230px;
+  -webkit-border-radius: 13px;
+  -moz-border-radius: 13px;
+  -ms-border-radius: 13px;
+  -o-border-radius: 13px;
+  border-radius: 13px;
+}
+
+div p {
+  color: #cfcfcf;
+  background: #3a3a3a;
+  border: 2px solid #b40000;
+  padding: 8px;
+  display: block;
+  text-align: center;
+  width: 130px;
+  -webkit-border-radius: 13px;
+  -moz-border-radius: 13px;
+  -ms-border-radius: 13px;
+  -o-border-radius: 13px;
+  border-radius: 13px;
+}
+
+/*# sourceMappingURL=style.css.map */

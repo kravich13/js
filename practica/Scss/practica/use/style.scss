@@ -1,0 +1,14 @@
+@use 'style1.scss'; // импорт из файла
+$size: style1.$font_size; // в переменную size записал переменную font_zise из style1
+
+body {
+    background: rgb(214, 204, 168);
+}
+div {
+    p {
+        @include style1.styleShit(150px); // использовал переменную из файла style1
+        font-size: $size; // использовал перезаписанную переменную
+
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}

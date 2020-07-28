@@ -1,0 +1,17 @@
+body {
+  background: #555555;
+}
+
+div h1 {
+  border: 1px solid red;
+  background: #dddddd;
+  width: 223px;
+}
+div p {
+  display: inline-block;
+  color: #dddddd;
+  background: #6d6d6d;
+  border: 1px solid red;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,18 @@
+@forward 'style1.scss';
+
+$primaryBtn: #dddddd;
+$backButton: #252525;
+$border: 1px solid rgb(190, 0, 0);
+
+button {
+    color: $primaryBtn;
+    background: $backButton;
+    border: $border;
+}
+p {
+    color: grey;
+}
+#qq {
+    color: red;
+    background: grey;
+}
