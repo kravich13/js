@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select-Search</title>
+
+    <style>
+        body {
+            background: rgb(0, 138, 218);
+        }
+        /* #test {
+            color: rgb(206, 206, 206);
+            background: rgb(43, 43, 43);
+            border: 2px solid rgb(165, 0, 0);
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-size: 19px;
+        } */
+        
+    </style>
+
+
+</head>
+<body>
+
+    <select-search value="Введите текст">
+        <option value="">Абхазия</option>
+        <option value="">Австралия</option>
+        <option value="">Австрия</option>
+        <option value="">Азербайджан</option>
+        <option value="">Албания</option>
+        <option value="">Алжир</option>
+        <option value="">Ангола</option>
+        <option value="">Андорра</option>
+        <option value="">Антигуа</option>
+        <option value="">Барбуда</option>
+        <option value="">Аргентина</option>
+        <option value="">Армения</option>
+        <option value="">Афганистан</option>
+    </select-search>
+
+
+    <select-search value="Введите текст">
+        <option value="">Абхазия</option>
+        <option value="">Австралия</option>
+        <option value="">Австрия</option>
+        <option value="">Азербайджан</option>
+        <option value="">Албания</option>
+        <option value="">Алжир</option>
+        <option value="">Ангола</option>
+    </select-search>
+
+
+    <template id="tmpl">
+        <style>
+            /* ul {
+            margin: 0;
+            list-style: none;
+            padding-left: 0px;
+            } */
+            #menu {
+                border: 1px solid rgb(104, 104, 104);
+                /* padding: 0 5px; */
+                background: white;
+            }
+            #menu option {
+                padding: 0 5px;
+            }
+        </style>
+      
+
+        <input type="text" id="inputValue">
+        <div id="menu"><slot></slot></div>
+      </template>
+      
+
+      
+      <script>
+    
+        customElements.define('select-search', class extends HTMLElement {
+            connectedCallback() {
+                const options = Array.from(this.querySelectorAll("option"))
+
+                const shadow =  this.attachShadow({mode: 'open'})
+
+                shadow.append( tmpl.content.cloneNode(true) )
+                shadow.querySelector("slot").hidden = true
+                const $divMenu = shadow.getElementById("menu")
+
+                let optionValue = ""
+                let currentIndex = 0
+
+                let dynamicOptions = []
+
+
+                function hiddenOption (current) {
+                    let j = 0
+
+                    const newArr = []
+
+                    options.forEach(function (elem) {
+                        if (elem.textContent.toUpperCase().indexOf(current.toUpperCase()) === 0) {
+
+                            newArr.push(elem)
+
+                            for (let i = 0; i < options.length; i++) {
+                                if (newArr[0] === options[i]) {
+                                    options[i].style.backgroundColor = "teal"
+                                    options[i].style.color = "rgb(246, 246, 246)"
+                                }
+                            }
+
+                            elem.hidden = false
+                        }
+                        else {
+                            
+                            for (let i = 0; i < options.length; i++) {
+                                if (newArr[0] != options[i]) {
+                                    options[i].style.backgroundColor = ""
+                                    options[i].style.color = ""
+                                }
+                            }
+
+                            j++
+                            elem.hidden = true
+                        }
+                    })
+
+                    if (j === shadow.host.children.length) {
+                        shadow.querySelector("slot").hidden = true
+                    }
+
+                    dynamicOptions = Array.from(newArr)
+                }
+                
+
+                // const event = new Event("click", {bubles: true, composed: true})
+                // shadow.dispatchEvent(event)
+
+
+                shadow.addEventListener("click", function (event) {
+                    // if (event.target.closest("select-search")) {
+                    //     // console.log("тут")
+                    //     const $input = shadow.getElementById("inputValue")
+                    //     hiddenOption($input.textContent)
+
+                    //     $input.select()
+
+                    //     if ( shadow.querySelector("slot").hidden === true) {
+                    //         shadow.querySelector("slot").hidden = false
+                    //         return 
+                    //     }
+                    //     shadow.querySelector("slot").hidden = true
+                    // }
+                    // if (event.target.closest("option")) {
+
+                    //     optionValue = event.target.textContent
+                    //     shadow.getElementById("inputValue").value = event.target.textContent
+                    //     shadow.querySelector("slot").hidden = true
+                    //     return
+                    // }
+
+
+
+                    if (event.target != event.target.closest("select-search")) {
+                        shadow.querySelector("slot").hidden = true
+                    }
+
+                    if (event.target.closest("option")) {
+
+                        optionValue = event.target.textContent
+                        shadow.getElementById("inputValue").value = event.target.textContent
+                        shadow.querySelector("slot").hidden = true
+                        return
+                    }
+                    if (event.target.closest("input")) {
+                        hiddenOption(event.target.value)
+
+                        event.target.select()
+
+                        if ( shadow.querySelector("slot").hidden === true) {
+                            shadow.querySelector("slot").hidden = false
+                            return 
+                        }
+                        shadow.querySelector("slot").hidden = true
+                    }
+                        
+                })
+                
+
+                shadow.getElementById("inputValue").addEventListener("input", function (event) {
+                    const currentText = event.target.value
+
+                    // if (currentText === "") shadow.querySelector("slot").hidden = true
+                    // else
+                     shadow.querySelector("slot").hidden = false
+
+                    hiddenOption(currentText)
+
+                    // options[0].style.backgroundColor = "teal"
+                    // options[0].style.color = "rgb(246, 246, 246)"
+                })
+
+
+                shadow.querySelector("slot").addEventListener("mouseover", function (event) {
+                    if (event.target.closest("option")) {
+                        event.target.style.backgroundColor = "teal"
+                        event.target.style.color = "rgb(246, 246, 246)"
+
+                        if (optionColor.theFirst) {
+                            optionColor.theFirst.style.backgroundColor = ""
+                            optionColor.theFirst.style.color = ""
+                        }
+
+                        if (optionColor.second) {
+                            optionColor.second.style.backgroundColor = ""
+                            optionColor.second.style.color = ""
+                        }
+                        
+                        currentIndex = options.indexOf(event.target)
+                        start = currentIndex
+
+
+                        // if (shadow.getElementById("inputValue").textContent === "") {
+                        //     console.log(shadow.getElementById("inputValue").textContent)
+                        // }
+                        // else console.log(shadow.getElementById("inputValue").textContent)
+                    }
+                })
+
+
+                shadow.querySelector("slot").addEventListener("mouseout", function (event) {
+                    if (event.target.closest("option")) {
+                        event.target.style.backgroundColor = ""
+                        event.target.style.color = ""
+                    }
+                })
+
+
+                // Клавиатура
+                let start = currentIndex
+                const optionColor = { theFirst: options[0]}
+
+                shadow.getElementById("inputValue").addEventListener("keydown", function (event) {
+
+                    if (event.code === "Escape") {
+                        shadow.querySelector("slot").hidden = true
+                        shadow.getElementById("inputValue").value = ""
+                    }
+
+                    if (event.code === "Enter") {
+
+                        const newCurrent = options.filter(function (elem) {
+                            if (elem.hidden === false) return true
+                        })
+                        shadow.querySelector("slot").hidden = true
+                        
+                        if (!newCurrent[0]) return
+
+                        // shadow.getElementById("inputValue").value = newCurrent[0].textContent
+
+                        // optionColor.theFirst.
+                        // if ()
+
+                        options.forEach(function (elem) {
+                            if (elem.style.backgroundColor === "teal") {
+                                shadow.getElementById("inputValue").value = elem.textContent
+                            }
+                        })
+                    }
+
+                    if (event.code === "ArrowDown") {
+                        event.preventDefault()
+
+                        if (start <= dynamicOptions.length - 1) {
+
+                            if (start === dynamicOptions.length - 1) return
+                            else start++
+                            
+                            
+                            optionColor.second = options[start]
+
+                            dynamicOptions[start].style.backgroundColor = "teal"
+                            dynamicOptions[start].style.color = "rgb(246, 246, 246)"   
+
+                            dynamicOptions[start-1].style.backgroundColor = ""
+                            dynamicOptions[start-1].style.color = ""     
+
+                        }               
+                        
+                        
+                    }
+                    if (event.code === "ArrowUp") {
+                        event.preventDefault()
+
+                        if (start > 0) {
+                            
+                            if (start === 0) return
+                            else start--
+
+
+                            optionColor.second = options[start]
+
+                            dynamicOptions[start].style.backgroundColor = "teal"
+                            dynamicOptions[start].style.color = "rgb(246, 246, 246)"
+
+                            dynamicOptions[start+1].style.backgroundColor = ""
+                            dynamicOptions[start+1].style.color = ""  
+                        }
+                    }
+
+
+                })
+            }
+        })
+      </script>
+</body>
+</html>

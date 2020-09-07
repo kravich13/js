@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p>Текст до скриптов</p>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => alert("DOM готов!"));
+    </script>
+
+
+    <!-- Скрипты выполняются в порядке загрузки -->
+
+    <!-- Большой скрипт расположен первее маленького, но маленький сработает раньше большого -->
+    <script async src="https://javascript.info/article/script-async-defer/long.js"></script>
+    <script async src="https://javascript.info/article/script-async-defer/small.js"></script>
+
+    <!-- Содержимое показывается сразу же, async его не блокирует -->
+    <p>Текст после скриптов</p>
+
+
+
+
+    <!-- Динамически загружаемые скрипты по умолчанию ведут себя как «async». -->
+
+    <!-- Можно изменить относительный порядок скриптов с "первый загрузился - первый выполнился" на порядок, в котором они расположены в документе (как в обычных скриптах) с помощью явной установки async в false -->
+
+    <script>
+        function loadScript(src) {
+            const script = document.createElement('script');
+            script.src = src;
+            script.async = false // async выключить
+            document.body.append(script);
+        }
+        loadScript("/article/script-async-defer/long.js");
+        loadScript("/article/script-async-defer/small.js");
+    </script>
+
+    </body>
+</html>

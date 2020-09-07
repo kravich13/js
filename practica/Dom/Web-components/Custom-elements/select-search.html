@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select-Search</title>
+
+    <style>
+        body {
+            /* background: rgb(0, 138, 218); */
+        }
+        /* #test {
+            color: rgb(206, 206, 206);
+            background: rgb(43, 43, 43);
+            border: 2px solid rgb(165, 0, 0);
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-size: 19px;
+        } */
+    </style>
+
+
+</head>
+<body>
+
+
+    <template id="tmpl">
+        <style>
+            ul {
+            margin: 0;
+            list-style: none;
+            padding-left: 20px;
+            }
+            #arrow {
+                font-size: 14px;
+            }
+            #menu {
+                border: 1px solid rgb(71, 71, 71);
+                width: 20%;
+            }
+        </style>
+      
+
+        <input type="text" id="inputValue">
+        <!-- <button id="arrow">v</button> -->
+        <ul id="menu"><slot name="item"></slot></ul>
+      </template>
+      
+
+      
+      <script>
+    
+        customElements.define('select-search', class extends HTMLElement {
+            connectedCallback() {
+                const options = Array.from(this.querySelectorAll("option"))
+
+                const shadow =  this.attachShadow({mode: 'open'})
+
+                shadow.append( tmpl.content.cloneNode(true) )
+                shadow.getElementById("menu").hidden = true
+
+                let optionValue = ""
+
+                function hiddenOption (current) {
+                    let j = 0
+
+                    options.forEach(function (elem) {
+                        if (elem.textContent.toUpperCase().indexOf(current.toUpperCase()) === 0) {
+                            elem.hidden = false
+                        }
+                        else {
+                            j++
+                            elem.hidden = true
+                        }
+
+                    })
+
+                    if (j === shadow.host.children.length) {
+                        shadow.getElementById("menu").hidden = true
+                    }
+                }
+
+
+
+                // при нажатии на кнопку с id="arrow" внутри теневого дома 
+                // shadow.getElementById("arrow").addEventListener("click", function (event) {
+                    
+                //     if (shadow.getElementById("menu").hidden === true) {
+                //         return shadow.getElementById("menu").hidden = false
+                //     }
+                    
+                //     shadow.getElementById("menu").hidden = true
+                // })
+
+
+                // shadow.getElementById("menu").addEventListener("click", function (event) {
+                //     shadow.getElementById("inputValue").value = event.target.textContent
+                //     shadow.getElementById("menu").hidden = true
+                // })
+
+                
+                shadow.addEventListener("click", function (event) {
+                    if (event.target.closest("option")) {
+                        optionValue = event.target.textContent
+                        shadow.getElementById("inputValue").value = event.target.textContent
+                        shadow.getElementById("menu").hidden = true
+                    }
+                    else {
+                        if (event.target.closest("input")) {
+                            if (shadow.getElementById("menu").hidden === true) {
+                                return shadow.getElementById("menu").hidden = false
+                            }
+
+                            shadow.getElementById("menu").hidden = true
+                        }
+                    }
+                })
+
+                
+                shadow.getElementById("inputValue").addEventListener("blur", function (event) {
+                    shadow.getElementById("menu").hidden = true
+                })
+                
+
+                shadow.getElementById("inputValue").addEventListener("input", function (event) {
+                    const currentText = event.target.value
+
+                    if (currentText === "") shadow.getElementById("menu").hidden = true
+                    else shadow.getElementById("menu").hidden = false
+
+                    hiddenOption(currentText)
+                })
+
+
+                shadow.getElementById("menu").addEventListener("mouseover", function (event) {
+                    if (event.target.closest("option")) {
+                        event.target.style.backgroundColor = "teal"
+                        event.target.style.color = "rgb(246, 246, 246)"
+                    }
+                })
+
+
+                shadow.getElementById("menu").addEventListener("mouseout", function (event) {
+                    if (event.target.closest("option")) {
+                        event.target.style.backgroundColor = ""
+                        event.target.style.color = ""
+                    }
+                })
+
+
+                shadow.getElementById("inputValue").addEventListener("keydown", function (event) {
+
+                    if (event.code === "Enter") {
+
+                        const newCurrent = options.filter(function (elem) {
+                            if (elem.hidden === false) return true
+                        })
+                        
+                        if (!newCurrent[0]) return
+
+                        shadow.getElementById("inputValue").value = newCurrent[0].textContent
+                    }
+                    shadow.getElementById("menu").hidden = true
+                })
+            }
+        })
+      </script>
+      
+      <select-search>
+        
+        <option slot="item" value="">text1</option>
+        <option slot="item" value="">text11</option>
+        <option slot="item" value="">text2</option>
+        <option slot="item" value="">text22</option>
+        <option slot="item" value="">text3</option>
+        <option slot="item" value="">text33</option>
+        <option slot="item" value="">text4</option>
+        <option slot="item" value="">text44</option>
+        <option slot="item" value="">Украина</option>
+      </select-search>
+
+
+
+</body>
+</html>

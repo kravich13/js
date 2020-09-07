@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kravich</title>
+
+    <style>
+        textarea {
+            display: block;
+            width: 200px;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <textarea id="area"></textarea>
+
+    <button id="buttClear">Очистить</button>
+
+
+    <script>
+        
+        const $textarea = document.getElementById("area")
+        const $clearButton = document.getElementById("buttClear")
+
+        
+        $clearButton.addEventListener("click", function (event) {
+            $textarea.value = ""
+            localStorage.setItem("textArea", $textarea.value)
+
+        })
+        
+        $textarea.addEventListener("input", function (event) {
+
+            // Записывает в localStorage текущие введенные данные textarea
+            localStorage.setItem("textArea", $textarea.value)
+        })
+
+
+        // Поскольку на новой вкладке никаких новых записывающих данных в localStorage не было, то в value были записаные самые последнние данные из прошлой страницы
+        console.log(localStorage)
+        $textarea.value = localStorage.getItem("textArea")
+
+    </script>
+    
+</body>
+</html>

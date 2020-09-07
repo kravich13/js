@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select-Search</title>
+    
+
+</head>
+<body>
+    <template id="tmpl">
+        <style>
+            #menu {
+                border: 1px solid rgb(104, 104, 104);
+                background: rgb(255, 255, 255);
+                display: inline-block;
+                position: absolute;
+            }
+            input {
+                padding: 3px 5px;
+            }
+
+            .styleMenu {
+                height: 540px;
+                overflow: scroll;
+                overflow-x: hidden;
+            }
+        </style>
+      
+        <input type="text" id="inputValue">
+        <div id="menu"><slot></slot></div>
+      </template>
+      
+
+      
+      <script>
+        customElements.define('select-search', class extends HTMLElement {
+            connectedCallback() {
+
+                const shadow =  this.attachShadow({mode: 'open'})
+
+                shadow.append( tmpl.content.cloneNode(true) )
+
+                // Массив всех option в блоке select-search
+                const $options = Array.from(this.querySelectorAll("option"))
+
+                
+                // Теневые переменные
+                // const $value = this.getAttribute("value") 
+                const $slot = shadow.querySelector("slot")
+                const $input = shadow.getElementById("inputValue")
+                const $div = shadow.getElementById("menu")
+
+
+                // Прочие переменные
+                let optionValue = ""
+                let currentIndex = 0
+                let dynamicOptions = []
+                let startIdex = currentIndex
+                const optionColor = { theFirst: $options[0]}
+
+
+                // Действия с элементами
+                shadow.querySelector("slot").hidden = false
+
+                $options.forEach(function (elem) {
+                    elem.style.padding = "5px"
+                })
+
+                $div.style.left = `${$input.offsetLeft}px`
+                $div.style.top = `${$input.offsetTop + $input.offsetHeight}px`
+                $input.style.width = `${$div.offsetWidth - $div.style.border}px`
+
+                shadow.querySelector("slot").hidden = true
+            
+
+
+                function suitableOption (current) {
+                    let j = 0
+
+                    const currentOptions = []
+
+                    $options.forEach(function (elem) {
+                        if (elem.textContent.toUpperCase().indexOf(current.toUpperCase()) === 0) {
+                            currentOptions.push(elem)
+                            
+                            for (let i = 0; i < $options.length; i++) {
+                                if (currentOptions[0] === $options[i]) {
+                                    $options[i].flagBlur = false
+                                    $options[i].style.backgroundColor = "teal"
+                                    $options[i].style.color = "rgb(246, 246, 246)"
+                                }
+                            }
+                            elem.hidden = false
+                        }
+                        else {
+                            
+                            for (let i = 0; i < $options.length; i++) {
+                                if (currentOptions[0] != $options[i]) {
+                                    $options[i].style.backgroundColor = ""
+                                    $options[i].style.color = ""
+                                }
+                            }
+
+                            j++
+                            elem.hidden = true
+
+                            $div.classList.remove("styleMenu")
+
+
+    
+                        }   
+                    })
+                    
+                    if ($div.offsetHeight >= 540) {
+                        $div.classList.add("styleMenu")
+                    }
+
+                    if (j === shadow.host.children.length) {
+                        $slot.hidden = true
+                    }
+                    dynamicOptions = Array.from(currentOptions)
+                }
+            
+        
+                shadow.addEventListener("click", function (event) {
+                    if (event.target != event.target.closest("select-search")) {
+                        $slot.hidden = true
+                    }
+
+                    if (event.target.closest("option")) {
+                        optionValue = event.target.textContent
+                        $input.value = event.target.textContent
+                        shadow.host.value = event.target.textContent
+                        $slot.hidden = true
+
+                        if ($div.offsetHeight >= 540) {
+                            $div.classList.remove("styleMenu")
+                        }
+                        return
+                    }
+
+                    if (event.target.closest("input")) {
+                        suitableOption(event.target.value)
+
+                        event.target.select()
+
+                        if ($slot.hidden === true) {
+                            $slot.hidden = false
+
+                            if ($div.offsetHeight >= 540) {
+                                $div.classList.add("styleMenu")
+                            }
+                            return 
+                        }
+                        $slot.hidden = true
+                    }
+                        
+                })
+
+
+                $input.addEventListener("blur", function (event) {
+
+                    if ($options[0].flagBlur) {
+                        $slot.hidden = false
+
+                        $options[0].flagBlur = false
+                    }
+                    else {
+                        $slot.hidden = true
+                        $options[0].flagBlur = true
+
+                        if ($div.offsetHeight >= 540) {
+                            $div.classList.remove("styleMenu")
+                        }
+                    }
+                })
+
+
+                $input.addEventListener("input", function (event) {
+                    const currentText = event.target.value
+
+                    $slot.hidden = false
+
+                    if ($div.offsetHeight >= 540) {
+                        $div.classList.add("styleMenu")
+                    }
+
+                    suitableOption(currentText)
+                })
+
+                
+                $slot.addEventListener("mouseover", function (event) {
+                    if (event.target.closest("option")) {
+
+                        $options[0].flagBlur = true
+
+                        event.target.style.backgroundColor = "teal"
+                        event.target.style.color = "rgb(246, 246, 246)"
+
+                        if (optionColor.second) {
+                            optionColor.second.style.backgroundColor = ""
+                            optionColor.second.style.color = ""
+                        }
+                        
+                        startIdex = currentIndex = $options.indexOf(event.target)
+                    }
+                })
+
+
+                $slot.addEventListener("mouseout", function (event) {
+                    if (event.target.closest("option")) {
+                        $options[0].flagBlur = false
+                        event.target.style.backgroundColor = ""
+                        event.target.style.color = ""
+                    }
+                })
+
+
+                $input.addEventListener("keydown", function (event) {
+
+                    if (event.code === "Escape") {
+                        $input.value = ""
+                        shadow.host.value = ""
+
+                        $options.forEach(elem => {
+                            if (elem.style.backgroundColor === "teal") {
+                                elem.style.backgroundColor = ""
+                                elem.style.color = ""
+                            }
+                        })
+
+                        $slot.hidden = true
+
+                        if ($div.offsetHeight >= 540) {
+                            $div.classList.remove("styleMenu")
+                        }
+                    }
+
+                    if (event.code === "Enter") {
+
+                        const newCurrent = $options.filter(function (elem) {
+                            if (elem.hidden === false) return true
+                        })
+
+                        $slot.hidden = true
+
+
+                        if ($div.offsetHeight >= 540) {
+                            $div.classList.remove("styleMenu")
+                        }
+
+                        
+                        if (!newCurrent[0]) return
+    
+
+                        $options.forEach(function (elem) {
+                            if (elem.style.backgroundColor === "teal") {
+                               $input.value = elem.textContent
+                               shadow.host.value = elem.textContent
+                            }
+                        })
+                    }
+
+                    if (event.code === "ArrowDown") {
+                        event.preventDefault()
+
+                        if (startIdex <= dynamicOptions.length - 1) {
+
+                            if (startIdex === dynamicOptions.length - 1) return
+                            else startIdex++
+                            
+                            if ($options[0].style.backgroundColor === "teal") {
+                                $options[0].style.backgroundColor = ""
+                                $options[0].style.color = ""
+                            }
+
+                            optionColor.second = $options[startIdex]
+
+                            dynamicOptions[startIdex].style.backgroundColor = "teal"
+                            dynamicOptions[startIdex].style.color = "rgb(246, 246, 246)"   
+
+                            dynamicOptions[startIdex-1].style.backgroundColor = ""
+                            dynamicOptions[startIdex-1].style.color = ""     
+
+                        }               
+                    }
+
+                    if (event.code === "ArrowUp") {
+                        event.preventDefault()
+
+                        if (startIdex > 0) {
+                            
+                            if (startIdex === 0) return
+                            else startIdex--
+
+                            if ($options[0].style.backgroundColor === "teal") {
+                                $options[0].style.backgroundColor = ""
+                                $options[0].style.color = ""
+                            }
+
+                            optionColor.second = $options[startIdex]
+
+                            dynamicOptions[startIdex].style.backgroundColor = "teal"
+                            dynamicOptions[startIdex].style.color = "rgb(246, 246, 246)"
+
+                            dynamicOptions[startIdex+1].style.backgroundColor = ""
+                            dynamicOptions[startIdex+1].style.color = ""  
+                        }
+                    }
+                })
+            }
+        })
+      </script>
+</body>
+</html>

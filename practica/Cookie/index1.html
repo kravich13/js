@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kravich.com</title>
+
+    <style>
+        button {
+            font-size: 19px;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <button id="getButton">
+        Получить данные
+    </button>
+
+    <button id="setButton">
+        Создать куки с таймером на минуту
+    </button>
+
+    <script>
+        
+        // добавляет куки с параметрами
+        function setCookie (name, value, options = {} ) {
+
+            options = {
+                path: '/',
+                // при необходимости добавьте другие значения по умолчанию
+                ...options
+            }
+
+            if (options.expires instanceof Date) {
+                options.expires = options.expires.toUTCString()
+            }
+
+            let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value)
+
+            for (let optionKey in options) {
+                updatedCookie += "; " + optionKey
+                let optionValue = options[optionKey]
+                if (optionValue !== true) {
+                    updatedCookie += "=" + optionValue
+                }
+            }
+
+            document.cookie = updatedCookie
+        }
+        // Пример использования: user=Vlad; secure=true; max-age:5
+        setCookie('user', 'Vlad', { secure: true, 'max-age': 5 })
+
+
+
+        // document.cookie = "user=Kravich"
+
+        const getButton = document.getElementById("getButton")
+        const setButton = document.getElementById("setButton")
+        
+        getButton.addEventListener("click", function (event) {
+
+            
+            // После перезагрузки страницы куки остаются на месте
+            console.log(document.cookie) // user=Kravich
+
+            // Но после перезагрузки браузера куки изчезают
+            // console.log(document.cookie) // "empty string"
+
+
+            // Чтобы куки пережили закрытие браузера, нужно установить значение опций expires Или max-agem, (дата, при которой куки удалится автоматически)
+            
+        })
+
+        setButton.addEventListener("click", function (event) {
+            
+            // Через 5 секунд куки удалится самостоятельно
+            document.cookie = "user=Vlad; max-age=60"
+
+        })
+    </script>
+
+</body>
+</html>

@@ -8,10 +8,11 @@ const vlad = {
     car: true
 }
 
+// в прототипе vlad есть методы kravich
 vlad.__proto__ = kravich
 
-vlad.money // у Влада деньги есть
-kravich.car // undefined
+console.log(vlad.money) // у Влада деньги есть
+console.log(kravich.car) // undefined
 
 
 
@@ -83,7 +84,7 @@ const vlad = {
 }
 
 vlad.more = function () {
-console.log("Больше Времени")
+    console.log("Больше Времени")
 }
 
 vlad.more() // Больше Времени
@@ -110,7 +111,7 @@ for (let prop in vlad) console.log(prop) // car, money
 // фильтрация с помощью метода obj.hasOwnProperty(key)
 
 for (let prop in vlad) {
-    let isOwn = vlad.hasOwnProperty(prop)
+    const isOwn = vlad.hasOwnProperty(prop)
 
     if (isOwn) {
         console.log(`Собственное свойство: ${prop}`) // car

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // // ./script1.js
+        const modulePath = prompt("Какой модуль загружать?")
+
+        import(modulePath)
+            .then(obj => console.log(obj)) // ну привет =)
+            .catch(err => console.log(err))
+
+
+        async function load () {
+
+            // ждёт загрузки скрипта, после чего выполняется
+            const say = await import('./script2.js')
+
+            say.hi() // привет
+            say.bye() // пока
+
+            // модуль по умолчанию идёт через "object.default()""
+            say.default() // Модуль по умолчанию загружен!
+        }
+        load()
+
+    </script>
+
+</body>
+</html>

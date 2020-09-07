@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        p {
+            color: white;
+            font-weight: 600;
+        }
+        select {
+            color: rgb(206, 206, 206);
+            background: rgb(43, 43, 43);
+            border: 2px solid rgb(165, 0, 0);
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            width: 230px;
+            margin: 2px 0 7px;
+            padding: 5px;
+        }
+        
+        #data span {
+            font-weight: 600;
+        }
+
+
+        #selected, #strelka {
+            color: rgb(206, 206, 206);
+            background: rgb(43, 43, 43);
+            border: 2px solid rgb(165, 0, 0);
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-size: 19px;
+        }
+        #strelka {
+            background:rgb(206, 206, 206);
+            color: rgb(165, 0, 0);
+            margin-left: -35px;
+        }
+        #hiddenTrue {
+            color: rgb(206, 206, 206);
+            background: rgb(43, 43, 43);
+            width: 235px;
+            padding: 5px;
+            font-size: 18px;;
+        }
+        #hiddenTrue option {
+            margin-bottom: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <p>Выберите страну: </p>
+    <select name="" id="country"></select> <br>
+    
+    <p>Выберите город: </p>
+    <select name="" id="city"></select>
+    
+    
+    <div id="data"> 
+        <p>Температура: <span class="colorTextSpan" id="temp"></span></p>
+        <p>Облака: <span class="colorTextSpan" id="clouds"></span></p>
+        <p>Ветер: <span class="colorTextSpan" id="wind"></span></p>
+        <p>Давление: <span class="colorTextSpan" id="pressure"></span></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

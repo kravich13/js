@@ -29,13 +29,21 @@ const vlad = {
     money: true
 }
 
-const kravich = Object.create(vlad, { // установка доп. свойства в прототип vlad
+const kravich = Object.create(vlad, {
     car: {
-        value: true // обязательно писать именно value
+        value: true
+    },
+    sayHi: {
+        value () {
+            return console.log("тут")
+        }
     }
 })
 
 kravich.car // true
+kravich.money // true
+
+kravich.sayHi() // привет
 ```
 
 Так же можно использовать `Object.create` для продвинутого клонирования объекта, более мощного, чем копирование свойств в цикле `for..in`:

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- defer сообщает браузеру, что он должен обрабатывать страницу и загружать скрипт в фоновом режиме, а затем запустить этот скрипт, когда он загрузится -->
+
+    <p>Тег до скрипта</p>
+
+    <script defer src="https://javascript.info/article/script-async-defer/long.js?speed=1"></script>
+
+
+    <!-- Обрабатывается сразу же -->
+    <p>Тег после скрипта</p>
+
+
+
+
+    <!-- Скрипты с defer всегда выполняются, когда дерево DOM готово, но до события DOMContentLoaded. -->
+
+    <p>Тег до скрипта</p>
+
+    <!-- Загрузится лишь после всех defer -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => alert("Дерево DOM готово после скрипта с 'defer'!")); // (2)
+    </script>
+
+    <script defer src="https://javascript.info/article/script-async-defer/long.js?speed=1"></script>
+
+    <p>Тег после скрипта</p>
+
+
+
+
+    <!-- Отложенные с помощью defer скрипты сохраняют порядок относительно друг друга, как и обычные скрипты. -->
+    <!-- Поэтому, если сначала загружается большой скрипт, а затем меньшего размера, то последний будет ждать. -->
+
+    <!-- Большой скрипт загрузится последним, но выполнится первым-->
+    <script defer src="https://javascript.info/article/script-async-defer/long.js"></script> 
+
+    <!-- Маленький загрузится первым, но выполнится вторым-->
+    <script defer src="https://javascript.info/article/script-async-defer/small.js"></script> 
+
+</body>
+</html>

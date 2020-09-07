@@ -14,3 +14,6 @@ document.body.prepend(div)
 
 let rED = () => console.log(this)
 div.addEventListener("click", rED)
+
+
+
