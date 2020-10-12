@@ -28,7 +28,7 @@ async function jsonPost (url, data) {
             // }
         })
         if (response.ok) {
-            console.log(response)
+            // console.log(response)
             return await response.json()
         }
         return console.log("Ошибка")
@@ -46,15 +46,19 @@ const chat = document.getElementById("chat")
 
 let indexPosta = 0 // хранится индекс массива с начальным/последним положением
 
-post(0) // отрисовываем весь чат с нулевого индекса объекта
+post(690) // отрисовываем весь чат с нулевого индекса объекта
 
 async function post (index) {
     let result = await jsonPost("http://students.a-level.com.ua:10012", {
             func: "getMessages",
             messageId: index
+            // messageId: 690 // к примеру 685 - 682 = 3 сообщения будет показано
         })
         // .then (function (result) {
             const ArrMessage = result.data
+
+            console.log(index)
+            // console.log(result.nextMessageId)    
 
 
 
