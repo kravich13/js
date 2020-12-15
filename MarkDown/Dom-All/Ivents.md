@@ -84,4 +84,31 @@ document.body.addEventListener("click", function(event) {
 </body>
 ```
 
+* ### `closest`
+    Возвращает ближайший родительский элемент (или сам элемент), который соответствует заданному селектору:
+
+    ```html
+    <div id="block" title="Я - блок">
+
+        <a href="#">Я ссылка в никуда</a>
+        <a href="http://site.ru">Я ссылка на сайт</a>
+
+        <div>
+            <div id="too"></div>
+        </div>
+        
+    </div>
+    ```
+
+    Результат:
+
+    ```javascript
+    // Отсюда начали поиск (внутренний элемент)
+    const $div = document.querySelector("#too") 
+
+    div.closest("#block") //Результат - самый первый блок древа выше
+    div.closest("div") //Сам блок #too и будет результатом, так как он подходит под селектор "div"
+    div.closest("a") //null - В предках #too нет ни одного тега "a"!
+    div.closest("div[title]") //#block - так как ближе нет блоков с атрибутом title.
+    ```
 
