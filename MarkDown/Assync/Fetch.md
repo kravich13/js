@@ -44,6 +44,16 @@ else {
 * `response.blob()` - возвращает объект как `Blob` (бинарные данные с типом);
 * `response.arrayBuffer()` - возвращает ответ как ArrayBuffer
 * помимо этого, `response.body` - это объект ReadableStream, с помощью которого можно считывать тело запроса по частям.
+* `response.headers.get("Заголовок")` - получение заголовка `Headers`.
+
+  Также все существующие заголовки от сервера можно перебрать в цикле: 
+
+  ```javascript
+  for (let [key, value] of response.headers) {
+        console.log(`${key} = ${value}`)
+        // все существующие заголовки
+    }
+  ```
 
 Например, получим JSON-объект с последними коммитами из репозитория на GitHub:
 
