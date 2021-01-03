@@ -12,8 +12,7 @@
 
 Пример: 
 
-![GitHub Logo](\img\one.jpg)
-
+![GitHub Logo](img/one.png)
 ***
 
 ## offsetWidth/Height
@@ -22,7 +21,7 @@
 
 Пример: 
 
-![GitHub Logo](\img\two.jpg)
+![GitHub Logo](img/two.png)
  
 ***
 
@@ -32,7 +31,7 @@
 
 Они включают в себя ширину области содержимого вместе с внутренними отступами padding, но без прокрутки:
 
-![GitHub Logo](\img\three.jpg)
+![GitHub Logo](\img\three.png)
 
 Горизонтальной прокрутки нет, так что это в точности то, что внутри рамок: CSS-высота 200px плюс верхние и нижние внутренние отступы (2 * 20px), итого 240px.
 
@@ -64,7 +63,7 @@ element.style.height = `${element.scrollHeight}px`;
 
 Следующая иллюстрация показывает значения `scrollHeight` и `scrollTop` для блока с вертикальной прокруткой.
 
-![GitHub Logo](\img\four.jpg)
+![GitHub Logo](img/four.png)
 
 Другими словами, свойство `scrollTop` – это «сколько уже прокручено вверх».
 
@@ -79,7 +78,7 @@ element.style.height = `${element.scrollHeight}px`;
 
 Чтобы получить ширину/высоту окна, можно взять свойства `clientWidth/clientHeight` из `document.documentElement`:
 
-![GitHub Logo](\img\five.jpg)
+![GitHub Logo](img/five.png)
 
 *** 
 
@@ -135,4 +134,4 @@ element.style.height = `${element.scrollHeight}px`;
 
 Пример: 
 
-![GitHub Logo](\img\six.jpg)
+![GitHub Logo](img/six.png)
