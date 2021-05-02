@@ -1,3 +1,14 @@
+- [offsetParent, offsetLeft/Top](#offsetparent-offsetlefttop)
+- [offsetWidth/Height](#offsetwidthheight)
+- [clientWidth/Height](#clientwidthheight)
+- [scrollWidth/Height](#scrollwidthheight)
+- [scrollLeft/scrollTop](#scrollleftscrolltop)
+- [Ширина/высота окна](#ширинавысота-окна)
+- [Прокрутка: scrollTo, scrollBy, scrollIntoView](#прокрутка-scrollto-scrollby-scrollintoview)
+- [scrollIntoView](#scrollintoview)
+- [Запретить прокрутку](#запретить-прокрутку)
+- [Координаты относительно окна: getBoundingClientRect](#координаты-относительно-окна-getboundingclientrect)
+
 ## offsetParent, offsetLeft/Top
 
 В свойстве `offsetParent` находится предок элемента, который используется внутри браузера для вычисления координат при рендеринге (у каждого браузера он может быть свой).

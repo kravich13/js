@@ -1,3 +1,9 @@
+- [Проверка класса instanceof](#проверка-класса-instanceof)
+- [Статический метод Symbol.hasInstance](#статический-метод-symbolhasinstance)
+- [objA.isPrototype(objB)](#objaisprototypeobjb)
+- [Object.prototype.toString возвращает тип](#objectprototypetostring-возвращает-тип)
+- [Symbol.toStringTag](#symboltostringtag)
+
 ## Проверка класса instanceof
 
 Оператор `instanceof` позволяет проверить, к какому классу принадлежит объект с учётом наследования.

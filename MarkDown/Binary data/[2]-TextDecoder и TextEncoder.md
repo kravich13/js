@@ -1,3 +1,6 @@
+- [TextDecoder и TextEncoder](#textdecoder-и-textencoder)
+  - [TextEncoder](#textencoder)
+
 # TextDecoder и TextEncoder
 
 Встроенный объект `TextDecoder` позволяет декодировать данные из бинарного буфера в обычную строку.

@@ -1,4 +1,9 @@
-*** 
+- [Map](#map)
+- [Перебор Map](#перебор-map)
+- [Object.entries: Map из Object](#objectentries-map-из-object)
+- [Object.fromEntries: Object из Map](#objectfromentries-object-из-map)
+- [Set](#set)
+- [Перебор объекта Set](#перебор-объекта-set)
 
 ## Map
 

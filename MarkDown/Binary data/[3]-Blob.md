@@ -1,3 +1,6 @@
+- [Blob](#blob)
+  - [Blob как URL](#blob-как-url)
+
 # Blob
 
 Объект `Blob` состоит из необязательной строки `type` и `blobParts` - последовательности других объектов `Blob`, строк и `BufferSource`.

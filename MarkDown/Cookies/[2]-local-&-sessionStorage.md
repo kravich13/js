@@ -1,3 +1,11 @@
+- [localStorage, sessionStorage](#localstorage-sessionstorage)
+  - [localStorage](#localstorage)
+  - [Доступ как к обычному объекту](#доступ-как-к-обычному-объекту)
+  - [Перебор ключей](#перебор-ключей)
+  - [Только строки](#только-строки)
+  - [sessionStorage](#sessionstorage)
+  - [Ivent storage](#ivent-storage)
+
 # localStorage, sessionStorage
 
 Объекты веб хранилища `localStorage` и `sessionStorage` позволяют хранить пары ключ/значение в браузере.

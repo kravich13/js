@@ -1,3 +1,9 @@
+- [Date - создание](#date---создание)
+  - [new Date(milliseconds)](#new-datemilliseconds)
+  - [new Date(year, month, date, hours, minutes, seconds, ms)](#new-dateyear-month-date-hours-minutes-seconds-ms)
+- [Получение компонентов даты](#получение-компонентов-даты)
+- [Автоисправление даты](#автоисправление-даты)
+
 ## Date - создание
 
 Для работы с Date используются объекты `Date`.

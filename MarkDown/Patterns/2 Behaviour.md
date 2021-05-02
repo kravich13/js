@@ -1,3 +1,14 @@
+- [Паттерны: behaviour](#паттерны-behaviour)
+  - [Behaviour](#behaviour)
+    - [***Chain of responsibility:***](#chain-of-responsibility)
+    - [***Comand:***](#comand)
+    - [***Iterator:***](#iterator)
+    - [***Mediator:***](#mediator)
+    - [***Observer:***](#observer)
+    - [***State:***](#state)
+    - [***Strategy:***](#strategy)
+    - [***Template:***](#template)
+
 # Паттерны: behaviour
 
 ## Behaviour

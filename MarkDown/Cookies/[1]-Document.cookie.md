@@ -1,3 +1,12 @@
+- [Document.cookie](#documentcookie)
+- [Чтение из document.cookie](#чтение-из-documentcookie)
+- [Запись в document.cookie](#запись-в-documentcookie)
+- [path](#path)
+- [domain](#domain)
+- [expires, max-age](#expires-max-age)
+- [secure](#secure)
+- [Настройка samesite](#настройка-samesite)
+
 ## Document.cookie
 
 Куки - это небольшие строки данных, которые хранятся в оперативной памяти браузера. 

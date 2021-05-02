@@ -1,3 +1,16 @@
+- [Паттерны: creational, structural](#паттерны-creational-structural)
+  - [Creational](#creational)
+    - [***Constructor:***](#constructor)
+    - [***Factory:***](#factory)
+    - [***Prototype:***](#prototype)
+    - [***Singleton:***](#singleton)
+  - [Structural](#structural)
+    - [***Adapter:***](#adapter)
+    - [***Decorator:***](#decorator)
+    - [***Facade:***](#facade)
+    - [***Flywight:***](#flywight)
+    - [***Proxy:***](#proxy)
+
 # Паттерны: creational, structural
 
 Паттерны как в программировании, так и в трейдинге - это не готовое решение чего либо, это определенный шаблон, который подходит под решение определенных задач. 
