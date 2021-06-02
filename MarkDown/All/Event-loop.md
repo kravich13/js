@@ -32,7 +32,7 @@ console.log("three")
 ## Базовая архитектура
 
 
-![GitHub Logo](\img\event-loop.jpg)
+![GitHub Logo](/MarkDown/img/event-loop.jpg)
 
 * Heap (куча) - объекты собраны в кучу;
 * Stack (стопка) - репрезентация единственного потока выполнения кода. Вызовы функций помещаются в стек;
