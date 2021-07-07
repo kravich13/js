@@ -10,3 +10,12 @@ console.log(Object.keys(obj)) //    Array [ "10" ]
 
 // console.log(obj)
 // console.log(obj1)
+
+const obj = {
+  a: 1,
+  run: () => {
+    setTimeout(() => console.log(this), 1000)
+  },
+}
+
+obj.run()

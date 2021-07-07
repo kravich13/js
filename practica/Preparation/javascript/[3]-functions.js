@@ -24,3 +24,19 @@ console.log(fn) // object {}
 
 function fn() {}
 let fn = 'qq' /// ошибка декларации
+
+//
+function fn1() {
+  const a = 1
+
+  return function fn2() {
+    const b = 2
+
+    return function fn3(a) {
+      const c = 3
+
+      console.log(a, b, c)
+    }
+  }
+}
+fn1()()()
