@@ -3,7 +3,7 @@
 - [SOLID](#solid)
   - [Single responsibility principle](#single-responsibility-principle)
   - [Open closed principle](#open-closed-principle)
-  - [Liskov Substitution principle](#liskov-substitution-principle)
+  - [Liskov substitution principle](#liskov-substitution-principle)
   - [Interface sergegation principle](#interface-sergegation-principle)
   - [Dependency inversion principle](#dependency-inversion-principle)
     - [Bad](#bad)
@@ -88,7 +88,7 @@ crossbow.attack(); // Выстрел из арбалета с уроном 15
 
 ---
 
-## Liskov Substitution principle
+## Liskov substitution principle
 
 Принцип подстановки Барбары Лисков.
 
